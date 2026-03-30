@@ -37,7 +37,7 @@ local Window = Fluent:CreateWindow({
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
 	Acrylic = true,
-	Theme = "Amethyst",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+	Theme = "silver",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
 	MinimizeKey = Enum.KeyCode.End
 })
 
@@ -56,7 +56,7 @@ local Tabs = {
 ------------------------------------------------
 Tabs.Main0:AddButton({
 	Title = "oiia_evade",              -- 👈 tên nút
-	Description = "mình sẽ thay đổi key liên tục nên flo tui nha",-- 👈 mô tả nút
+	Description = "Mình sẽ thay đổi key liên tục nên flo tui nha",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https://www.tiktok.com/@baolongbate03")  -- 👈 link sao chép
 	end
