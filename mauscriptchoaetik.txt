@@ -32,7 +32,7 @@ repeat wait() until game:IsLoaded()
 
 -- 🪟 Cửa sổ chính
 local Window = Fluent:CreateWindow({
-	Title = "UIA HUB =}",         -- 👈 đổi thành tên script của bạn
+	Title = "UIA HUB ",         -- 👈 đổi thành tên script của bạn
 	SubTitle = "1.0.0",              -- 👈 đổi mô tả phụ
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
