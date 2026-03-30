@@ -32,33 +32,49 @@ repeat wait() until game:IsLoaded()
 
 -- 🪟 Cửa sổ chính
 local Window = Fluent:CreateWindow({
-	Title = "UIA HUB ",         -- 👈 đổi thành tên script của bạn
-	SubTitle = "1.0.0",              -- 👈 đổi mô tả phụ
+	Title = "Téo 🍎v2 update =}",         -- 👈 đổi thành tên script của bạn
+	SubTitle = "vip pro💎😍",              -- 👈 đổi mô tả phụ
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
 	Acrylic = true,
-	Theme = "silver",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+	Theme = "Amethyst",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
 	MinimizeKey = Enum.KeyCode.End
 })
 
 -- 📑 Các tab (mục chính)
 local Tabs = {
-	Main0 = Window:AddTab({ Title = "Trang chủ" }),  -- 👈 đổi tên tab 1
-	Main1 = Window:AddTab({ Title = "99 night" }),  -- 👈 đổi tên tab 2
-	Main2 = Window:AddTab({ Title = "Blox fruit " }),     -- 👈 đổi tên tab 3
-	Main3 = Window:AddTab({ Title = "Lệnh" }),        -- 👈 đổi tên tab 4
-	Main4 = Window:AddTab({ Title = "Ftap" }),    -- 👈 đổi tên tab 5
-	Main5 = Window:AddTab({ Title = "Hamster" }) -- 👈 đổi tên tab 6
+	Main0 = Window:AddTab({ Title = "một số kênh🤓" }),  -- 👈 đổi tên tab 1
+	Main1 = Window:AddTab({ Title = "grow a gaden 🌱🌴🌵🌲" }),  -- 👈 đổi tên tab 2
+	Main2 = Window:AddTab({ Title = "bran rót💩" }),     -- 👈 đổi tên tab 3
+	Main3 = Window:AddTab({ Title = "99 đêm🥷" }),        -- 👈 đổi tên tab 4
+	Main4 = Window:AddTab({ Title = "blox fruit🍎" }),    -- 👈 đổi tên tab 5
+	Main5 = Window:AddTab({ Title = "plan vs branro🌲🐘t" }) -- 👈 đổi tên tab 6
 }
 
 ------------------------------------------------
 -- TAB 1: Các kênh tiktok
 ------------------------------------------------
 Tabs.Main0:AddButton({
-	Title = "oiia_evade",              -- 👈 tên nút
-	Description = "mik thay đổi key liên tục nên flo tui ik",-- 👈 mô tả nút
+	Title = "tiktok bạn:)",              -- 👈 tên nút
+	Description = "oách xà lách vô cùng",-- 👈 mô tả nút
 	Callback = function()
 		setclipboard("https://www.tiktok.com/@jannie3342?_t=ZS-90QsJQ5j0NO&_r=1")  -- 👈 link sao chép
+	end
+})
+
+Tabs.Main0:AddButton({
+	Title = "tik",
+	Description = "làm chơi thui",
+	Callback = function()
+		setclipboard("https://www.tiktok.com/@b.yt03?_t=ZS-90QsHokNlwN&_r=1")     -- 👈 link khác
+	end
+})
+
+Tabs.Main0:AddButton({
+	Title = "tiktok",
+	Description = "fl tiktok để biết thêm nhiều script",
+	Callback = function()
+		setclipboard("https://www.tiktok.com/@b.yt03?_t=ZS-90QsHmSjaiu&_r=1")
 	end
 })
 
@@ -66,49 +82,13 @@ Tabs.Main0:AddButton({
 -- TAB 2: Ví dụ thêm script
 ------------------------------------------------
 Tabs.Main1:AddButton({
-	Title = "99 night 🫪",                             -- 👈 tên nút hiển thị
-	Description = "Có 2 script á ngon luôn",-- 👈 mô tả
+	Title = "speed hub🌱",                             -- 👈 tên nút hiển thị
+	Description = "script này ngon á đủ chức năng cả😃",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() -- 👈 link script tải
-	end
-})
-Tabs.Main2:AddButton({
-	Title = "Blox fruit đánh siêu nhanh",                             -- 👈 tên nút hiển thị
-	Description = "Nhưng nó ko dành cho pc chỉ dành cho điện thoại",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))()
- -- 👈 link script tải
-	end
-})
-    Title = "Blox fruit bth",                             -- 👈 tên nút hiển thị
-	Description = "Nhưng nó ko dành cho pc chỉ dành cho điện thoại",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/dragonhubdev/dragonwitheveryone/refs/heads/main/Main-BF.lua"))()
- -- 👈 link script tải
-	end
-})
-Tabs.Main3:AddButton({
-	Title = "Blox fruit đánh siêu nhanh",                             -- 👈 tên nút hiển thị
-	Description = "Nhưng nó ko dành cho pc chỉ dành cho điện thoại",-- 👈 mô tả
-	Callback = function()
-		local Settings = {
-			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
-			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
-		}
-		loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))()
- -- 👈 link script tải
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() -- 👈 link script tải
 	end
 })
