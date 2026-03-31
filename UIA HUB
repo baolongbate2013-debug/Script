@@ -52,7 +52,6 @@ Tabs.Home6 = Window:Tab({ Title = "Hamster" })
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
 	Title = "99 night VapeVoidware",                             -- 👈 tên nút hiển thị
-	Description = "Đầy đủ chức năng, đẹp , nhưng ko có god mod",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
