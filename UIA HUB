@@ -17,7 +17,7 @@ print("🍎 WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "🍎 TÉO HUB_🍎",
+    Title = "UIA HUB",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -25,7 +25,7 @@ local Window = WindUI:CreateWindow({
 
 -- 🔹 Nút mở HUB
 Window:EditOpenButton({
-    Title = "Téo🍎™scrVN🇻🇳",
+    Title = "UIA HUB",
     Icon = "monitor",
     CornerRadius = UDim.new(0,16),
     StrokeThickness = 2,
@@ -40,8 +40,14 @@ Window:EditOpenButton({
 -- 🍎 HOME
 -- =========================
 local Tabs = {}
-Tabs.Home1 = Window:Tab({ Title = "🍎 HOME 🍎" })
-Tabs.Home2 = Window:Tab({ Title = "player" })
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
+Tabs.Home2 = Window:Tab({ Title = "99 night" })
+Tabs.Home3 = Window:Tab({ Title = "Blox fruit" })
+Tabs.Home4 = Window:Tab({ Title = "Ftap" })
+Tabs.Home5 = Window:Tab({ Title = "Lệnh" })
+Tabs.Home6 = Window:Tab({ Title = "Hamster" })
+
+
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
