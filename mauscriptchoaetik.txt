@@ -144,6 +144,6 @@ Tabs.Main5:AddButton({
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
-		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AlgariBot/lua/refs/heads/Lua-Script-Executor/SexMachine.lua"))() -- 👈 link script tải
 	end
 })
