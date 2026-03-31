@@ -51,13 +51,17 @@ Tabs.Home6 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
-    Title = "Lệnh",
-    Callback = function()
-      loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
-        print("Chủ quyền đã là bạn !")
-    end
+Tabs.Main1:AddButton({
+	Title = "99 night VapeVoidware",                             -- 👈 tên nút hiển thị
+	Description = "Đầy đủ chức năng, đẹp , nhưng ko có god mod",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))() -- 👈 link script tải
+	end
 })
-
 -- 🍎 Button 2: Hitbox (chống spam)
 local hitboxLoaded = false
 Tabs.Home1:Button({
