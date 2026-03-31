@@ -46,7 +46,7 @@ local Tabs = {
 	Main0 = Window:AddTab({ Title = "Trang chủ" }),  -- 👈 đổi tên tab 1
 	Main1 = Window:AddTab({ Title = "99 night" }),  -- 👈 đổi tên tab 2
 	Main2 = Window:AddTab({ Title = "Blox fruit" }),     -- 👈 đổi tên tab 3
-	Main3 = Window:AddTab({ Title = "Frap" }),        -- 👈 đổi tên tab 4
+	Main3 = Window:AddTab({ Title = "Ftap" }),        -- 👈 đổi tên tab 4
 	Main4 = Window:AddTab({ Title = "Lệnh" }),    -- 👈 đổi tên tab 5
 	Main5 = Window:AddTab({ Title = "Hamster" }) -- 👈 đổi tên tab 6
 }
@@ -78,12 +78,24 @@ Tabs.Main1:AddButton({
 })
 Tabs.Main1:AddButton({
 	Title = "99 night Caomob",                             -- 👈 tên nút hiển thị
-	Description = "Đầy đủ chức năng, dễ dùng, nhưng quấ lag",-- 👈 mô tả
+	Description = "Đầy đủ chức năng, dễ dùng, nhưng quá lag",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() -- 👈 link script tải
+	end
+})
+
+Tabs.Main2:AddButton({
+	Title = "lear hub",                             -- 👈 tên nút hiển thị
+	Description = "Hơi ít chức năng và đánh siêu nhanh",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))() -- 👈 link script tải
 	end
 })
