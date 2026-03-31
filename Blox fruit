@@ -1,0 +1,7 @@
+-- this script created at https://hoannhatz.github.io/ezscript
+getgenv().ScriptTitle = "UIA HUB"
+getgenv().ScriptSubTitle = "1.0.0"
+getgenv().ScriptImage = "https://i.ibb.co/DfPdfjMV/IMG-1393.png"
+getgenv().ScriptAuthorName = "oiia_evade"
+getgenv().ScriptAuthorSubTitle = "Author Info"
+loadstring(game:HttpGet("https://raw.githubusercontent.com/hoannhatz/Script/refs/heads/main/EZScript.lua"))()
