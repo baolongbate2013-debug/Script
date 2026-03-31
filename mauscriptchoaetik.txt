@@ -89,13 +89,36 @@ Tabs.Main1:AddButton({
 })
 
 Tabs.Main2:AddButton({
-	Title = "lear hub",                             -- 👈 tên nút hiển thị
-	Description = "Hơi ít chức năng và đánh siêu nhanh",-- 👈 mô tả
+	Title = "Lear hub",                             -- 👈 tên nút hiển thị
+	Description = "Hơi ít chức năng và đánh siêu nhanh (ko phù hợp cho pc)",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))() -- 👈 link script tải
+	end
+})
+Tabs.Main2:AddButton({
+	Title = "CattStar",                             -- 👈 tên nút hiển thị
+	Description = "Đầy đủ chức năng (phù hợp cho điện thoại và pc)",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() -- 👈 link script tải
+	end
+})
+
+Tabs.Main3:AddButton({
+	Title = "SRV9",                             -- 👈 tên nút hiển thị
+	Description = "Đầy đủ chức năng",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
 	end
 })
