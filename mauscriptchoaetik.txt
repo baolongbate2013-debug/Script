@@ -206,6 +206,17 @@ Tabs.Main2:AddButton({
 		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() -- 👈 link script tải
 	end
 })
+Tabs.Main2:AddButton({
+	Title = "UIA HUB",                             -- 👈 tên nút hiển thị
+	Description = "Đầy đủ chức năng (phù hợp cho điện thoại và pc)",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))() -- 👈 link script tải
+	end
+})
 
 Tabs.Main3:AddButton({
 	Title = "SRV9",                             -- 👈 tên nút hiển thị
