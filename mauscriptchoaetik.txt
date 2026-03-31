@@ -67,12 +67,23 @@ Tabs.Main0:AddButton({
 ------------------------------------------------
 Tabs.Main1:AddButton({
 	Title = "99 night VapeVoidware",                             -- 👈 tên nút hiển thị
-	Description = "script này ngon á đủ chức năng cả😃",-- 👈 mô tả
+	Description = "Đầy đủ chức năng, đẹp , nhưng ko có god mod",-- 👈 mô tả
 	Callback = function()
 		local Settings = {
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))() -- 👈 link script tải
+	end
+})
+Tabs.Main1:AddButton({
+	Title = "99 night Caomob",                             -- 👈 tên nút hiển thị
+	Description = "Đầy đủ chức năng, dễ dùng, nhưng quấ lag",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() -- 👈 link script tải
 	end
 })
