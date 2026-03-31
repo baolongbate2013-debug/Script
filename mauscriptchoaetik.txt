@@ -131,7 +131,7 @@ Tabs.Main4:AddButton({
 			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
 			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
 		}
-		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-infinite-yield-script-122746"))()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
  -- 👈 link script tải
 	end
 })
