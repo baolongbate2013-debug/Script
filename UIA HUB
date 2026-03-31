@@ -51,12 +51,10 @@ Tabs.Home6 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
-    Title = "🍎 Định vị Téo",
+    Title = "Lệnh",
     Callback = function()
-        loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/teoscrvn/Script-t-o-v2/main/dinhvi2.txt"
-        ))()
-        print("🍎 Đã chạy định vị")
+      loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+        print("Chủ quyền đã là bạn !")
     end
 })
 
