@@ -37,7 +37,7 @@ local Window = Fluent:CreateWindow({
 	TabWidth = 157,
 	Size = UDim2.fromOffset(450, 300),
 	Acrylic = true,
-	Theme = "silver",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
+	Theme = "Silver",                   -- 👈 đổi màu chủ đạo: Amethyst, Dark, Aqua, Light,...
 	MinimizeKey = Enum.KeyCode.End
 })
 
