@@ -122,3 +122,28 @@ Tabs.Main3:AddButton({
 		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
 	end
 })
+
+Tabs.Main4:AddButton({
+	Title = "Lệnh",                             -- 👈 tên nút hiển thị
+	Description = "Như admin thật nhưng sẽ hạn chế",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-infinite-yield-script-122746"))()
+ -- 👈 link script tải
+	end
+})
+
+Tabs.Main5:AddButton({
+	Title = "Dí nhau",                             -- 👈 tên nút hiển thị
+	Description = "Này, này, tắt ngay đi ko bố mẹ mắng đấy",-- 👈 mô tả
+	Callback = function()
+		local Settings = {
+			JoinTeam = "Pirates";   -- 👈 team mặc định: Pirates hoặc Marines
+			Translator = true;      -- 👈 bật dịch sang tiếng Việt nếu có
+		}
+		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
+	end
+})
