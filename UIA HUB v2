@@ -86,7 +86,29 @@ Tabs.Home3:Button({
 Tabs.Home3:Button({
     Title = "UIA HUB",                             	
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))() -- 👈 link script tải
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))() 
+	end
+})
+
+Tabs.Home4:Button({
+    Title = "SRV9",                            
+	Callback = function()
+		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() 
+	end
+})
+
+Tabs.Home5:Button({
+    Title = "Lệnh",                             
+	Callback = function()
+		loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+ -- 👈 link script tải
+	end
+})
+
+Tabs.Home6:Button({
+    Title = "Dí nhau"
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AlgariBot/lua/refs/heads/Lua-Script-Executor/SexMachine.lua"))() -- 👈 link script tải
 	end
 })
 
