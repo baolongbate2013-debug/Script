@@ -58,7 +58,38 @@ Tabs.Home1:Button({
     end
 })
 
--- 🍎 Button 2: Hitbox (chống spam)
+Tabs.Home2:Button({
+    Title = "99 night VapeVoidware",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
+    end
+})
+Tabs.Home2:Button({
+    Title = "99 night Caomob",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))()
+    end
+})
+
+Tabs.Home3:Button({
+    Title = "Lear hub",
+    Callback = function()
+        loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))()
+    end
+})
+Tabs.Home3:Button({
+	Title = "CattStar",                             
+	Callback = function()
+		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() 
+	end
+})
+Tabs.Home3:Button({
+    Title = "UIA HUB",                             	
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))() -- 👈 link script tải
+	end
+})
+
 local hitboxLoaded = false
 Tabs.Home1:Button({
     Title = "🍎 Hitbox Téo",
