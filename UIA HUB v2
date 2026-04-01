@@ -42,10 +42,10 @@ Window:EditOpenButton({
 local Tabs = {}
 Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
 Tabs.Home2 = Window:Tab({ Title = "99 night" })
-Tabs.Home1 = Window:Tab({ Title = "Blox fruit" })
-Tabs.Home2 = Window:Tab({ Title = "Ftap" })
-Tabs.Home1 = Window:Tab({ Title = "Lệnh" })
-Tabs.Home2 = Window:Tab({ Title = "Hamster" })
+Tabs.Home3 = Window:Tab({ Title = "Blox fruit" })
+Tabs.Home4 = Window:Tab({ Title = "Ftap" })
+Tabs.Home5 = Window:Tab({ Title = "Lệnh" })
+Tabs.Home6 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
