@@ -58,12 +58,6 @@ Tabs.Home1:Button({
     end
 })
 
-Tabs.Home2:Button({
-    Title = "99 night VapeVoidware",
-    Callback = function()
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
-    end
-})
 -- 🍎 Button 2: Hitbox (chống spam)
 local hitboxLoaded = false
 Tabs.Home1:Button({
