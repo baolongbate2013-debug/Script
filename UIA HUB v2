@@ -143,12 +143,3 @@ WindUI:Notify({
     Content = "Load thành công!",
     Duration = 4
 })
-Tabs.Home1:Button({
-    Title = "đinh vij teos",
-    Callback = function()
-        loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/teoscrvn/Script-t-o-v2/main/dinhvi2.txt"
-        ))()
-        print("🍎 Đã chạy định vị")
-    end
-})
