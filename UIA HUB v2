@@ -17,7 +17,7 @@ print("🍎 WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "🍎 TÉO HUB_🍎",
+    Title = "UIA HUB 2.0.0",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -25,7 +25,7 @@ local Window = WindUI:CreateWindow({
 
 -- 🔹 Nút mở HUB
 Window:EditOpenButton({
-    Title = "Téo🍎™scrVN🇻🇳",
+    Title = "UIA HUB V2",
     Icon = "monitor",
     CornerRadius = UDim.new(0,16),
     StrokeThickness = 2,
@@ -40,8 +40,12 @@ Window:EditOpenButton({
 -- 🍎 HOME
 -- =========================
 local Tabs = {}
-Tabs.Home1 = Window:Tab({ Title = "🍎 HOME 🍎" })
-Tabs.Home2 = Window:Tab({ Title = "player" })
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
+Tabs.Home2 = Window:Tab({ Title = "99 night" })
+Tabs.Home1 = Window:Tab({ Title = "Blox fruit" })
+Tabs.Home2 = Window:Tab({ Title = "Ftap" })
+Tabs.Home1 = Window:Tab({ Title = "Lệnh" })
+Tabs.Home2 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
@@ -54,6 +58,12 @@ Tabs.Home1:Button({
     end
 })
 
+Tabs.Home2:Button({
+    Title = "99 night VapeVoidware",
+    Callback = function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
+    end
+})
 -- 🍎 Button 2: Hitbox (chống spam)
 local hitboxLoaded = false
 Tabs.Home1:Button({
