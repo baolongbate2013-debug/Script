@@ -40,8 +40,17 @@ Window:EditOpenButton({
 -- 🍎 HOME
 -- =========================
 local Tabs = {}
-Tabs.Home1 = Window:Tab({ Title = "🍎 HOME 🍎" })
-Tabs.Home2 = Window:Tab({ Title = "player" })
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
+Tabs.Home2 = Window:Tab({ Title = "Evade" })
+Tabs.Home3 = Window:Tab({ Title = "99 night" })
+Tabs.Home4 = Window:Tab({ Title = "Brookhaven" })
+Tabs.Home5 = Window:Tab({ Title = "Blox fruit" })
+Tabs.Home6 = Window:Tab({ Title = "Ftap" })
+Tabs.Home7 = Window:Tab({ Title = "Lệnh" })
+Tabs.Home8 = Window:Tab({ Title = "Chill 4k" })
+Tabs.Home9 = Window:Tab({ Title = "Bí ẩn gi3t người" })
+Tabs.Home10 = Window:Tab({ Title = "Forsaken" })
+Tabs.Home11 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
