@@ -17,7 +17,7 @@ print("🍎 WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "🍎 TÉO HUB_🍎",
+    Title = "UIA HUB 2.0.0",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -25,7 +25,7 @@ local Window = WindUI:CreateWindow({
 
 -- 🔹 Nút mở HUB
 Window:EditOpenButton({
-    Title = "Téo🍎™scrVN🇻🇳",
+    Title = "UIA HUB v2",
     Icon = "monitor",
     CornerRadius = UDim.new(0,16),
     StrokeThickness = 2,
@@ -56,10 +56,7 @@ Tabs.Home11 = Window:Tab({ Title = "Hamster" })
 Tabs.Home1:Button({
     Title = "🍎 Định vị Téo",
     Callback = function()
-        loadstring(game:HttpGet(
-            "https://raw.githubusercontent.com/teoscrvn/Script-t-o-v2/main/dinhvi2.txt"
-        ))()
-        print("🍎 Đã chạy định vị")
+       loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
     end
 })
 
