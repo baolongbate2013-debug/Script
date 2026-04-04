@@ -137,25 +137,41 @@ Window:EditOpenButton({
     Draggable = true,
 })
 
-local ButtonGui = game.CoreGui:FindFirstChild("WindUI")
-if ButtonGui then
-    local RealButton = ButtonGui:FindFirstChild("OpenButton", true)
-    if RealButton then
-        -- Làm cái nền đen cũ biến mất để lộ ảnh ra
-        RealButton.BackgroundTransparency = 1 
+task.spawn(function()
+    -- Đợi 1 giây để UI kịp hiện ra hoàn toàn
+    task.wait(1) 
+    
+    local UI = game:GetService("CoreGui"):FindFirstChild("WindUI")
+    if UI then
+        -- Tìm cái nút bấm (OpenButton) trong toàn bộ UI
+        local RealButton = UI:FindFirstChild("OpenButton", true)
         
-        local BtnImage = Instance.new("ImageLabel")
-        BtnImage.Parent = RealButton
-        BtnImage.Size = UDim2.new(1, 0, 1, 0)
-        BtnImage.Image = "rbxassetid://80453750110722" -- ID ảnh của bạn
-        BtnImage.ZIndex = 0
-        BtnImage.BackgroundTransparency = 1
-        BtnImage.ScaleType = Enum.ScaleType.Crop -- Giúp ảnh không bị méo
-        
-        local Corner = Instance.new("UICorner", BtnImage)
-        Corner.CornerRadius = UDim.new(0, 16)
+        if RealButton then
+            -- 1. Xóa màu nền đen/hồng cũ của nút
+            RealButton.BackgroundTransparency = 1 
+            
+            -- 2. Tạo tấm ảnh mới phủ kín nút
+            local NewImage = Instance.new("ImageLabel")
+            NewImage.Name = "UIA_Background_Button"
+            NewImage.Parent = RealButton
+            NewImage.Size = UDim2.new(1, 0, 1, 0)
+            NewImage.Position = UDim2.new(0, 0, 0, 0)
+            NewImage.Image = "rbxassetid://80453750110722" -- ID ảnh của bạn
+            NewImage.BackgroundTransparency = 1
+            NewImage.ZIndex = 0 -- Đẩy ảnh ra sau chữ "UIA HUB v2"
+            NewImage.ScaleType = Enum.ScaleType.Crop
+            
+            -- 3. Bo tròn ảnh cho khớp với nút 16px
+            local Corner = Instance.new("UICorner")
+            Corner.CornerRadius = UDim.new(0, 16)
+            Corner.Parent = NewImage
+            
+            print("✅ Đã dán ảnh thành công lên nút bấm!")
+        else
+            warn("❌ Không tìm thấy nút OpenButton để dán ảnh")
+        end
     end
-end
+end)
 
 -- =========================
 -- 🍎 HOME
