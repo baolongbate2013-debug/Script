@@ -155,6 +155,11 @@ Tabs.Home11 = Window:Tab({ Title = "Forsaken" })
 Tabs.Home12 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
+Tabs.Home1:Image({
+    Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
+    Image = "rbxassetid://80453750110722", 
+    Transparent = false,
+})
 Tabs.Home1:Button({
     Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
     Desc = [[
