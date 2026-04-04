@@ -127,7 +127,7 @@ local Window = WindUI:CreateWindow({
 -- 🔹 Nút mở HUB
 Window:EditOpenButton({
     Title = "UIA HUB v2",
-    Icon = "monitor",
+    Icon = "rbxassetid://80453750110722",
     CornerRadius = UDim.new(0,16),
     StrokeThickness = 2,
     Color = ColorSequence.new(
