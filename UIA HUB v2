@@ -285,12 +285,24 @@ Title = "Dí nhau",
 	end
 })
 
-WindUI:Notify({ Title = "UIA HUB", Content = "Nhấn [G] để Ẩn/Hiện Menu!", Time = 5 })
+local UIS = game:GetService("UserInputService")
+local delayG = 0 -- Chống bấm quá nhanh bị nháy
 
-Window:OnClose(function()
-    WindUI:Notify({ Title = "UIA HUB", Content = "Bấm [G] để mở lại nhé!", Time = 3 })
+UIS.InputBegan:Connect(function(input, processed)
+    -- Nếu đang chat thì không hiện Menu
+    if processed then return end 
+    
+    if input.KeyCode == Enum.KeyCode.G then
+        if tick() - delayG > 0.5 then -- Cách 0.5s mới cho bấm lại
+            delayG = tick()
+            Window:Toggle() -- Lệnh đóng/mở của WindUI
+        end
+    end
 end)
 
-game:GetService("UserInputService").InputBegan:Connect(function(i, p)
-    if not p and i.KeyCode == Enum.KeyCode.G then Window:Toggle() end
-end)
+-- Hiện thông báo hướng dẫn ở góc phải khi vừa chạy Script
+WindUI:Notify({
+    Title = "UIA HUB 2.1.5",
+    Content = "Đã tải xong! Nhấn phím [G] để Ẩn/Hiện Menu.",
+    Time = 5
+})
