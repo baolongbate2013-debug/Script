@@ -275,19 +275,36 @@ Title = "Dí nhau",
 	end
 })
 
--- 🔔 Thông báo chào mừng
+local UIS = game:GetService("UserInputService")
+local lastG = 0
+
+-- ⌨️ Phím G bật/tắt (Đã tối ưu chống nháy)
+UIS.InputBegan:Connect(function(input, processed)
+    if processed then return end 
+    if input.KeyCode == Enum.KeyCode.G then
+        if tick() - lastG > 0.8 then 
+            lastG = tick()
+            Window:Toggle() 
+        end
+    end
+end)
+
+-- 🔔 CÁCH FIX: Theo dõi trạng thái ẩn hiện của Window
+-- Khi Window bị ẩn đi (bấm dấu - hoặc bấm G), nó sẽ báo ngay
+Window.OnChanged:Connect(function(visible)
+    if visible == false then
+        WindUI:Notify({
+            Title = "UIA HUB 2.3.8",
+            Content = "Menu đã ẩn! Nhấn phím [G] để hiện lại Window.",
+            Time = 10, -- 👈 Hiện 10 giây đúng ý bạn
+            Color = Color3.fromHex("FF0F7B")
+        })
+    end
+end)
+
+-- Hiện thông báo chào mừng khi vừa chạy script
 WindUI:Notify({
     Title = "UIA HUB 2.3.8",
     Content = "Đã tải xong! Nhấn phím [G] để Ẩn/Hiện Menu.",
     Time = 5
 })
-
--- 🔴 Thông báo khi ĐÓNG MENU (Hiện 10 giây)
-Window:OnClose(function()
-    WindUI:Notify({
-        Title = "Thông Báo Hệ Thống",
-        Content = "Menu đã đóng! Đừng quên nhấn phím [G] để mở lại Window nhé.",
-        Time = 10, -- 👈 Đã chỉnh lên 10 giây theo ý bạn
-        Color = Color3.fromHex("FF0F7B")
-    })
-end)
