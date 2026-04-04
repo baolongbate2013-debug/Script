@@ -163,10 +163,10 @@ Tabs.Home1:Image({
 Tabs.Home1:Button({
     Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
     Desc = [[
-🖼️ ẢNH MINH HỌA: 
+📝 NỘI DUNG GHI CHÚ:: 
 http://www.roblox.com/asset/?id=80453750110722 
 
-📝 NỘI DUNG GHI CHÚ:
+🌹 ƯU DIỂM:
 - Cập nhật giao diện mới (New UI) mượt hơn.
 - Fix lỗi bay (Fly) cho PC và Mobile.
 - Thêm script mới cho 99 night & Blox Fruit.
