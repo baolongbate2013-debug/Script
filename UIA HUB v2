@@ -156,6 +156,26 @@ Tabs.Home12 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
+
+-- =========================
+-- 🍎 TRANG CHỦ (CÓ BẢNG UPDATE)
+-- =========================
+Tabs.Home1:Button({
+-- 1. Thêm Ảnh vào trang chủ
+Tabs.Home1:Image({
+    Title = "Thông tin cập nhật",
+    Image = "rbxassetid://80453750110722", -- 👈 THAY ID ẢNH CỦA BẠN VÀO ĐÂY
+    Size = UDim2.fromOffset(400, 150), -- Chỉnh kích thước ảnh cho vừa mắt
+})
+
+-- 2. Thêm Nội dung mô tả (Ghi chú)
+Tabs.Home1:Paragraph({
+    Title = "Update",
+    Desc = [[
+-Cật nhật UI win mới
+-Thêm nhiều game
+]] -- 👈 GHI MÔ TẢ CỦA BẠN Ở ĐÂY
+})
 Title = "oiia_evade _ link copy tiktok",              
 	Callback = function()
 		setclipboard("https://www.tiktok.com/@baolongbate03")  -- 👈 link sao chép
