@@ -61,7 +61,18 @@ Tabs.Home2:Button({
 })
 
 Tabs.Home3:Button({
+Title = "99 night VapeVoidware",                         
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))() -- 👈 link script tải
+	end
+})
 Tabs.Home3:Button({
+	Title = "99 night Caomob",                         
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() -- 👈 link script tải
+	end
+})
+
 Tabs.Home4:Button({
 Tabs.Home5:Button({
 Tabs.Home5:Button({
