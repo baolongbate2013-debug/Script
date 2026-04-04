@@ -154,16 +154,6 @@ Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người", Icon = "search" })
 Tabs.Home11 = Window:Tab({ Title = "Forsaken", Icon = "skull" })
 Tabs.Home12 = Window:Tab({ Title = "Hamster", Icon = "mouse" })
 
-local UserInputService = game:GetService("UserInputService")
-local ToggleKey = Enum.KeyCode.G 
-
-UserInputService.InputBegan:Connect(function(input, gameProcessed)
-    if not gameProcessed then
-        if input.KeyCode == ToggleKey then
-            Window:Toggle() 
-        end
-    end
-end)
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Image({
     Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
