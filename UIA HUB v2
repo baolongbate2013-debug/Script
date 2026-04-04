@@ -141,7 +141,7 @@ Window:EditOpenButton({
 -- 🍎 HOME
 -- =========================
 local Tabs = {}
-Tabs.Home1 = Window:Tab({ Title = "Trang chủ", Icon = "home" })
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ", Icon = "house" })
 Tabs.Home2 = Window:Tab({ Title = "Evade", Icon = "ghost" })
 Tabs.Home3 = Window:Tab({ Title = "Doors", Icon = "door-open" })
 Tabs.Home4 = Window:Tab({ Title = "99 night", Icon = "moon" })
