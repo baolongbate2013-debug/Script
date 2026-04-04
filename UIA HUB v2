@@ -164,12 +164,13 @@ Tabs.Home1:Button({
     Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
     Desc = [[
 📝 NỘI DUNG GHI CHÚ:: 
-Còn mấy script không dành cho pc vì nó sẽ bị trắng đơ dẫn đến không thể tắt roblox
+- Nếu bạn dùng pc chạy script blox fruit thì bấm vào dòng có chữ <xeno>.
+- Full script luôn á.
 
 🌹 ƯU DIỂM:
 - Cập nhật giao diện mới (New UI) mượt hơn.
-- Fix lỗi bay (Fly) cho PC và Mobile.
-- Thêm script mới cho 99 night & Blox Fruit.
+- Thêm nhiểu game hơn.
+- Cải thiện cho pc
 - Tối ưu hóa hệ thống tránh bị văng game.
 ]],
     Callback = function()
