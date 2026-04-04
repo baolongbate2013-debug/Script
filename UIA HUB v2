@@ -13,7 +13,7 @@ if not WindUI then
     return
 end
 
-print("🍎 WindUI loaded OK")
+print("UIA WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
@@ -53,12 +53,24 @@ Tabs.Home10 = Window:Tab({ Title = "Forsaken" })
 Tabs.Home11 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
-Tabs.Home1:Button({
+Tabs.Home2:Button({
     Title = "Evade",
     Callback = function()
        loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
     end
 })
+
+Tabs.Home3:Button({
+Tabs.Home3:Button({
+Tabs.Home4:Button({
+Tabs.Home5:Button({
+Tabs.Home5:Button({
+Tabs.Home5:Button({
+Tabs.Home6:Button({
+Tabs.Home7:Button({
+Tabs.Home8:Button({
+Tabs.Home9:Button({
+Tabs.Home10:Button({
 
 -- 🍎 Button 2: Hitbox (chống spam)
 local hitboxLoaded = false
