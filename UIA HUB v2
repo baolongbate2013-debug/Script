@@ -138,37 +138,47 @@ Window:EditOpenButton({
 })
 
 task.spawn(function()
-    -- Đợi 1 giây để UI kịp hiện ra hoàn toàn
-    task.wait(1) 
+    task.wait(1.5) -- Đợi hẳn 1.5 giây cho chắc ăn
     
-    local UI = game:GetService("CoreGui"):FindFirstChild("WindUI")
+    local UI = game.CoreGui:FindFirstChild("WindUI")
     if UI then
-        -- Tìm cái nút bấm (OpenButton) trong toàn bộ UI
+        -- Tìm cái nút bấm (OpenButton)
         local RealButton = UI:FindFirstChild("OpenButton", true)
         
         if RealButton then
-            -- 1. Xóa màu nền đen/hồng cũ của nút
-            RealButton.BackgroundTransparency = 1 
+            -- 1. XOÁ SẠCH MÀU ĐEN: Quét tất cả các lớp con bên trong nút
+            for _, v in pairs(RealButton:GetDescendants()) do
+                if v:IsA("Frame") or v:IsA("ScrollingFrame") then
+                    v.BackgroundTransparency = 1
+                elseif v:IsA("UIGradient") then
+                    v.Enabled = false -- Tắt cái màu hồng-cam/đen đi
+                elseif v:IsA("ImageLabel") and v.Name == "Icon" then
+                    v.ImageTransparency = 1 -- Ẩn cái icon monitor cũ đi
+                end
+            end
             
-            -- 2. Tạo tấm ảnh mới phủ kín nút
-            local NewImage = Instance.new("ImageLabel")
-            NewImage.Name = "UIA_Background_Button"
-            NewImage.Parent = RealButton
-            NewImage.Size = UDim2.new(1, 0, 1, 0)
-            NewImage.Position = UDim2.new(0, 0, 0, 0)
-            NewImage.Image = "rbxassetid://80453750110722" -- ID ảnh của bạn
-            NewImage.BackgroundTransparency = 1
-            NewImage.ZIndex = 0 -- Đẩy ảnh ra sau chữ "UIA HUB v2"
-            NewImage.ScaleType = Enum.ScaleType.Crop
+            -- 2. DÁN ẢNH MỚI LÊN TRÊN CÙNG
+            local FinalImage = Instance.new("ImageLabel")
+            FinalImage.Name = "UIA_PRO_IMAGE"
+            FinalImage.Parent = RealButton
+            FinalImage.Size = UDim2.new(1, 0, 1, 0)
+            FinalImage.Position = UDim2.new(0, 0, 0, 0)
+            FinalImage.Image = "rbxassetid://80453750110722" -- ID ảnh của bạn
+            FinalImage.BackgroundTransparency = 1
+            FinalImage.ZIndex = 1 -- Đặt lên trên lớp nền nhưng dưới chữ
+            FinalImage.ScaleType = Enum.ScaleType.Crop
             
-            -- 3. Bo tròn ảnh cho khớp với nút 16px
-            local Corner = Instance.new("UICorner")
+            -- Bo tròn cho đẹp
+            local Corner = Instance.new("UICorner", FinalImage)
             Corner.CornerRadius = UDim.new(0, 16)
-            Corner.Parent = NewImage
             
-            print("✅ Đã dán ảnh thành công lên nút bấm!")
-        else
-            warn("❌ Không tìm thấy nút OpenButton để dán ảnh")
+            -- 3. ĐẢM BẢO CHỮ "UIA HUB v2" VẪN HIỆN
+            local TextLabel = RealButton:FindFirstChildOfClass("TextLabel", true)
+            if TextLabel then
+                TextLabel.ZIndex = 2 -- Đẩy chữ lên trên tấm ảnh
+            end
+            
+            print("🔥 ĐÃ DIỆT SẠCH NỀN ĐEN! ẢNH ĐÃ HIỆN!")
         end
     end
 end)
