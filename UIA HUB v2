@@ -160,7 +160,7 @@ Tabs.Home1:Button({
 -- =========================
 -- 🍎 TRANG CHỦ (CÓ BẢNG UPDATE)
 -- =========================
-Tabs.Home1:Button({
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
 -- 1. Thêm Ảnh vào trang chủ
 Tabs.Home1:Image({
     Title = "Thông tin cập nhật",
