@@ -170,7 +170,7 @@ Tabs.Home1:Button({
 🌹 ƯU DIỂM:
 - Cập nhật giao diện mới (New UI) mượt hơn.
 - Thêm nhiểu game hơn.
-- Cải thiện cho pc
+- Cải thiện cho pc.
 - Tối ưu hóa hệ thống tránh bị văng game.
 ]],
     Callback = function()
