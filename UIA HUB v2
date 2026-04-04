@@ -84,7 +84,7 @@ Tabs.Home5:Button({
 	end
 })
 Tabs.Home5:Button({
-	Title = "CattStar",                          
+	Title = "CattStar - xeno",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() -- 👈 link script tải
 	end
