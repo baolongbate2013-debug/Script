@@ -137,6 +137,26 @@ Window:EditOpenButton({
     Draggable = true,
 })
 
+local ButtonGui = game.CoreGui:FindFirstChild("WindUI")
+if ButtonGui then
+    local RealButton = ButtonGui:FindFirstChild("OpenButton", true)
+    if RealButton then
+        -- Làm cái nền đen cũ biến mất để lộ ảnh ra
+        RealButton.BackgroundTransparency = 1 
+        
+        local BtnImage = Instance.new("ImageLabel")
+        BtnImage.Parent = RealButton
+        BtnImage.Size = UDim2.new(1, 0, 1, 0)
+        BtnImage.Image = "rbxassetid://80453750110722" -- ID ảnh của bạn
+        BtnImage.ZIndex = 0
+        BtnImage.BackgroundTransparency = 1
+        BtnImage.ScaleType = Enum.ScaleType.Crop -- Giúp ảnh không bị méo
+        
+        local Corner = Instance.new("UICorner", BtnImage)
+        Corner.CornerRadius = UDim.new(0, 16)
+    end
+end
+
 -- =========================
 -- 🍎 HOME
 -- =========================
