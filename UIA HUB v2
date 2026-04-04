@@ -42,15 +42,16 @@ Window:EditOpenButton({
 local Tabs = {}
 Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
 Tabs.Home2 = Window:Tab({ Title = "Evade" })
-Tabs.Home3 = Window:Tab({ Title = "99 night" })
-Tabs.Home4 = Window:Tab({ Title = "Brookhaven" })
-Tabs.Home5 = Window:Tab({ Title = "Blox fruit" })
-Tabs.Home6 = Window:Tab({ Title = "Ftap" })
-Tabs.Home7 = Window:Tab({ Title = "Lệnh" })
-Tabs.Home8 = Window:Tab({ Title = "Chill 4k" })
-Tabs.Home9 = Window:Tab({ Title = "Bí ẩn gi3t người" })
-Tabs.Home10 = Window:Tab({ Title = "Forsaken" })
-Tabs.Home11 = Window:Tab({ Title = "Hamster" })
+Tabs.Home3 = Window:Tab({ Title = "Evade" })
+Tabs.Home4 = Window:Tab({ Title = "99 night" })
+Tabs.Home5 = Window:Tab({ Title = "Brookhaven" })
+Tabs.Home6 = Window:Tab({ Title = "Blox fruit" })
+Tabs.Home7 = Window:Tab({ Title = "Ftap" })
+Tabs.Home8 = Window:Tab({ Title = "Lệnh" })
+Tabs.Home9 = Window:Tab({ Title = "Chill 4k" })
+Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người" })
+Tabs.Home11 = Window:Tab({ Title = "Forsaken" })
+Tabs.Home12 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
@@ -66,73 +67,79 @@ Tabs.Home2:Button({
     end
 })
 Tabs.Home3:Button({
+Title = "Evade",
+    Callback = function()
+       loadstring(game:HttpGet('https://raw.githubusercontent.com/zReal-King/Evade/main/Main.lua')))
+    end
+})
+Tabs.Home4:Button({
  Title = "99 night VapeVoidware",
     Callback = function()
        loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
     end
 })
-Tabs.Home3:Button({
+Tabs.Home4:Button({
 Title = "99 night Caomob",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))() -- 👈 link script tải
 	end
 })
-Tabs.Home4:Button({
+Tabs.Home5:Button({
 Title = "Nytherune",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/dreamy9x9x/darkaureus/refs/heads/main/brookhaven.lua"))() -- 👈 link script tải
 	end
 })
-Tabs.Home5:Button({
+Tabs.Home6:Button({
 	Title = "Lear hub",                        
 	Callback = function()
 		loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))() -- 👈 link script tải
 	end
 })
-Tabs.Home5:Button({
+Tabs.Home6:Button({
 	Title = "CattStar - xeno",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() -- 👈 link script tải
 	end
 })
-Tabs.Home5:Button({
+Tabs.Home6:Button({
 	Title = "UIA HUB",                             
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))() -- 👈 link script tải
 	end
 })
-Tabs.Home6:Button({
+Tabs.Home7:Button({
 Title = "SRV9",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
 	end
 })
-Tabs.Home7:Button({
+Tabs.Home8:Button({
 Title = "Infinite yield",                        
 	Callback = function()
 		loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
  -- 👈 link script tải
 	end
 })
-Tabs.Home8:Button({
+Tabs.Home9:Button({
 Title = "4K",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-Shader-37434"))() -- 👈 link script tải
 	end
 })
-Tabs.Home9:Button({
+Tabs.Home10:Button({
 Title = "Simple",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-Shader-37434"))() -- 👈 link script tải
 	end
 })
-Tabs.Home10:Button({
+Tabs.Home11:Button({
 Title = "Forsaken",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/forsaken.lua", true))() -- 👈 link script tải
 	end
 })
-Tabs.Home11:Button({
+Tabs.Home12:Button({
 Title = "Dí nhau",                            
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AlgariBot/lua/refs/heads/Lua-Script-Executor/SexMachine.lua"))() -- 👈 link script tải
