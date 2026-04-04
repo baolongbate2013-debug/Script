@@ -278,7 +278,7 @@ Title = "Dí nhau",
 Window:OnClose(function()
     WindUI:Notify({
         Title = "UIA HUB Thông Báo",
-        Content = "Menu đã ẩn! Nhấn phím [G] để hiện lại Window.",
+        Content = "Bạn đã thu nhỏ Menu. Nhấn phím [G] để hiện lại Window nhé!.",
         Image = "monitor", -- Icon màn hình cho chuyên nghiệp
         Time = 10, -- Thông báo hiện trong 10 giây rồi biến mất
         Color = Color3.fromHex("FF0F7B") -- Màu hồng neon cho rực rỡ
