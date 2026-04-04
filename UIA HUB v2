@@ -118,7 +118,7 @@ print("UIA WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.0.5",
+    Title = "UIA HUB 2.1.5",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
