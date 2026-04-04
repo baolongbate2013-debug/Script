@@ -123,8 +123,6 @@ local Window = WindUI:CreateWindow({
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
-    Author = "rbxassetid://80453750110722", 
-    Icon = "rbxassetid://80453750110722"
 })
 
 -- 🔹 Nút mở HUB
