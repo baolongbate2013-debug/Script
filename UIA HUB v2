@@ -141,18 +141,18 @@ Window:EditOpenButton({
 -- 🍎 HOME
 -- =========================
 local Tabs = {}
-Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
-Tabs.Home2 = Window:Tab({ Title = "Evade" })
-Tabs.Home3 = Window:Tab({ Title = "Doors" })
-Tabs.Home4 = Window:Tab({ Title = "99 night" })
-Tabs.Home5 = Window:Tab({ Title = "Brookhaven" })
-Tabs.Home6 = Window:Tab({ Title = "Blox fruit" })
-Tabs.Home7 = Window:Tab({ Title = "Ftap" })
-Tabs.Home8 = Window:Tab({ Title = "Lệnh" })
-Tabs.Home9 = Window:Tab({ Title = "Chill 4k" })
-Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người" })
-Tabs.Home11 = Window:Tab({ Title = "Forsaken" })
-Tabs.Home12 = Window:Tab({ Title = "Hamster" })
+Tabs.Home1 = Window:Tab({ Title = "Trang chủ", Icon = "home" })
+Tabs.Home2 = Window:Tab({ Title = "Evade", Icon = "ghost" })
+Tabs.Home3 = Window:Tab({ Title = "Doors", Icon = "door-open" })
+Tabs.Home4 = Window:Tab({ Title = "99 night", Icon = "moon" })
+Tabs.Home5 = Window:Tab({ Title = "Brookhaven", Icon = "building" })
+Tabs.Home6 = Window:Tab({ Title = "Blox fruit", Icon = "sword" })
+Tabs.Home7 = Window:Tab({ Title = "Ftap", Icon = "zap" })
+Tabs.Home8 = Window:Tab({ Title = "Lệnh", Icon = "terminal" })
+Tabs.Home9 = Window:Tab({ Title = "Chill 4k", Icon = "monitor" })
+Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người", Icon = "search" })
+Tabs.Home11 = Window:Tab({ Title = "Forsaken", Icon = "skull" })
+Tabs.Home12 = Window:Tab({ Title = "Hamster", Icon = "mouse" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Image({
