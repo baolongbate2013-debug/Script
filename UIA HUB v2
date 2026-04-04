@@ -275,17 +275,19 @@ Title = "Dí nhau",
 	end
 })
 
+-- 🔔 Thông báo chào mừng
 WindUI:Notify({
     Title = "UIA HUB 2.3.8",
     Content = "Đã tải xong! Nhấn phím [G] để Ẩn/Hiện Menu.",
     Time = 5
 })
 
--- Thông báo khi bấm dấu (-)
+-- 🔴 Thông báo khi ĐÓNG MENU (Hiện 10 giây)
 Window:OnClose(function()
     WindUI:Notify({
-        Title = "UIA HUB",
-        Content = "Bấm phím [G] để mở lại Window nhé!",
-        Time = 3
+        Title = "Thông Báo Hệ Thống",
+        Content = "Menu đã đóng! Đừng quên nhấn phím [G] để mở lại Window nhé.",
+        Time = 10, -- 👈 Đã chỉnh lên 10 giây theo ý bạn
+        Color = Color3.fromHex("FF0F7B")
     })
 end)
