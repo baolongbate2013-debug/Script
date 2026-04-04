@@ -176,7 +176,7 @@ Tabs.Home1:Button({
     Callback = function()
         -- Khi nhấn vào nút này sẽ hiện thông báo nhỏ
         game.StarterGui:SetCore("SendNotification", {
-            Title = "UIA HUB 2.0.0",
+            Title = "UIA HUB 2.0.5",
             Text = "Chúc bạn chơi game vui vẻ!",
             Duration = 3;
         })
