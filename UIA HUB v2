@@ -73,16 +73,6 @@ Tabs.Home3:Button({
 	end
 })
 
-Tabs.Home4:Button({
-Tabs.Home5:Button({
-Tabs.Home5:Button({
-Tabs.Home5:Button({
-Tabs.Home6:Button({
-Tabs.Home7:Button({
-Tabs.Home8:Button({
-Tabs.Home9:Button({
-Tabs.Home10:Button({
-
 -- 🍎 Button 2: Hitbox (chống spam)
 local hitboxLoaded = false
 Tabs.Home1:Button({
