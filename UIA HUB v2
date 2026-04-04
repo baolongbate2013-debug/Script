@@ -234,7 +234,7 @@ Title = "4K",
 Tabs.Home10:Button({
 Title = "Simple",                         
 	Callback = function()
-		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-Shader-37434"))() -- 👈 link script tải
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/MurderMystery2'))() -- 👈 link script tải
 	end
 })
 Tabs.Home11:Button({
