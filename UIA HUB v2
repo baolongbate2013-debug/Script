@@ -118,7 +118,7 @@ print("UIA WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.1.5",
+    Title = "UIA HUB 2.3.8",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -181,12 +181,13 @@ Tabs.Home1:Button({
 - Cập nhật giao diện mới (New UI) mượt hơn.
 - Thêm nhiểu game hơn.
 - Cải thiện cho pc.
+- Thêm nút mở cho Win UIA HUB cho pc.
 - Tối ưu hóa hệ thống tránh bị văng game.
 ]],
     Callback = function()
         -- Khi nhấn vào nút này sẽ hiện thông báo nhỏ
         game.StarterGui:SetCore("SendNotification", {
-            Title = "UIA HUB 2.1.5",
+            Title = "UIA HUB 2.3.8",
             Text = "Chúc bạn chơi game vui vẻ!",
             Duration = 3;
         })
@@ -284,3 +285,12 @@ Title = "Dí nhau",
 	end
 })
 
+WindUI:Notify({ Title = "UIA HUB", Content = "Nhấn [G] để Ẩn/Hiện Menu!", Time = 5 })
+
+Window:OnClose(function()
+    WindUI:Notify({ Title = "UIA HUB", Content = "Bấm [G] để mở lại nhé!", Time = 3 })
+end)
+
+game:GetService("UserInputService").InputBegan:Connect(function(i, p)
+    if not p and i.KeyCode == Enum.KeyCode.G then Window:Toggle() end
+end)
