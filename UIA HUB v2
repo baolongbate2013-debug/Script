@@ -42,7 +42,7 @@ Window:EditOpenButton({
 local Tabs = {}
 Tabs.Home1 = Window:Tab({ Title = "Trang chủ" })
 Tabs.Home2 = Window:Tab({ Title = "Evade" })
-Tabs.Home3 = Window:Tab({ Title = "Evade" })
+Tabs.Home3 = Window:Tab({ Title = "Doors" })
 Tabs.Home4 = Window:Tab({ Title = "99 night" })
 Tabs.Home5 = Window:Tab({ Title = "Brookhaven" })
 Tabs.Home6 = Window:Tab({ Title = "Blox fruit" })
@@ -67,9 +67,9 @@ Tabs.Home2:Button({
     end
 })
 Tabs.Home3:Button({
-Title = "Evade",
+Title = "Doors",
     Callback = function()
-       loadstring(game:HttpGet('https://raw.githubusercontent.com/zReal-King/Evade/main/Main.lua')))
+       loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-NullFire-BETA-35449"))()
     end
 })
 Tabs.Home4:Button({
