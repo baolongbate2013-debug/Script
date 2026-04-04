@@ -156,11 +156,6 @@ Tabs.Home12 = Window:Tab({ Title = "Hamster" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Button({
-
--- =========================
--- 🍎 TRANG CHỦ (CÓ BẢNG UPDATE)
--- =========================
-Tabs.Home1:Button({
 Title = "oiia_evade _ link copy tiktok",              
 	Callback = function()
 		setclipboard("https://www.tiktok.com/@baolongbate03")  -- 👈 link sao chép
