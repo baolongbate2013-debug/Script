@@ -1,57 +1,49 @@
 -- ==========================================
--- 📱 GIAO DIỆN KEY SYSTEM STYLE iOS 16 (DÁNG NẰM NGANG)
+-- 📱 GIAO DIỆN KEY SYSTEM STYLE iOS 16 (FIXED)
 -- ==========================================
 
 local key = "UIA235" 
 local keyLink = "https://www.tiktok.com/@baolongbate03"
 local keyOk = false
 
--- Khởi tạo WindUI (Để dùng hiệu ứng Notify)
+-- Khởi tạo WindUI
 local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/main/Script%20test%20(1).txt"))()
 
--- 👉 BẮT ĐẦU TẠO GIAO DIỆN KEY (Dùng CoreGui để mượt hơn)
 local CoreGui = game:GetService("CoreGui")
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("Frame")
 local UICorner = Instance.new("UICorner")
-local UIGradient = Instance.new("UIGradient")
+
+-- Chống lỗi trùng lặp GUI nếu chạy lại script
+if CoreGui:FindFirstChild("UIA_KeySystem_iOS") then
+    CoreGui:FindFirstChild("UIA_KeySystem_iOS"):Destroy()
+end
 
 ScreenGui.Name = "UIA_KeySystem_iOS"
 ScreenGui.Parent = CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- 1. BẢNG CHÍNH (Bo tròn mạnh, xám trong suốt style iOS)
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
-MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Màu xám tối
-MainFrame.BackgroundTransparency = 0.3 -- Trong suốt nhẹ
-MainFrame.Position = UDim2.new(0.5, -200, 0.5, -110) -- Căn giữa
-MainFrame.Size = UDim2.new(0, 400, 0, 220) -- Kích thước bảng
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BackgroundTransparency = 0.2 -- Làm rõ hơn một chút cho giống iOS
+MainFrame.Position = UDim2.new(0.5, -200, 0.5, -110)
+MainFrame.Size = UDim2.new(0, 400, 0, 220)
 MainFrame.ClipsDescendants = true
 
-UICorner.CornerRadius = UDim.new(0, 25) -- Bo tròn cực mạnh (giống iOS)
+UICorner.CornerRadius = UDim.new(0, 25)
 UICorner.Parent = MainFrame
 
--- Hiệu ứng Gradient bóng bẩy
-UIGradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 255, 255)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(200, 200, 200))
-})
-UIGradient.Rotation = 45
-UIGradient.Parent = MainFrame
-
--- 2. TIÊU ĐỀ "UIA HUB v2" (Nằm chính giữa)
 local Title = Instance.new("TextLabel")
 Title.Parent = MainFrame
 Title.Text = "UIA HUB v2"
-Title.Font = Enum.Font.SourceSansBold -- Phông chữ đậm
+Title.Font = Enum.Font.SourceSansBold
 Title.TextSize = 28
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 Title.Position = UDim2.new(0, 0, 0, 20)
 Title.Size = UDim2.new(1, 0, 0, 40)
 Title.BackgroundTransparency = 1
 
--- 3. Ô NHẬP KEY (Căn giữa)
 local InputFrame = Instance.new("TextBox")
 local InputCorner = Instance.new("UICorner")
 
@@ -64,12 +56,11 @@ InputFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
 InputFrame.PlaceholderColor3 = Color3.fromRGB(180, 180, 180)
 InputFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
 InputFrame.Position = UDim2.new(0.075, 0, 0.35, 0)
-InputFrame.Size = UDim2.new(0.85, 0, 0, 45) -- Dài và bo tròn
+InputFrame.Size = UDim2.new(0.85, 0, 0, 45)
 
 InputCorner.CornerRadius = UDim.new(0, 15)
 InputCorner.Parent = InputFrame
 
--- 4. CONTAINER CHỨA 2 NÚT NẰM NGANG
 local ButtonContainer = Instance.new("Frame")
 local UIGridLayout = Instance.new("UIGridLayout")
 
@@ -79,93 +70,71 @@ ButtonContainer.Position = UDim2.new(0.075, 0, 0.65, 0)
 ButtonContainer.Size = UDim2.new(0.85, 0, 0, 50)
 
 UIGridLayout.Parent = ButtonContainer
-UIGridLayout.FillDirection = Enum.FillDirection.Horizontal -- Nằm ngang
-UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
-UIGridLayout.CellPadding = UDim2.new(0, 15, 0, 0) -- Khoảng cách giữa 2 nút
-UIGridLayout.CellSize = UDim2.new(0.5, -7.5, 1, 0) -- Mỗi nút chiếm 50% chiều dài
+UIGridLayout.FillDirection = Enum.FillDirection.Horizontal
+UIGridLayout.CellPadding = UDim2.new(0, 15, 0, 0)
+UIGridLayout.CellSize = UDim2.new(0.5, -7.5, 1, 0)
 
--- Function tạo nút style iOS
 local function createIOSButton(text, color, parent)
     local Button = Instance.new("TextButton")
     local Corner = Instance.new("UICorner")
-    
     Button.Text = text
     Button.Font = Enum.Font.SourceSansBold
     Button.TextSize = 20
     Button.TextColor3 = Color3.fromRGB(255, 255, 255)
     Button.BackgroundColor3 = color
     Button.Parent = parent
-    
     Corner.CornerRadius = UDim.new(0, 15)
     Corner.Parent = Button
-    
     return Button
 end
 
--- 5. TẠO 2 NÚT BẤM
--- Nút Kiểm Tra (Màu xanh lá style iOS)
 local CheckBtn = createIOSButton("Kiểm Tra ✅", Color3.fromRGB(50, 200, 50), ButtonContainer)
-
--- Nút Lấy Key (Màu xanh dương style iOS)
 local GetBtn = createIOSButton("Lấy Key 🔑", Color3.fromRGB(0, 122, 255), ButtonContainer)
 
--- 👉 SỰ KIỆN KHI BẤM NÚT
--- Nút Lấy Key
+-- 👉 FIX LỖI CHECK KEY
+CheckBtn.MouseButton1Click:Connect(function()
+    -- string.gsub giúp loại bỏ tất cả khoảng trắng dư thừa
+    local enteredKey = string.gsub(InputFrame.Text, "%s+", "") 
+    
+    if enteredKey == key then
+        keyOk = true
+        ScreenGui:Destroy()
+        WindUI:Notify({
+            Title = "Thành Công!",
+            Content = "Key chính xác, đang tải Script chính...",
+            Time = 3,
+            Type = "Success"
+        })
+    else
+        WindUI:Notify({
+            Title = "Sai Key!",
+            Content = "Vui lòng kiểm tra lại Key ("..enteredKey..")",
+            Time = 3,
+            Type = "Error"
+        })
+    end
+end)
+
 GetBtn.MouseButton1Click:Connect(function()
     setclipboard(keyLink)
     WindUI:Notify({
         Title = "Đã Copy Link!",
         Content = "Hãy dán vào trình duyệt để lấy Key.",
-        Time = 5
+        Time = 3
     })
 end)
 
--- Nút Kiểm Tra Key
-CheckBtn.MouseButton1Click:Connect(function()
-    if InputFrame.Text == key then
-        keyOk = true
-        ScreenGui:Destroy() -- Xóa giao diện Key
-        WindUI:Notify({
-            Title = "Thành Công!",
-            Content = "Key chính xác, đang tải Script chính...",
-            Time = 5,
-            Color = Color3.fromHex("00FF00")
-        })
-    else
-        WindUI:Notify({
-            Title = "Sai Key!",
-            Content = "Vui lòng kiểm tra lại Key hoặc lấy Key mới.",
-            Time = 5,
-            Color = Color3.fromHex("FF0000")
-        })
-    end
-end)
-
--- 6. HIỆU ỨNG MỞ BẢNG (Fade in)
-MainFrame.BackgroundTransparency = 1
-Title.TextTransparency = 1
-InputFrame.BackgroundTransparency = 1
-InputFrame.TextTransparency = 1
-CheckBtn.BackgroundTransparency = 1
-CheckBtn.TextTransparency = 1
-GetBtn.BackgroundTransparency = 1
-GetBtn.TextTransparency = 1
-
+-- Hiệu ứng mở bảng mượt mà hơn
+MainFrame.Position = UDim2.new(0.5, -200, 0.6, -110) -- Bắt đầu từ hơi thấp
 local TS = game:GetService("TweenService")
-local ti = TweenInfo.new(0.5, Enum.EasingStyle.Quint)
+TS:Create(MainFrame, TweenInfo.new(0.5, Enum.EasingStyle.Back), {Position = UDim2.new(0.5, -200, 0.5, -110)}):Play()
 
-TS:Create(MainFrame, ti, {BackgroundTransparency = 0.3}):Play()
-TS:Create(Title, ti, {TextTransparency = 0}):Play()
-TS:Create(InputFrame, ti, {BackgroundTransparency = 0, TextTransparency = 0}):Play()
-TS:Create(CheckBtn, ti, {BackgroundTransparency = 0, TextTransparency = 0}):Play()
-TS:Create(GetBtn, ti, {BackgroundTransparency = 0, TextTransparency = 0}):Play()
-
--- ⌛ Đợi nhập đúng Key
+-- ⌛ Chờ nhập đúng Key
 repeat task.wait() until keyOk == true
 
 -- ==========================================
--- 👇 DÁN TOÀN BỘ CODE SCRIPT CHÍNH CỦA BẠN DƯỚI DÒNG NÀY 👇
--- ==========================================
+-- 👇 DÁN CODE SCRIPT CHÍNH CỦA BẠN DƯỚI ĐÂY 👇
+print("Script đã chạy thành công!")
 
 ------------------------------------------------------
 -- ✅ MẪU CHUẨN CHO NGƯỜI MỚI | TÉO HUB 🍎
