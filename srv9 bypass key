@@ -1,7 +1,7 @@
 -- ==========================================
 -- ⚡ SRV9 BYPASS KEY - AUTO LAUNCH
 -- ==========================================
-getgenv().script_key = "DÁN_KEY_32_KÝ_TỰ_CỦA_BẠN_VÀO_ĐÂY"
+getgenv().script_key = "UIA235"
 
 local a = game:GetService("Players")
 local b = game:GetService("HttpService")
