@@ -1,0 +1,75 @@
+-- ==========================================
+-- ⚡ SRV9 BYPASS KEY - AUTO LAUNCH
+-- ==========================================
+
+local a = game:GetService("Players")
+local b = game:GetService("HttpService")
+local c = a.LocalPlayer
+
+-- Chống chạy đè script
+if getgenv().srv9_initialized then 
+    return 
+end
+getgenv().srv9_initialized = true
+
+repeat task.wait() until game:IsLoaded()
+
+-- Link API và Loader của SRV9
+local d = "https://srv9.xyz/scripts/games.json"
+local e = "https://api.luarmor.net/files/v3/loaders/"
+
+local i = {}
+i.__index = i
+
+function i.new()
+    local j = setmetatable({}, i)
+    j.CurrentPlaceId = game.PlaceId
+    j.GameList = j:LoadGameList()
+    return j 
+end
+
+function i.LoadGameList(j)
+    local k, l = pcall(function()
+        return b:JSONDecode(game:HttpGet(d))
+    end)
+    if k and typeof(l) == "table" then return l end
+    return {}
+end
+
+function i.GetGameConfig(j)
+    for k, l in pairs(j.GameList) do 
+        if typeof(l) == "table" and typeof(l.PlaceIds) == "table" then 
+            for m, n in ipairs(l.PlaceIds) do 
+                if tonumber(n) == j.CurrentPlaceId then return l end 
+            end 
+        end 
+    end
+    return nil 
+end
+
+function i.LaunchScript(j, l)
+    -- Bỏ qua bước kiểm tra Key, nạp thẳng script chính
+    local m = pcall(function()
+        loadstring(game:HttpGet(e .. l .. ".lua"))()
+    end)
+    return m 
+end
+
+-- Thực thi
+local j = i.new()
+local k = j:GetGameConfig()
+
+if k then
+    local l = k.ScriptId
+    -- Tự động chạy không cần Key
+    j.LaunchScript(j, l)
+    
+    -- Thông báo nhỏ cho bạn biết
+    game.StarterGui:SetCore("SendNotification", {
+        Title = "UIA HUB Bypassed",
+        Text = "Đã kích hoạt SRV9 thành công!",
+        Duration = 5
+    })
+else
+    warn("❌ Game này không có trong danh sách hỗ trợ của SRV9")
+end
