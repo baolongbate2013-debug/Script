@@ -1,14 +1,7 @@
 -- ==========================================
 -- ⚡ SRV9 BYPASS KEY - AUTO LAUNCH
 -- ==========================================
-local l = k.ScriptId
-local my_key = "8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d
-if j:ValidateKey(my_key, l) then
-    j:LaunchScript(my_key, l) -- Chạy luôn, không cần hỏi
-    print("UIA HUB: Key hợp lệ, đã tự động kích hoạt!")
-else
-    warn("UIA HUB: Key bị sai hoặc hết hạn rồi bạn ơi!")
-end
+getgenv().script_key = "8a7b6c5d4e3f2a1b0c9d8e7f6a5b4c3d"
 
 local a = game:GetService("Players")
 local b = game:GetService("HttpService")
