@@ -191,7 +191,7 @@ Tabs.Home7 = Window:Tab({ Title = "Ftap", Icon = "zap" })
 Tabs.Home8 = Window:Tab({ Title = "Lệnh", Icon = "terminal" })
 Tabs.Home9 = Window:Tab({ Title = "Chill 4k", Icon = "monitor" })
 Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người", Icon = "search" })
-Tabs.Home11 = Window:Tab({ Title = "The Strongest Battlegrounds", Icon = "fist" })
+Tabs.Home11 = Window:Tab({ Title = "The Strongest Battlegrounds", Icon = "search" })
 Tabs.Home12 = Window:Tab({ Title = "Forsaken", Icon = "skull" })
 Tabs.Home13 = Window:Tab({ Title = "Hamster", Icon = "mouse" })
 
@@ -310,7 +310,7 @@ Title = "Simple",
 	end
 })
 Tabs.Home11:Button({
-Title = "The Strongest Battlegrounds",                         
+Title = "Speed Hub X",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() -- 👈 link script tải
 	end
