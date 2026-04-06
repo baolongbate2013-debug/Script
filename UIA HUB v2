@@ -266,6 +266,12 @@ Tabs.Home6:Button({
 	end
 })
 Tabs.Home6:Button({
+	Title = "Monster hub - xeno - ngon nhất",                          
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/giahuy2511-coder/MonsterHub/refs/heads/main/MonsterHub"))() -- 👈 link script tải
+	end
+})
+Tabs.Home6:Button({
 	Title = "CattStar - xeno",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))() -- 👈 link script tải
