@@ -191,8 +191,9 @@ Tabs.Home7 = Window:Tab({ Title = "Ftap", Icon = "zap" })
 Tabs.Home8 = Window:Tab({ Title = "Lệnh", Icon = "terminal" })
 Tabs.Home9 = Window:Tab({ Title = "Chill 4k", Icon = "monitor" })
 Tabs.Home10 = Window:Tab({ Title = "Bí ẩn gi3t người", Icon = "search" })
-Tabs.Home11 = Window:Tab({ Title = "Forsaken", Icon = "skull" })
-Tabs.Home12 = Window:Tab({ Title = "Hamster", Icon = "mouse" })
+Tabs.Home11 = Window:Tab({ Title = "The Strongest Battlegrounds", Icon = "fist" })
+Tabs.Home12 = Window:Tab({ Title = "Forsaken", Icon = "skull" })
+Tabs.Home13 = Window:Tab({ Title = "Hamster", Icon = "mouse" })
 
 -- 🍎 Button 1: Định vị
 Tabs.Home1:Image({
@@ -309,12 +310,18 @@ Title = "Simple",
 	end
 })
 Tabs.Home11:Button({
+Title = "The Strongest Battlegrounds",                         
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))() -- 👈 link script tải
+	end
+})
+Tabs.Home12:Button({
 Title = "Forsaken",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/forsaken.lua", true))() -- 👈 link script tải
 	end
 })
-Tabs.Home12:Button({
+Tabs.Home13:Button({
 Title = "Dí nhau",                            
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/AlgariBot/lua/refs/heads/Lua-Script-Executor/SexMachine.lua"))() -- 👈 link script tải
