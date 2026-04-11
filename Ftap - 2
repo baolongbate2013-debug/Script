@@ -1,3 +1,142 @@
+-- ==========================================
+-- 📱 GIAO DIỆN KEY SYSTEM (FIX MOBILE + NÚT X)
+-- ==========================================
 
+local key = "UIAFTAPNOKEY" 
+local keyLink = "https://www.tiktok.com/@baolongbate03"
+local keyOk = false
+
+-- Khởi tạo WindUI
+local WindUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/main/Script%20test%20(1).txt"))()
+
+local CoreGui = game:GetService("CoreGui")
+if CoreGui:FindFirstChild("UIA_KeySystem_iOS") then CoreGui:FindFirstChild("UIA_KeySystem_iOS"):Destroy() end
+
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "UIA_KeySystem_iOS"
+ScreenGui.Parent = CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BackgroundTransparency = 0.2
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -100)
+MainFrame.Size = UDim2.new(0, 350, 0, 200)
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 20)
+UICorner.Parent = MainFrame
+
+-- ❌ NÚT ĐÓNG (NÚT X)
+local CloseBtn = Instance.new("TextButton")
+CloseBtn.Name = "CloseBtn"
+CloseBtn.Parent = MainFrame
+CloseBtn.Text = "✕"
+CloseBtn.Font = Enum.Font.SourceSansBold
+CloseBtn.TextSize = 20
+CloseBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseBtn.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
+CloseBtn.Position = UDim2.new(0.88, 0, 0.05, 0)
+CloseBtn.Size = UDim2.new(0, 30, 0, 30)
+CloseBtn.BackgroundTransparency = 0.3
+
+local CloseCorner = Instance.new("UICorner")
+CloseCorner.CornerRadius = UDim.new(1, 0) -- Làm nút tròn hẳn
+CloseCorner.Parent = CloseBtn
+
+CloseBtn.Activated:Connect(function()
+    ScreenGui:Destroy()
+    WindUI:Notify({Title = "Đã Đóng", Content = "Script đã dừng hoạt động.", Time = 2})
+end)
+
+-- TIÊU ĐỀ
+local Title = Instance.new("TextLabel")
+Title.Parent = MainFrame
+Title.Text = "UIA HUB v2"
+Title.Font = Enum.Font.SourceSansBold
+Title.TextSize = 24
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Size = UDim2.new(1, 0, 0, 50)
+Title.BackgroundTransparency = 1
+
+-- Ô NHẬP KEY
+local InputFrame = Instance.new("TextBox")
+InputFrame.Parent = MainFrame
+InputFrame.PlaceholderText = "Nhập Key vào đây..."
+InputFrame.Text = ""
+InputFrame.Font = Enum.Font.SourceSans
+InputFrame.TextSize = 18
+InputFrame.TextColor3 = Color3.fromRGB(255, 255, 255)
+InputFrame.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
+InputFrame.Position = UDim2.new(0.1, 0, 0.35, 0)
+InputFrame.Size = UDim2.new(0.8, 0, 0, 40)
+
+local InputCorner = Instance.new("UICorner")
+InputCorner.CornerRadius = UDim.new(0, 10)
+InputCorner.Parent = InputFrame
+
+-- HÀM KIỂM TRA KEY
+local function checkTheKey()
+    local enteredKey = string.gsub(InputFrame.Text, "%s+", "")
+    if enteredKey == key then
+        keyOk = true
+        ScreenGui:Destroy()
+        WindUI:Notify({Title = "Thành Công!", Content = "Đang tải Script...", Time = 2})
+    else
+        WindUI:Notify({Title = "Sai Key!", Content = "Vui lòng nhập lại.", Time = 2})
+    end
+end
+
+-- NÚT KIỂM TRA
+local CheckBtn = Instance.new("TextButton")
+CheckBtn.Parent = MainFrame
+CheckBtn.Text = "Kiểm Tra ✅"
+CheckBtn.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
+CheckBtn.Position = UDim2.new(0.1, 0, 0.65, 0)
+CheckBtn.Size = UDim2.new(0.38, 0, 0, 40)
+CheckBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+CheckBtn.Font = Enum.Font.SourceSansBold
+CheckBtn.TextSize = 18
+local CheckCorner = Instance.new("UICorner")
+CheckCorner.CornerRadius = UDim.new(0, 10)
+CheckCorner.Parent = CheckBtn
+CheckBtn.Activated:Connect(checkTheKey)
+
+-- NÚT LẤY KEY
+local GetBtn = Instance.new("TextButton")
+GetBtn.Parent = MainFrame
+GetBtn.Text = "Lấy Key 🔑"
+GetBtn.BackgroundColor3 = Color3.fromRGB(0, 122, 255)
+GetBtn.Position = UDim2.new(0.52, 0, 0.65, 0)
+GetBtn.Size = UDim2.new(0.38, 0, 0, 40)
+GetBtn.TextColor3 = Color3.fromRGB(255, 255, 255)
+GetBtn.Font = Enum.Font.SourceSansBold
+GetBtn.TextSize = 18
+local GetCorner = Instance.new("UICorner")
+GetCorner.CornerRadius = UDim.new(0, 10)
+GetCorner.Parent = GetBtn
+
+GetBtn.Activated:Connect(function()
+    setclipboard(keyLink)
+    WindUI:Notify({Title = "Đã Copy!", Content = "Hãy dán vào trình duyệt.", Time = 2})
+end)
+
+-- Tự động check khi nhấn Enter
+InputFrame.FocusLost:Connect(function(enterPressed)
+    if enterPressed then checkTheKey() end
+end)
+
+-- Đợi Key đúng
+repeat task.wait() until keyOk == true
+print("Key Chính Xác - Script Chính Đang Chạy!")
+-- DÁN CODE SCRIPT CHÍNH CỦA BẠN DƯỚI ĐÂY
+
+------------------------------------------------------
+-- ✅ MẪU CHUẨN CHO NGƯỜI MỚI | TÉO HUB 🍎
+-- Giữ nguyên giao diện thật, chỉ thêm hướng dẫn 👈 ngay bên cạnh dòng cần sửa
+
+repeat task.wait() until game:IsLoaded()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))()
