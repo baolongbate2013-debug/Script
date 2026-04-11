@@ -290,6 +290,7 @@ Title = "SRV9",
 		loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))() -- 👈 link script tải
 	end
 })
+Tabs.Home7:Button({
 Title = "VerbalHubz - no key",                         
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))() -- 👈 link script tải
