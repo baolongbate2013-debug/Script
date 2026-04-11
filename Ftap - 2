@@ -2,7 +2,7 @@
 -- 📱 GIAO DIỆN KEY SYSTEM (FIX MOBILE + NÚT X)
 -- ==========================================
 
-local key = "FTAP235" 
+local key KOCHOAIBIET" 
 local keyLink = "https://www.tiktok.com/@baolongbate03"
 local keyOk = false
 
@@ -54,7 +54,7 @@ end)
 -- TIÊU ĐỀ
 local Title = Instance.new("TextLabel")
 Title.Parent = MainFrame
-Title.Text = "UIA HUB v2"
+Title.Text = "FTAP - 2"
 Title.Font = Enum.Font.SourceSansBold
 Title.TextSize = 24
 Title.TextColor3 = Color3.fromRGB(255, 255, 255)
