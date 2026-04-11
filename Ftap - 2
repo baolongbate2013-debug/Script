@@ -137,6 +137,4 @@ print("Key Chính Xác - Script Chính Đang Chạy!")
 -- ✅ MẪU CHUẨN CHO NGƯỜI MỚI | TÉO HUB 🍎
 -- Giữ nguyên giao diện thật, chỉ thêm hướng dẫn 👈 ngay bên cạnh dòng cần sửa
 
-repeat task.wait() until game:IsLoaded()
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))()
