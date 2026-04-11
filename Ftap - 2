@@ -2,7 +2,7 @@
 -- 📱 GIAO DIỆN KEY SYSTEM (FIX MOBILE + NÚT X)
 -- ==========================================
 
-local key = "UIAFTAPNOKEY" 
+local key = "FTAP235" 
 local keyLink = "https://www.tiktok.com/@baolongbate03"
 local keyOk = false
 
