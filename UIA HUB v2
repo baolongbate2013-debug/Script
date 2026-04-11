@@ -293,7 +293,7 @@ Title = "SRV9",
 Tabs.Home7:Button({
 Title = "VerbalHubz - no key",                         
 	Callback = function()
-		https://github.com/baolongbate2013-debug/Script/blob/main/Ftap%20-%202 -- 👈 link script tải
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Ftap%20-%202"))() -- 👈 link script tải
 	end
 })
 Tabs.Home8:Button({
