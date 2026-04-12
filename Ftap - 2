@@ -1,17 +1,30 @@
 local OwnerID = 4752012081 
 local Player = game.Players.LocalPlayer
 
+-- 1. Kiểm tra quyền sở hữu
 if Player.UserId ~= OwnerID then
-    -- Nếu không phải chủ nhân, script sẽ hiện thông báo và tự đóng
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "CẢNH BÁO",
-        Text = "Bạn không có quyền sử dụng script này!",
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "HỆ THỐNG KHÓA",
+        Text = "Bạn không phải chủ sở hữu. Truy cập bị từ chối!",
         Duration = 5
     })
-    return -- Dừng toàn bộ script tại đây
+    return 
 end
 
--- --- PHẦN CODE SCRIPT CỦA BẠN BẮT ĐẦU TỪ ĐÂY ---
-print("Chào mừng chủ nhân quay trở lại!")
+print("Chào mừng chủ nhân " .. Player.Name .. " quay trở lại!")
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))()
+-- 2. Tải Script (Sửa lỗi loadstring)
+-- Mình bỏ tham số 'true' vì nó dễ gây lỗi nếu link không trả về dữ liệu chuẩn
+local success, err = pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3"))()
+end)
+
+-- 3. Thông báo nếu link bị lỗi
+if not success then
+    warn("Lỗi tải Script: " .. tostring(err))
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "LỖI TẢI",
+        Text = "Không thể kết nối tới GitHub. Kiểm tra lại link!",
+        Duration = 5
+    })
+end
