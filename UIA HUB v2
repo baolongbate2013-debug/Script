@@ -1,6 +1,7 @@
 -- ==========================================
 -- 📱 GIAO DIỆN KEY SYSTEM (FIX MOBILE + NÚT X)
 -- ==========================================
+local IsOwner = (game.Players.LocalPlayer.UserId == 4752012081)
 
 local key = "UIA235" 
 local keyLink = "https://www.tiktok.com/@baolongbate03"
