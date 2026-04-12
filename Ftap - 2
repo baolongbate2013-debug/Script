@@ -1,4 +1,4 @@
-local OwnerID = 123456789 
+local OwnerID = 4752012081 
 local Player = game.Players.LocalPlayer
 
 if Player.UserId ~= OwnerID then
@@ -14,3 +14,4 @@ end
 -- --- PHẦN CODE SCRIPT CỦA BẠN BẮT ĐẦU TỪ ĐÂY ---
 print("Chào mừng chủ nhân quay trở lại!")
 
+loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))()
