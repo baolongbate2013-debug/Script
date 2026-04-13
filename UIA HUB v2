@@ -257,6 +257,12 @@ Title = "99 night Caomob",
 	end
 })
 Tabs.Home5:Button({
+Title = "Cartola Hub",                          
+	Callback = function()
+		loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Cartola-Hub-Brookhaven-49854"))() -- 👈 link script tải
+	end
+})
+Tabs.Home5:Button({
 Title = "Nytherune",                          
 	Callback = function()
 		loadstring(game:HttpGet("https://raw.githubusercontent.com/dreamy9x9x/darkaureus/refs/heads/main/brookhaven.lua"))() -- 👈 link script tải
