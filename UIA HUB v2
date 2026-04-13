@@ -158,7 +158,7 @@ print("UIA WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.3.8",
+    Title = "UIA HUB 2.3.9",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -214,6 +214,7 @@ Tabs.Home1:Button({
 - Cải thiện cho pc.
 - Thêm nút mở cho Win UIA HUB cho pc.
 - Tối ưu hóa hệ thống tránh bị văng game.
+- Sửa lỗi script 4k
 ]],
     Callback = function()
         -- Khi nhấn vào nút này sẽ hiện thông báo nhỏ
@@ -300,7 +301,7 @@ Title = "Infinite yield",
 Tabs.Home9:Button({
 Title = "4K",                         
 	Callback = function()
-		loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Simple-Shader-37434"))() -- 👈 link script tải
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/src/cd.lua'))() -- 👈 link script tải
 	end
 })
 Tabs.Home10:Button({
