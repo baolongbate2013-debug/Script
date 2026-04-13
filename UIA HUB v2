@@ -156,36 +156,6 @@ end
 
 print("UIA WindUI loaded OK")
 
-local Lighting = game:GetService("Lighting")
-local blur = Lighting:FindFirstChild("UIABlur") or Instance.new("BlurEffect")
-blur.Name = "UIABlur"
-blur.Size = 20
-blur.Enabled = true
-blur.Parent = Lighting
-
--- [[ 2. VÒNG LẶP KIỂM TRA TRẠNG THÁI UI ]]
--- Đoạn này sẽ chạy liên tục để kiểm tra xem UI đang hiện hay ẩn
-task.spawn(function()
-    while task.wait(0.2) do -- Kiểm tra mỗi 0.2 giây để không gây lag
-        local ui = game.CoreGui:FindFirstChild("WindUI")
-        
-        if ui then
-            -- Kiểm tra xem bảng Menu chính có đang hiển thị không
-            -- WindUI thường có một MainFrame hoặc Folder chính
-            local mainFrame = ui:FindFirstChildOfClass("ScreenGui") or ui
-            
-            if mainFrame.Enabled == true then
-                blur.Enabled = true  -- Hiện UI thì Mờ
-            else
-                blur.Enabled = false -- Ẩn UI (nhấn G / -) thì Hết Mờ
-            end
-        else
-            -- Nếu UI bị xóa hẳn (Destroy)
-            blur.Enabled = false
-        end
-    end
-end)
-
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
     Title = "UIA HUB 2.6.3",
