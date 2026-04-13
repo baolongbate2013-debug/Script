@@ -156,9 +156,15 @@ end
 
 print("UIA WindUI loaded OK")
 
+local Lighting = game:GetService("Lighting")
+local blur = Instance.new("BlurEffect")
+blur.Name = "UIABlur"
+blur.Size = 20 -- Chỉnh số này để tăng/giảm độ mờ
+blur.Parent = Lighting
+
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.3.9",
+    Title = "UIA HUB 2.4.0",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
