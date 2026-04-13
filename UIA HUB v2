@@ -156,15 +156,36 @@ end
 
 print("UIA WindUI loaded OK")
 
+local UserInputService = game:GetService("UserInputService")
 local Lighting = game:GetService("Lighting")
-local blur = Instance.new("BlurEffect")
+
+-- 1. Tạo sẵn Blur nhưng để Size = 0 (tàng hình)
+local blur = Lighting:FindFirstChild("UIABlur") or Instance.new("BlurEffect")
 blur.Name = "UIABlur"
-blur.Size = 20 -- Chỉnh số này để tăng/giảm độ mờ
+blur.Size = 20 
+blur.Enabled = true
 blur.Parent = Lighting
+
+-- 2. Lệnh kiểm tra phím G hoặc nút bấm để tắt/mở Blur
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    -- Nếu người dùng nhấn phím G (và không phải đang gõ chat)
+    if input.KeyCode == Enum.KeyCode.G and not gameProcessed then
+        -- Chờ 1 chút để UI kịp ẩn/hiện rồi kiểm tra trạng thái
+        task.wait(0.1)
+        
+        -- Kiểm tra xem giao diện WindUI đang ẩn hay hiện
+        local ui = game.CoreGui:FindFirstChild("WindUI")
+        if ui then
+            -- Nếu UI đang hiện (Enabled) thì bật Blur, ngược lại thì tắt
+            -- Lưu ý: Tùy vào thư viện WindUI ẩn bằng cách nào, thường là Enabled hoặc Visible
+            blur.Enabled = ui.Enabled 
+        end
+    end
+end)
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.4.0",
+    Title = "UIA HUB 2.4.1",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
