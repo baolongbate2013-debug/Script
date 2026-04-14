@@ -1,30 +1,99 @@
-local OwnerID = 4752012081 
-local Player = game.Players.LocalPlayer
+-- 1ï¸âƒ£ KHAI BĂO KEY & LINK GET KEY
+local key = "đŸ" -- Key báº¡n Ä‘áº·t
+local keyLink = "https://www.tiktok.com/@b.yt03" -- Link khi áº¥n "Get Key"
 
--- 1. Kiểm tra quyền sở hữu
-if Player.UserId ~= OwnerID then
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "HỆ THỐNG KHÓA",
-        Text = "Bạn không phải chủ sở hữu. Truy cập bị từ chối!",
-        Duration = 5
-    })
-    return 
-end
+-- 2ï¸âƒ£ GIAO DIá»†N NHáº¬P KEY
+local CoreGui = game:GetService("CoreGui")
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextBox = Instance.new("TextBox")
+local CheckButton = Instance.new("TextButton")
+local GetKeyButton = Instance.new("TextButton")
+local UICorner = Instance.new("UICorner")
 
-print("Chào mừng chủ nhân " .. Player.Name .. " quay trở lại!")
+ScreenGui.Name = "KeySystem"
+ScreenGui.Parent = CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
--- 2. Tải Script (Sửa lỗi loadstring)
--- Mình bỏ tham số 'true' vì nó dễ gây lỗi nếu link không trả về dữ liệu chuẩn
-local success, err = pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3"))()
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Frame.Size = UDim2.new(0, 300, 0, 160)
+Frame.Position = UDim2.new(0.5, -150, 0.5, -80)
+UICorner.Parent = Frame
+
+-- đŸ”´ NĂºt thoĂ¡t (dáº¥u X)
+local CloseButton = Instance.new("TextButton")
+CloseButton.Parent = Frame
+CloseButton.Text = "X"
+CloseButton.Size = UDim2.new(0, 25, 0, 25)
+CloseButton.Position = UDim2.new(1, -30, 0, 5) -- gĂ³c pháº£i trĂªn khung
+CloseButton.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+CloseButton.TextColor3 = Color3.fromRGB(255,255,255)
+CloseButton.Font = Enum.Font.SourceSansBold
+CloseButton.TextSize = 18
+
+local closeCorner = Instance.new("UICorner", CloseButton)
+closeCorner.CornerRadius = UDim.new(0, 5)
+
+CloseButton.MouseButton1Click:Connect(function()
+	ScreenGui:Destroy() -- áº¥n X sáº½ táº¯t giao diá»‡n
+end)
+TextBox.Parent = Frame
+TextBox.PlaceholderText = "Nháº­p key táº¡i Ä‘Ă¢y đŸ"
+TextBox.Text = ""
+TextBox.Size = UDim2.new(0.9, 0, 0, 35)
+TextBox.Position = UDim2.new(0.05, 0, 0.25, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+UICorner:Clone().Parent = TextBox
+
+CheckButton.Parent = Frame
+CheckButton.Text = "Kiá»ƒm tra key âœ…"
+CheckButton.Size = UDim2.new(0.4, 0, 0, 30)
+CheckButton.Position = UDim2.new(0.05, 0, 0.65, 0)
+CheckButton.BackgroundColor3 = Color3.fromRGB(80, 170, 80)
+UICorner:Clone().Parent = CheckButton
+
+GetKeyButton.Parent = Frame
+GetKeyButton.Text = "Láº¥y key đŸ”‘"
+GetKeyButton.Size = UDim2.new(0.4, 0, 0, 30)
+GetKeyButton.Position = UDim2.new(0.55, 0, 0.65, 0)
+GetKeyButton.BackgroundColor3 = Color3.fromRGB(100, 100, 255)
+UICorner:Clone().Parent = GetKeyButton
+
+GetKeyButton.MouseButton1Click:Connect(function()
+	setclipboard(keyLink)
+	game.StarterGui:SetCore("SendNotification", {
+		Title = "ÄĂ£ copy link đŸ”—";
+		Text = "DĂ¡n lĂªn trĂ¬nh duyá»‡t Ä‘á»ƒ láº¥y key nhĂ©!";
+		Duration = 4;
+	})
 end)
 
--- 3. Thông báo nếu link bị lỗi
-if not success then
-    warn("Lỗi tải Script: " .. tostring(err))
-    game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "LỖI TẢI",
-        Text = "Không thể kết nối tới GitHub. Kiểm tra lại link!",
-        Duration = 5
-    })
-end
+local keyOk = false
+CheckButton.MouseButton1Click:Connect(function()
+	if TextBox.Text == key then
+		keyOk = true
+		ScreenGui:Destroy()
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "ThĂ nh cĂ´ng đŸ‰";
+			Text = "Key Ä‘Ăºng! Script sáº½ khá»Ÿi cháº¡y.";
+			Duration = 3;
+		})
+	else
+		game.StarterGui:SetCore("SendNotification", {
+			Title = "Sai key âŒ";
+			Text = "HĂ£y áº¥n nĂºt 'Láº¥y key' Ä‘á»ƒ láº¥y key má»›i.";
+			Duration = 3;
+		})
+	end
+end)
+
+-- 3ï¸âƒ£ CHá»œ NHáº¬P KEY ÄĂNG Má»I CHáº Y SCRIPT CHĂNH
+repeat task.wait() until keyOk == true
+
+-- đŸ‘‰ DĂN CODE CHĂNH Cá»¦A Báº N NGAY DÆ¯á»I DĂ’NG NĂ€Y đŸ‘‡
+------------------------------------------------------
+-- â†“ TOĂ€N Bá»˜ CODE Cá»¦A Báº N (báº¯t Ä‘áº§u tá»« dĂ²ng: local ScreenGui = Instance.new("ScreenGui"))
+
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3"))()
