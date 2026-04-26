@@ -158,7 +158,7 @@ print("UIA WindUI loaded OK")
 
 -- 🔹 Tạo Window
 local Window = WindUI:CreateWindow({
-    Title = "UIA HUB 2.6.8",
+    Title = "UIA HUB 2.7.5",
     Size = UDim2.fromOffset(580, 340),
     Theme = "Dark",
     Transparent = true
@@ -204,7 +204,7 @@ Tabs.Home1:Image({
 Tabs.Home1:Button({
     Title = "📢 THÔNG TIN CẬP NHẬT (UPDATE)",
     Desc = [[
-📝 NỘI DUNG GHI CHÚ:: 
+📝 NỘI DUNG GHI CHÚ:
 - Nếu bạn dùng pc chạy script blox fruit thì bấm vào dòng có chữ <xeno>.
 - Full script luôn á!
 
@@ -214,7 +214,7 @@ Tabs.Home1:Button({
 - Cải thiện cho pc.
 - Thêm nút mở cho Win UIA HUB cho pc.
 - Tối ưu hóa hệ thống tránh bị văng game.
-- Sửa lỗi script 4k
+- Sửa lỗi script Ftap (no key)
 - Nâng cấp UI
 ]],
     Callback = function()
@@ -299,9 +299,9 @@ Title = "SRV9",
 	end
 })
 Tabs.Home7:Button({
-Title = "VerbalHubz",                         
+Title = "Bruhiscrazy",                         
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/VerbalHubz/Verbal-Hub/refs/heads/main/Verbal%20Hub%20V3",true))() -- 👈 link script tải
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Bruhiscrazy/codespaces-blank/refs/heads/main/FTAPadminwatch.lua"))() -- 👈 link script tải
 	end
 })
 Tabs.Home8:Button({
