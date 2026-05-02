@@ -631,6 +631,15 @@ ButtonTab:Button({
 })
 
 ButtonTab:Button({
+    Title = "UIA HUB",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
     Title = "SRV9",
     Callback = function()
         WindUI:Notify({
@@ -649,13 +658,41 @@ ButtonTab:Button({
 })
 
 ButtonTab:Button({
-    Title = "Speed Hub X",
+    Title = "4k",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/src/cd.lua'))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Bí ẩn gi3t người",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/MurderMystery2'))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "The Strongest Battlegrounds",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
         })
     end,
 })
+
+ButtonTab:Button({
+    Title = "Forsaken",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/forsaken.lua", true))()
+        })
+    end,
+})
+
 
 ButtonTab:Button({
     Title = "Dí nhau",
