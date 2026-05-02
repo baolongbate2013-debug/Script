@@ -451,23 +451,19 @@ end
 
 -- */  Toggle Tab  /* --
 do
-	local PianoGroup = ToggleTab:Group({
+	Local PianoGroup = ToggleTab:Group({
     Title = "Piano Scripts"
 })
 
 PianoGroup:Toggle({
-    Title = "Bản nhạc 1 (BPM 67)",
+    Title = "Còn gì đẹp hơn (khi ngồi piano - không mở khi chưa ngồi vô)",
     Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
         if Value then
+            -- Chạy trong luồng riêng để không làm mất Window
             task.spawn(function()
-                -- Xóa sạch các bảng điều khiển Piano cũ nếu đang tồn tại
-                if game:GetService("CoreGui"):FindFirstChild("lilgui") then
-                    game:GetService("CoreGui").lilgui:Destroy()
-                end
-
                 _G.STOPIT = false
-                bpm = 67 -- Đảm bảo biến bpm viết thường để không bị lỗi BPM: nil
+                Bpm = 67
                 
                 WindUI:Notify({
                     Title = "Thông báo",
@@ -475,22 +471,17 @@ PianoGroup:Toggle({
                     Duration = 3
                 })
 
-                -- Load script chính và dữ liệu nhạc
+                -- Load các script cần thiết
+                bpm = 67
                 loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
                 loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
             end)
         else
-            -- Khi tắt nút gạt (o—)
+            -- Dừng nhạc khi gạt tắt
             _G.STOPIT = true
-            
-            -- Lệnh quan trọng: Xóa bảng điều khiển trên màn hình ngay lập tức
-            if game:GetService("CoreGui"):FindFirstChild("lilgui") then
-                game:GetService("CoreGui").lilgui:Destroy()
-            end
-
             WindUI:Notify({
                 Title = "Thông báo",
-                Content = "Đã tắt nhạc và dọn dẹp giao diện!",
+                Content = "Đã tắt nhạc!",
                 Duration = 2
             })
         end
