@@ -451,31 +451,46 @@ end
 
 -- */  Toggle Tab  /* --
 do
-	local ToggleTab = ElementsSection:Tab({
-		-- Script Nhạc 1: BPM 67
-ToggleTab:Toggle({
-    Title = "Piano: Bản nhạc 1",
-    Desc = "BPM: 67 - Nhấn để tự động chơi nhạc",
+	-- SỬ DỤNG ĐÚNG TAB BẠN VỪA GỬI
+local ToggleTab = ElementsSection:Tab({
+    Title = "Toggle",
+    Icon = "solar:check-square-bold",
+    IconColor = Green,
+    IconShape = "Square",
+    Border = true,
+})
+
+-- Tạo một nhóm riêng cho Piano để dễ quản lý
+local PianoGroup = ToggleTab:Group({
+    Title = "Piano Scripts"
+})
+
+PianoGroup:Toggle({
+    Title = "Bản nhạc 1 (BPM 67)",
+    Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
         if Value then
-            -- Khi gạt sang Bật (o—)
-            _G.STOPIT = false
-            Bpm = 67
-            -- Tải trình điều khiển và dữ liệu nhạc
-            loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
-            loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
-            
-            WindUI:Notify({
-                Title = "Piano",
-                Content = "Đang chơi nhạc với BPM 67",
-                Duration = 3
-            })
+            -- Chạy trong luồng riêng để không làm mất Window
+            task.spawn(function()
+                _G.STOPIT = false
+                Bpm = 67
+                
+                WindUI:Notify({
+                    Title = "Thông báo",
+                    Content = "Đang tải Piano... Đợi xíu nhé!",
+                    Duration = 3
+                })
+
+                -- Load các script cần thiết
+                loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
+                loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
+            end)
         else
-            -- Khi gạt tắt
+            -- Dừng nhạc khi gạt tắt
             _G.STOPIT = true
             WindUI:Notify({
-                Title = "Piano",
-                Content = "Đã dừng nhạc",
+                Title = "Thông báo",
+                Content = "Đã tắt nhạc!",
                 Duration = 2
             })
         end
