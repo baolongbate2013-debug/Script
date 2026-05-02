@@ -451,52 +451,56 @@ end
 
 -- */  Toggle Tab  /* --
 do
-	-- SỬ DỤNG ĐÚNG TAB BẠN VỪA GỬI
-local ToggleTab = ElementsSection:Tab({
-    Title = "Toggle",
-    Icon = "solar:check-square-bold",
-    IconColor = Green,
-    IconShape = "Square",
-    Border = true,
-})
-
--- Tạo một nhóm riêng cho Piano để dễ quản lý
-local PianoGroup = ToggleTab:Group({
+	local PianoGroup = ToggleTab:Group({
     Title = "Piano Scripts"
 })
+
+-- Thêm khoảng cách ở trên cho thoáng
+ToggleTab:Space()
 
 PianoGroup:Toggle({
     Title = "Bản nhạc 1 (BPM 67)",
     Desc = "Tự động load Talentless & Nhạc",
+    Icon = "solar:music-note-bold", -- Thêm Icon nốt nhạc cực đẹp
     Callback = function(Value)
         if Value then
-            -- Chạy trong luồng riêng để không làm mất Window
             task.spawn(function()
+                -- Xóa tab cũ nếu có để không bị hiện nhiều tab
+                local oldGui = game:GetService("CoreGui"):FindFirstChild("lilgui")
+                if oldGui then oldGui:Destroy() end
+
                 _G.STOPIT = false
+                bpm = 67
                 Bpm = 67
                 
                 WindUI:Notify({
                     Title = "Thông báo",
-                    Content = "Đang tải Piano... Đợi xíu nhé!",
+                    Content = "Đang khởi động Piano...",
                     Duration = 3
                 })
 
-                -- Load các script cần thiết
-                bpm = 67
                 loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
+                task.wait(0.5)
                 loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
             end)
         else
-            -- Dừng nhạc khi gạt tắt
             _G.STOPIT = true
+            -- Tắt nút là xóa luôn tab Piano cho sạch màn hình
+            local currentGui = game:GetService("CoreGui"):FindFirstChild("lilgui")
+            if currentGui then currentGui:Destroy() end
+
             WindUI:Notify({
                 Title = "Thông báo",
-                Content = "Đã tắt nhạc!",
+                Content = "Đã dừng và dọn dẹp!",
                 Duration = 2
             })
         end
     end
 })
+
+-- Thêm khoảng cách ở dưới
+ToggleTab:Space()
+
 
 	ToggleTab:Toggle({
 		Title = "Toggle",
