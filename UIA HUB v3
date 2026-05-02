@@ -451,12 +451,22 @@ end
 
 -- */  Toggle Tab  /* --
 do
-	Local PianoGroup = ToggleTab:Group({
+	-- SỬ DỤNG ĐÚNG TAB BẠN VỪA GỬI
+local ToggleTab = ElementsSection:Tab({
+    Title = "Toggle",
+    Icon = "solar:check-square-bold",
+    IconColor = Green,
+    IconShape = "Square",
+    Border = true,
+})
+
+-- Tạo một nhóm riêng cho Piano để dễ quản lý
+local PianoGroup = ToggleTab:Group({
     Title = "Piano Scripts"
 })
 
 PianoGroup:Toggle({
-    Title = "Còn gì đẹp hơn (khi ngồi piano - không mở khi chưa ngồi vô)",
+    Title = "Bản nhạc 1 (BPM 67)",
     Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
         if Value then
