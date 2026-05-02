@@ -452,6 +452,10 @@ end
 -- */  Toggle Tab  /* --
 do
 	local PianoGroup = ToggleTab:Group({
+    Title = "Piano Scripts"
+})
+
+PianoGroup:Toggle({
     Title = "Bản nhạc 1 (BPM 67)",
     Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
@@ -492,8 +496,6 @@ do
         end
     end
 })
-
-
 
 	ToggleTab:Toggle({
 		Title = "Toggle",
