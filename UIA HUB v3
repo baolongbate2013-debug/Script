@@ -451,17 +451,7 @@ end
 
 -- */  Toggle Tab  /* --
 do
-	-- SỬ DỤNG ĐÚNG TAB BẠN VỪA GỬI
-local ToggleTab = ElementsSection:Tab({
-    Title = "Toggle",
-    Icon = "solar:check-square-bold",
-    IconColor = Green,
-    IconShape = "Square",
-    Border = true,
-})
-
--- Tạo một nhóm riêng cho Piano để dễ quản lý
-local PianoGroup = ToggleTab:Group({
+	local PianoGroup = ToggleTab:Group({
     Title = "Piano Scripts"
 })
 
@@ -470,10 +460,14 @@ PianoGroup:Toggle({
     Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
         if Value then
-            -- Chạy trong luồng riêng để không làm mất Window
             task.spawn(function()
+                -- Xóa sạch các bảng điều khiển Piano cũ nếu đang tồn tại
+                if game:GetService("CoreGui"):FindFirstChild("lilgui") then
+                    game:GetService("CoreGui").lilgui:Destroy()
+                end
+
                 _G.STOPIT = false
-                Bpm = 67
+                bpm = 67 -- Đảm bảo biến bpm viết thường để không bị lỗi BPM: nil
                 
                 WindUI:Notify({
                     Title = "Thông báo",
@@ -481,22 +475,29 @@ PianoGroup:Toggle({
                     Duration = 3
                 })
 
-                -- Load các script cần thiết
-                bpm = 67
+                -- Load script chính và dữ liệu nhạc
                 loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
                 loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
             end)
         else
-            -- Dừng nhạc khi gạt tắt
+            -- Khi tắt nút gạt (o—)
             _G.STOPIT = true
+            
+            -- Lệnh quan trọng: Xóa bảng điều khiển trên màn hình ngay lập tức
+            if game:GetService("CoreGui"):FindFirstChild("lilgui") then
+                game:GetService("CoreGui").lilgui:Destroy()
+            end
+
             WindUI:Notify({
                 Title = "Thông báo",
-                Content = "Đã tắt nhạc!",
+                Content = "Đã tắt nhạc và dọn dẹp giao diện!",
                 Duration = 2
             })
         end
     end
 })
+
+
 
 	ToggleTab:Toggle({
 		Title = "Toggle",
