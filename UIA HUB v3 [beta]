@@ -89,7 +89,7 @@ local Window = WindUI:CreateWindow({
 		Enabled = true, -- enable or disable openbutton
 		Draggable = true,
 		OnlyMobile = false,
-		Scale = 0.5,
+		Scale = 0.9,
 
 		Color = ColorSequence.new( -- gradient
 			Color3.fromHex("#30FF6A"),
