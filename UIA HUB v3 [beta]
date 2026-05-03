@@ -460,36 +460,28 @@ local ToggleTab = ElementsSection:Tab({
     Border = true,
 })
 
--- 2. TẠO NHÓM PIANO
-local PianoGroup = ToggleTab:Group({
-    Title = "Piano Scripts"
-})
-
--- HÀM DÙNG CHUNG ĐỂ CHẠY NHẠC (Chống chồng Tab và mất UI)
+-- HÀM DÙNG CHUNG (Tối ưu chống tràn Tab và bảo vệ UI)
 local function PlayPiano(songName, bpmValue, loaderUrl, songUrl)
     if game:GetService("CoreGui"):FindFirstChild("lilgui") then
         game:GetService("CoreGui").lilgui:Destroy()
     end
-
     _G.STOPIT = false
     Bpm = bpmValue
     bpm = bpmValue
-    
     WindUI:Notify({
         Title = "Piano",
         Content = "Đang phát: " .. songName,
         Duration = 3
     })
-
     loadstring(game:HttpGet(loaderUrl, true))()
     task.wait(0.5) 
     loadstring(game:HttpGet(songUrl, true))()
 end
 
--- 3. DANH SÁCH BÀI HÁT (CHIA 2 CỘT: LEFT & RIGHT)
+-- 2. DANH SÁCH TOÀN BỘ BÀI HÁT (2 BÀI - 1 SPACE)
 
--- HÀNG 1
-PianoGroup:Toggle({
+-- --- HÀNG 1 ---
+ToggleTab:Toggle({
     Title = "Bản nhạc 1",
     Desc = "BPM 67",
     Side = "Left",
@@ -498,13 +490,91 @@ PianoGroup:Toggle({
         else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
     end
 })
-
-PianoGroup:Toggle({
+ToggleTab:Toggle({
     Title = "Mất Kết Nối",
     Desc = "BPM 132",
     Side = "Right",
     Callback = function(Value)
         if Value then task.spawn(function() PlayPiano("Mất Kết Nối", 132, "https://hellohellohell0.com/talentless-raw/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/b9a1dd06723de78fc6f4480a04967237/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+
+ToggleTab:Space() --
+
+-- --- HÀNG 2 ---
+ToggleTab:Toggle({
+    Title = "Không Buông",
+    Desc = "BPM 120",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Không buông", 120, "https://hellohellohell0.com/talentless-raw/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/fdf28f410e002d7b332cd29000a07c78/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+ToggleTab:Toggle({
+    Title = "Ai Đưa Em Về",
+    Desc = "BPM 100",
+    Side = "Right",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Ai đưa em về", 100, "https://hellohellohell0.com/talentless-raw/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/bd2a972a0be12259fe721fc5d83bc4fa/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+
+ToggleTab:Space()
+
+-- --- HÀNG 3 ---
+ToggleTab:Toggle({
+    Title = "Tết Đến Rồi",
+    Desc = "BPM 95",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Tết tết tết đến rồi", 95, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/d59f959888a17bac2bd84a2a691c3d05/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+ToggleTab:Toggle({
+    Title = "Thiên Lí Ơi",
+    Desc = "BPM 90",
+    Side = "Right",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Thiên lí ơi", 90, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/0d79716f94d27b7f2ed7051c885e187b/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+
+ToggleTab:Space()
+
+-- --- HÀNG 4 ---
+ToggleTab:Toggle({
+    Title = "Phép Màu",
+    Desc = "BPM 70",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Phép màu", 70, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/0c1e7ffb16f3a749ee438b71da1c08bb/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+ToggleTab:Toggle({
+    Title = "Trái Tim Anh Đau",
+    Desc = "BPM 135",
+    Side = "Right",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Đừng làm trái tim anh đau", 135, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/17f4162505ecbd753635136852b2f710/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+
+ToggleTab:Space()
+
+-- --- HÀNG 5 ---
+ToggleTab:Toggle({
+    Title = "Hoa Cỏ Lau",
+    Desc = "BPM 150",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Hoa cỏ lau", 150, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/8b86af8d335b7c47a69be09d6d02e424/raw/custom_song.lua") end)
         else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
     end
 })
