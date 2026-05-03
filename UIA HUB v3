@@ -511,7 +511,15 @@ PianoGroup:Toggle({
     end
 })
 
---- BÀI 2: MẤT KẾT NỐI (BPM 132) ---
+-- Tạo Tab chính (Giữ nguyên cấu trúc của bạn)
+local ToggleTab = ElementsSection:Tab({
+    Title = "Toggle",
+    Icon = "solar:check-square-bold",
+    IconColor = Green,
+    IconShape = "Square",
+    Border = true,
+})
+
 PianoGroup:Toggle({
     Title = "Mất Kết Nối (BPM 132)",
     Desc = "Mở khi ngồi vào bàn piano",
@@ -524,7 +532,7 @@ PianoGroup:Toggle({
                 _G.STOPIT = false
                 Bpm = 132
                 bpm = 132
-                WindUI:Notify({Title = "Thông báo", Content = "Đang phát Piano Mất Kết Nối...", Duration = 3})
+                WindUI:Notify({Title = "Thông báo", Content = "Đang tải Mất Kết Nối...", Duration = 3})
                 
                 -- Ghép loader và nhạc bài Mất Kết Nối
                 loadstring(game:HttpGet("https://hellohellohell0.com/talentless-raw/loader_main.lua", true))()
