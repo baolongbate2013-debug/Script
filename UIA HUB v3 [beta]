@@ -301,8 +301,8 @@ do
 		Callback = function()
 			tableToClipboard(WindUI)
 			WindUI:Notify({
-				Title = "WindUI JSON",
-				Content = "Copied to Clipboard!",
+				Title = "Chat trên tiktok",
+				Content = "Ở trang chủ",
 			})
 		end,
 	})
@@ -315,10 +315,12 @@ do
 		Icon = "shredder",
 		IconAlign = "Left",
 		Callback = function()
-			Window:Destroy()
+			Window:Notify({
+				Title = "Chat trên tiktok",
+				Content = "Ở trang chủ",
+			})
 		end,
 	})
-end
 
 -- */  Elements Section  /* --
 local ElementsSection = Window:Section({
@@ -378,7 +380,7 @@ do
 	local OverviewGroup2 = OverviewTab:Group({})
 
 	OverviewGroup2:Button({
-		Title = "Premium có : no key",
+		Title = "Premium : no key",
 		Justify = "Center",
 		Icon = "",
 		Callback = function()
@@ -387,7 +389,7 @@ do
 	})
 	OverviewGroup2:Space()
 	OverviewGroup2:Button({
-		Title = "Premium có : mở khóa script ngon nhất",
+		Title = "Premium : mở khóa script ngon nhất",
 		Justify = "Center",
 		Icon = "",
 		Callback = function()
