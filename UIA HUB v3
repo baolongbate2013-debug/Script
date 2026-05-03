@@ -513,7 +513,59 @@ PianoGroup:Toggle({
 
 	ToggleTab:Toggle({
 		Title = "Toggle",
-	})
+	-- Khoảng cách cho đẹp giao diện
+
+ToggleTab:Space()
+
+ToggleTab:Toggle({
+PianoGroup:Toggle({
+    Title = "Bản nhạc 1 (BPM 67)",
+    Desc = "Chạy ẩn - Không hiện Tab Piano",
+    Icon = "solar:music-library-2-bold", -- Thêm Icon cho xịn
+    Callback = function(Value)
+        if Value then
+            task.spawn(function()
+                -- 1. Dọn dẹp tab cũ trước khi chạy bản mới
+                if game:GetService("CoreGui"):FindFirstChild("lilgui") then
+                    game:GetService("CoreGui").lilgui:Destroy()
+                end
+
+                _G.STOPIT = false
+                Bpm = 67
+                bpm = 67
+                
+                WindUI:Notify({
+                    Title = "Piano",
+                    Content = "Đang chạy ngầm... Nhạc sẽ lên sau 1s!",
+                    Duration = 3
+                })
+
+                -- 2. Load script chính và nhạc
+                loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
+                task.wait(0.5)
+                loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
+
+                -- 3. Đợi nhạc nhận diện rồi "tàng hình" cái tab đi
+                task.wait(0.5)
+                if game:GetService("CoreGui"):FindFirstChild("lilgui") then
+                    game:GetService("CoreGui").lilgui.Enabled = false -- Ẩn tab nhưng nhạc vẫn đánh
+                end
+            end)
+        else
+            -- 4. Khi gạt TẮT: Dừng nhạc và XÓA sạch tab
+            _G.STOPIT = true
+            if game:GetService("CoreGui"):FindFirstChild("lilgui") then
+                game:GetService("CoreGui").lilgui:Destroy()
+            end
+
+            WindUI:Notify({
+                Title = "Piano",
+                Content = "Đã dừng nhạc và dọn dẹp màn hình!",
+                Duration = 2
+            })
+        end
+    end
+})
 
 	ToggleTab:Space()
 
