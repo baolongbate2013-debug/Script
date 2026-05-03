@@ -510,14 +510,6 @@ PianoGroup:Toggle({
         end
     end
 })
--- Tạo Tab chính (Giữ nguyên cấu trúc của bạn)
-local ToggleTab = ElementsSection:Tab({
-    Title = "Toggle",
-    Icon = "solar:check-square-bold",
-    IconColor = Green,
-    IconShape = "Square",
-    Border = true,
-})
 
 --- BÀI 2: MẤT KẾT NỐI (BPM 132) ---
 PianoGroup:Toggle({
