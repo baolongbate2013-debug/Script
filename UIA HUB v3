@@ -1,4 +1,4 @@
-local RunService = game:GetService("RunService")
+9ilocal RunService = game:GetService("RunService")
 --[[
 
     WindUI Example (wip)
@@ -512,7 +512,7 @@ PianoGroup:Toggle({
 })
 
 --- BÀI 2: MẤT KẾT NỐI (BPM 132) ---
-PianoGroup:Toggle({
+ToggleTab:Toggle({
     Title = "Mất Kết Nối (BPM 132)",
     Desc = "Mở khi ngồi vào bàn piano",
     Callback = function(Value)
