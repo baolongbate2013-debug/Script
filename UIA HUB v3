@@ -467,16 +467,11 @@ local PianoGroup = ToggleTab:Group({
 
 PianoGroup:Toggle({
     Title = "Bản nhạc 1 (BPM 67)",
-    Desc = "Mở khi ngồi vào bàn piano",
+    Desc = "Tự động load Talentless & Nhạc",
     Callback = function(Value)
         if Value then
             -- Chạy trong luồng riêng để không làm mất Window
             task.spawn(function()
-                -- VỊ TRÍ 1: Xóa tab cũ ngay khi vừa bấm Bật
-                if game:GetService("CoreGui"):FindFirstChild("lilgui") then
-                    game:GetService("CoreGui").lilgui:Destroy()
-                end
-
                 _G.STOPIT = false
                 Bpm = 67
                 
@@ -486,28 +481,30 @@ PianoGroup:Toggle({
                     Duration = 3
                 })
 
-               -- Load các script cần thiết
+                -- Load các script cần thiết
                 bpm = 67
                 loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()
-                -- Thêm đợi 1 chút để máy M1 xử lý xong trình điều khiển rồi mới nạp nhạc
-                task.wait(0.3)
                 loadstring(game:HttpGet("https://gist.githubusercontent.com/vukhanhtoan2907-lab/3fcb6c2351fdca849a75db6a17f76239/raw/407b7b45ec737d528ec06f30c5dfd5b9853ecb79/gistfile1.txt", true))()
             end)
         else
             -- Dừng nhạc khi gạt tắt
             _G.STOPIT = true
-
-            -- VỊ TRÍ 2: Xóa tab ngay khi gạt Tắt
-            if game:GetService("CoreGui"):FindFirstChild("lilgui") then
-                game:GetService("CoreGui").lilgui:Destroy()
-            end
-
             WindUI:Notify({
                 Title = "Thông báo",
                 Content = "Đã tắt nhạc!",
                 Duration = 2
             })
         end
+    end
+})
+
+ToggleTab:Space()
+
+-- Thêm một Toggle mẫu để bạn tự thêm các game khác sau này
+ToggleTab:Toggle({
+    Title = "Auto Farm (Mẫu)",
+    Callback = function(Value)
+        print("Trạng thái:", Value)
     end
 })
 
