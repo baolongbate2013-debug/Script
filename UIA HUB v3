@@ -512,8 +512,7 @@ PianoGroup:Toggle({
 })
 
 --- BÀI 2: MẤT KẾT NỐI (BPM 132) ---
-ToggleTab:Toggle({
-    PianoGroup:Toggle({
+PianoGroup:Toggle({
     Title = "Mất Kết Nối (BPM 132)",
     Desc = "Mở khi ngồi vào bàn piano",
     Callback = function(Value)
