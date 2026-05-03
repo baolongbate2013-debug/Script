@@ -1,0 +1,163 @@
+note
+
+ButtonTab:Button({
+    Title = "Evade",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Doors",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-NullFire-BETA-35449"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "99 night VapeVoidware",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/nightsintheforest.lua", true))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "99 night Caomob",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Cartola Hub (Brookhaven)",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://rawscripts.net/raw/Brookhaven-RP-Cartola-Hub-Brookhaven-49854"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Nytherune",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/dreamy9x9x/darkaureus/refs/heads/main/brookhaven.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Lear hub",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://github.com/LeafHubAcademy/LeafHub/raw/refs/heads/main/Leaf.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "CattStar - xeno",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://catt-star-autofarm.vercel.app/api/autofarm"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "UIA HUB",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "SRV9",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://srv9.xyz/scripts/loader"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Infinite yield",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'),true))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "4k",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/randomstring0/pshade-ultimate/refs/heads/main/src/cd.lua'))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Bí ẩn gi3t người",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/MurderMystery2'))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "The Strongest Battlegrounds",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Forsaken",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/VapeVoidware/VW-Add/main/forsaken.lua", true))()
+        })
+    end,
+})
+
+
+ButtonTab:Button({
+    Title = "Dí nhau",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AlgariBot/lua/refs/heads/Lua-Script-Executor/SexMachine.lua"))()
+        })
+    end,
+})
+
+
+	ButtonTab:Space()
+
+	ButtonTab:Button({
+		Title = "Monster hub - xeno - ngon nhất",
+		Locked = true,
+		LockedTitle = "This element is locked",
+	})
+
+	ButtonTab:Button({
+		Title = "Bruhiscrazy",
+		Desc = "Button example",
+		Locked = true,
+		LockedTitle = "This element is locked",
+	})
+end
