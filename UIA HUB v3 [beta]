@@ -710,22 +710,6 @@ ButtonTab:Button({
 	})
 end
 
-	ButtonTab:Space()
-
-	ButtonTab:Button({
-		Title = "Button",
-		Locked = true,
-		LockedTitle = "This element is locked",
-	})
-
-	ButtonTab:Button({
-		Title = "Button",
-		Desc = "Button example",
-		Locked = true,
-		LockedTitle = "This element is locked",
-	})
-end
-
 -- */  Input Tab  /* --
 do
 	local InputTab = ElementsSection:Tab({
