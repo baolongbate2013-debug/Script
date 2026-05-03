@@ -530,6 +530,8 @@ PianoGroup:Toggle({
     end
 })
 
+ToggleTab:Space()
+
 -- HÀNG 3
 PianoGroup:Toggle({
     Title = "Tết Đến Rồi",
@@ -551,6 +553,8 @@ PianoGroup:Toggle({
     end
 })
 
+ToggleTab:Space()
+
 -- HÀNG 4
 PianoGroup:Toggle({
     Title = "Phép Màu",
@@ -571,6 +575,8 @@ PianoGroup:Toggle({
         else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
     end
 })
+
+ToggleTab:Space()
 
 -- HÀNG 5 (LẺ BÀI HOA CỎ LAU)
 PianoGroup:Toggle({
