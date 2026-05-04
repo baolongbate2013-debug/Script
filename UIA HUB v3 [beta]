@@ -301,15 +301,15 @@ do
 		Callback = function()
 			tableToClipboard(WindUI)
 			WindUI:Notify({
-				Title = "WindUI JSON",
-				Content = "Copied to Clipboard!",
+				Title = "Chat trên tiktok mà",
+				Content = "Vào trang chủ có link",
 			})
 		end,
 	})
 	AboutTab:Space({ Columns = 1 })
 
 	AboutTab:Button({
-		Title = "Hỗ trợ? Chat trên tiktok ",
+		Title = "Hỗ trợ? Chat trên tiktok, không bấm vô dòng này để chánh bị xóa script UIA HUB v3",
 		Color = Color3.fromHex("#ff4830"),
 		Justify = "Center",
 		Icon = "shredder",
