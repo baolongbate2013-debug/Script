@@ -293,13 +293,12 @@ do
 	-- Default buttons
 
 	AboutTab:Button({
-		Title = "Cần thêm script ngon ?",
+		Title = "Cần thêm script ngon? Chat trên tiktok",
 		Color = Color3.fromHex("#a2ff30"),
 		Justify = "Center",
 		IconAlign = "Left",
 		Icon = "", -- removing icon
 		Callback = function()
-			tableToClipboard(WindUI)
 			WindUI:Notify({
 				Title = "Chat trên tiktok mà",
 				Content = "Vào trang chủ có link",
@@ -309,7 +308,7 @@ do
 	AboutTab:Space({ Columns = 1 })
 
 	AboutTab:Button({
-		Title = "Hỗ trợ? Chat trên tiktok, không bấm vô dòng này để chánh bị xóa script UIA HUB v3",
+		Title = "Delete UIA HUB v3",
 		Color = Color3.fromHex("#ff4830"),
 		Justify = "Center",
 		Icon = "shredder",
