@@ -347,7 +347,7 @@ do
 	local OverviewGroup1 = OverviewTab:Group({})
 
 	OverviewGroup1:Button({
-    Title = "Tiktok chat (copy link)",
+    Title = "Tiktok chat (copy)",
     Justify = "Center",
     Icon = "solar:share-circle-bold", -- Thêm icon cho đẹp
     Callback = function()
