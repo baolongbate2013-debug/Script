@@ -71,7 +71,7 @@ end
 
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
-	Title = "UIA HUB v3      ",
+	Title = "UIA HUB v3 | Beta   ",
 	--Author = "by .ftgs • Footagesus",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
@@ -347,7 +347,7 @@ do
 	local OverviewGroup1 = OverviewTab:Group({})
 
 	OverviewGroup1:Button({
-    Title = "Tiktok chat (copy)",
+    Title = "Tiktok chat (copy link)",
     Justify = "Center",
     Icon = "solar:share-circle-bold", -- Thêm icon cho đẹp
     Callback = function()
