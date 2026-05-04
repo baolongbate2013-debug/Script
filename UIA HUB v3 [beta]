@@ -492,7 +492,7 @@ end
 
 -- --- HÀNG 1 ---
 ToggleTab:Toggle({
-    Title = "Bản nhạc 1",
+    Title = "Còn gì đẹp hơn",
     Desc = "BPM 67",
     Side = "Left",
     Callback = function(Value)
