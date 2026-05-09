@@ -1,0 +1,142 @@
+-- [[ UIA HUB V3 - PHONG CÁCH GIAO DIỆN V2 ]] --
+local service = 23120 -- ID của sếp
+local secret = "2874abee-ee3e-455a-ba28-79f3cb7366b9" -- Secret của sếp
+
+local HttpService = game:GetService("HttpService")
+local fRequest = request or http_request or (http and http.request)
+local fSetClipboard = setclipboard or toclipboard
+local fGetHwid = gethwid or function() return game:GetService("Players").LocalPlayer.UserId end
+
+-- Hàm thông báo đẹp trong Chat
+local function onMessage(msg) 
+    game:GetService("StarterGui"):SetCore("ChatMakeSystemMessage", { 
+        Text = "[UIA V3]: " .. msg, 
+        Color = Color3.fromRGB(0, 255, 255),
+        Font = Enum.Font.GothamBold 
+    }) 
+end
+
+-- Logic băm mã chuẩn Plato
+local function lDigest(input)
+    local hashHex = ""
+    for i = 1, #tostring(input) do
+        hashHex = hashHex .. string.format("%02x", string.byte(tostring(input), i))
+    end
+    return hashHex
+end
+
+-- [ GIAO DIỆN PHONG CÁCH V2 ] --
+local sg = Instance.new("ScreenGui", game.CoreGui)
+local Main = Instance.new("Frame", sg)
+Main.Size = UDim2.new(0, 350, 0, 220)
+Main.Position = UDim2.new(0.5, -175, 0.5, -110)
+Main.BackgroundColor3 = Color3.fromRGB(30, 30, 30) -- Xám đậm sang trọng
+Main.BorderSizePixel = 0
+Main.Active = true
+Main.Draggable = true
+Instance.new("UICorner", Main).CornerRadius = UDim.new(0, 8)
+
+-- Thanh tiêu đề (Topbar)
+local Topbar = Instance.new("Frame", Main)
+Topbar.Size = UDim2.new(1, 0, 0, 35)
+Topbar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+Instance.new("UICorner", Topbar).CornerRadius = UDim.new(0, 8)
+
+local Title = Instance.new("TextLabel", Topbar)
+Title.Text = "UIA HUB V3 - PREMIUN"
+Title.Size = UDim2.new(1, -40, 1, 0)
+Title.Position = UDim2.new(0, 10, 0, 0)
+Title.TextColor3 = Color3.new(1, 1, 1)
+Title.BackgroundTransparency = 1
+Title.Font = Enum.Font.GothamBold
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+local Exit = Instance.new("TextButton", Topbar)
+Exit.Text = "×"
+Exit.Size = UDim2.new(0, 30, 0, 30)
+Exit.Position = UDim2.new(1, -35, 0, 2)
+Exit.BackgroundColor3 = Color3.fromRGB(255, 60, 60)
+Exit.TextColor3 = Color3.new(1, 1, 1)
+Exit.Font = Enum.Font.GothamBold
+Exit.TextSize = 20
+Instance.new("UICorner", Exit).CornerRadius = UDim.new(1, 0)
+Exit.MouseButton1Click:Connect(function() sg:Destroy() end)
+
+-- Ô nhập Key
+local InputBox = Instance.new("TextBox", Main)
+InputBox.PlaceholderText = "Nhập mã Key vào đây..."
+InputBox.Size = UDim2.new(0.9, 0, 0, 45)
+InputBox.Position = UDim2.new(0.05, 0, 0.25, 0)
+InputBox.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+InputBox.TextColor3 = Color3.new(1, 1, 1)
+InputBox.Font = Enum.Font.Gotham
+InputBox.Text = ""
+Instance.new("UICorner", InputBox)
+
+-- Nút Get Key
+local GetBtn = Instance.new("TextButton", Main)
+GetBtn.Text = "GET KEY"
+GetBtn.Size = UDim2.new(0.42, 0, 0, 40)
+GetBtn.Position = UDim2.new(0.05, 0, 0.55, 0)
+GetBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+GetBtn.TextColor3 = Color3.new(1, 1, 1)
+GetBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", GetBtn)
+
+-- Nút Check Key
+local CheckBtn = Instance.new("TextButton", Main)
+CheckBtn.Text = "CHECK KEY"
+CheckBtn.Size = UDim2.new(0.42, 0, 0, 40)
+CheckBtn.Position = UDim2.new(0.53, 0, 0.55, 0)
+CheckBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+CheckBtn.TextColor3 = Color3.new(1, 1, 1)
+CheckBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", CheckBtn)
+
+-- Credit dưới cùng
+local Credit = Instance.new("TextLabel", Main)
+Credit.Text = "Design by UIA Team"
+Credit.Size = UDim2.new(1, 0, 0, 30)
+Credit.Position = UDim2.new(0, 0, 0.85, 0)
+Credit.TextColor3 = Color3.fromRGB(150, 150, 150)
+Credit.BackgroundTransparency = 1
+Credit.Font = Enum.Font.GothamItalic
+Credit.TextSize = 12
+
+-- [ XỬ LÝ SỰ KIỆN ] --
+GetBtn.MouseButton1Click:Connect(function()
+    local res = fRequest({
+        Url = "https://api.platoboost.com/public/start",
+        Method = "POST",
+        Body = HttpService:JSONEncode({service = service, identifier = lDigest(fGetHwid())}),
+        Headers = {["Content-Type"] = "application/json"}
+    })
+    if res.StatusCode == 200 then
+        local data = HttpService:JSONDecode(res.Body)
+        if data.success then
+            fSetClipboard(data.data.url)
+            onMessage("Đã copy link! Hãy ra trình duyệt dán vào.")
+            GetBtn.Text = "COPIED!"
+            task.wait(2)
+            GetBtn.Text = "GET KEY"
+        end
+    end
+end)
+
+CheckBtn.MouseButton1Click:Connect(function()
+    local key = InputBox.Text
+    local endpoint = "https://api.platoboost.com/public/whitelist/" .. service .. "?identifier=" .. lDigest(fGetHwid()) .. "&key=" .. key
+    local res = fRequest({Url = endpoint, Method = "GET"})
+    
+    if res.StatusCode == 200 then
+        local data = HttpService:JSONDecode(res.Body)
+        if data.success and data.data.valid then
+            onMessage("Key hợp lệ! Đang tải Hub...")
+            sg:Destroy()
+            -- SẾP DÁN SCRIPT CHÍNH Ở ĐÂY
+            loadstring(game:HttpGet("https://pastebin.com/raw/DTrES0c6"))()
+        else
+            onMessage("Key sai hoặc chưa vượt link!")
+        end
+    end
+end)
