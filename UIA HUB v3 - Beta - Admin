@@ -108,7 +108,7 @@ task.spawn(function()
     CloseBtn.MouseButton1Click:Connect(function() sg:Destroy() end)
 
     local Title = Instance.new("TextLabel", Main)
-    Title.Text = "UIA HUB V3 - SECURITY"
+    Title.Text = "UIA HUB V3 / Beta"
     Title.Size = UDim2.new(1, 0, 0, 80)
     Title.TextColor3 = Color3.new(1, 1, 1)
     Title.BackgroundTransparency = 1
