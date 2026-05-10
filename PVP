@@ -1,0 +1,9 @@
+--[[
+Credit: Hermanos-Dev, Dont Delete This.
+]]--
+
+local script_mode = "PVP" -- PVP, FARM
+local loader = loadstring
+local url = "https://raw.githubusercontent.com/hermanos-dev/hermanos-hub/refs/heads/main/Loader.lua"
+local response = game:HttpGet(url)
+loader(response)()
