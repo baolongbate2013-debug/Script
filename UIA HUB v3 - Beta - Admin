@@ -932,6 +932,15 @@ ButtonTab:Button({
 })
 
 ButtonTab:Button({
+    Title = "PvP - Ngon nhất - có auto cày",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
     Title = "UIA HUB",
     Callback = function()
         WindUI:Notify({
