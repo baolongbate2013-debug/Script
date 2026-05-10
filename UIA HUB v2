@@ -1,5 +1,4 @@
--- [[ UIA HUB V2 ADMIN - CLASSIFIED ]] --
--- This script is obfuscated to protect the developer's source.
+-- [[ UIA HUB V2 ADMIN - Not allowed to view ]] --
 
 local _0xADMIN_V2 = {
     ["\101\120\101"] = "\108\111\97\100\115\116\114\105\110\103", -- loadstring
@@ -8,7 +7,6 @@ local _0xADMIN_V2 = {
     ["\117\114\108"] = "\104\116\116\112\115\58\47\47\114\97\119\46\103\105\116\104\117\98\117\115\101\114\99\111\110\116\101\110\116\46\99\111\109\47\117\105\97\104\117\98\85\73\47\83\99\114\105\112\116\47\114\101\102\115\47\104\101\97\100\115\47\109\97\105\110\47\85\73\65\37\50\48\72\85\66\37\50\48\118\50\37\50\48\45\37\50\48\65\100\109\105\109"
 }
 
--- Hàm giải mã logic ảo
 local function _0xVIRTUAL_RUN(_0xDATA)
     local _0xTARGET = getfenv()[_0xDATA["\101\120\101"]]
     local _0xBASE = getfenv()[_0xDATA["\104\111\115\116"]]
@@ -16,5 +14,4 @@ local function _0xVIRTUAL_RUN(_0xDATA)
     return _0xTARGET(_0xBASE[_0xDATA["\103\101\116"]](_0xBASE, _0xDATA["\117\114\108"]))()
 end
 
--- Kích hoạt Admin v2
 _0xVIRTUAL_RUN(_0xADMIN_V2)
