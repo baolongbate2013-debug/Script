@@ -82,18 +82,6 @@ local Window = WindUI:CreateWindow({
 
 	HideSearchBar = false,
 
-    KeySystem = {                                                   
-        Note = "Hệ thống Key của UIA HUB. Vui lòng vượt link để lấy mã!",              
-        API = {                                                     
-            { -- Cấu hình PlatoBoost của bạn
-                Type = "platoboost",                                
-                ServiceId = 23120, 
-                Secret = "5b9f99dbcba80380a52cbbb49a4a8605ab119b102dc8eb69c462678e724e8430",
-            },                                                      
-        },                                                          
-    },                                                              
-})
-
 	OpenButton = {
 		Title = "UIA HUB v3 | Beta", -- can be changed
 		CornerRadius = UDim.new(1, 0), -- fully rounded
