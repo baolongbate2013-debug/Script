@@ -71,6 +71,19 @@ end
 
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
+    -- ...
+    
+    KeySystem = {                                                   
+        Note = "Example Key System. With platoboost.",              
+        API = {                                                     
+            { -- PlatoBoost
+                Type = "platoboost",                                
+                ServiceId = 1234, -- service id
+                Secret = "platoboost-secret", -- platoboost secret
+            },                                                      
+        },                                                          
+    },                                                              
+})
 	Title = "UIA HUB v3 | Beta   ",
 	--Author = "by .ftgs • Footagesus",
 	Folder = "ftgshub",
