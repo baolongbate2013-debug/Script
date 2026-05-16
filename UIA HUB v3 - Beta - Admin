@@ -305,6 +305,7 @@ do
 			})
 		end,
 	})
+
 	AboutTab:Space({ Columns = 1 })
 
 	AboutTab:Button({
@@ -318,21 +319,20 @@ do
 		end,
 	})
 end
-
 -- */  Elements Section  /* --
 local ElementsSection = Window:Section({
-	Title = "Elements",
+	Title = "Trang chủ / piano",
 })
 local ConfigUsageSection = Window:Section({
-	Title = "Config Usage",
+	Title = "Script",
 })
 local OtherSection = Window:Section({
-	Title = "Other",
+	Title = "Hệ điều hành",
 })
 
 -- */  Overview Tab  /* --
 do
-	local OverviewTab = ElementsSection:Tab({
+    local OverviewTab = ElementsSection:Tab({
 		Title = "Trang chủ",
 		Icon = "solar:home-2-bold",
 		IconColor = Grey,
@@ -463,7 +463,7 @@ do
 	-- 1. KHAI BÁO TAB CHÍNH
 local ToggleTab = ElementsSection:Tab({
     Title = "Piano",
-    Icon = "solar:check-square-bold",
+    Icon = "solar:play-circle-bold",
     IconColor = Green,
     IconShape = "Square",
     Border = true,
@@ -491,7 +491,7 @@ end
 
 -- --- HÀNG 1 ---
 ToggleTab:Toggle({
-    Title = "Còn gì đẹp hơn",
+    Title = "Bản nhạc 1",
     Desc = "BPM 67",
     Side = "Left",
     Callback = function(Value)
@@ -635,15 +635,14 @@ end
 
 -- */  Button Tab  /* --
 do
-	local ButtonTab = ElementsSection:Tab({
-		Title = "Script",
-		Icon = "solar:cursor-square-bold",
+    local ButtonTab = ElementsSection:Tab({
+		Title = "Button text",
+		Icon = "solar:pen-new-square-bold",
 		IconColor = Blue,
 		IconShape = "Square",
 		Border = true,
 	})
-
-	local HighlightButton
+    	local HighlightButton
 	HighlightButton = ButtonTab:Button({
 		Title = "Highlight Button",
 		Icon = "mouse",
@@ -675,24 +674,56 @@ do
 	ButtonTab:Space()
 
 ButtonTab:Button({
-    Title = "Evade",
+		Title = "Test",
+		Locked = true,
+		LockedTitle = "This element is locked",
+	})
+
+	ButtonTab:Button({
+		Title = "Test",
+		Desc = "Button example",
+		Locked = true,
+		LockedTitle = "This element is locked",
+	})
+end
+	local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Evade",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "Draconic Hub",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
         })
     end,
 })
-
-ButtonTab:Button({
-    Title = "Doors",
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Doors",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "NullFire",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://rawscripts.net/raw/DOORS-NullFire-BETA-35449"))()
         })
     end,
 })
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "99 night",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "99 night VapeVoidware",
     Callback = function()
         WindUI:Notify({
@@ -709,8 +740,14 @@ ButtonTab:Button({
         })
     end,
 })
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Brookhaven",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "Cartola Hub (Brookhaven)",
     Callback = function()
         WindUI:Notify({
@@ -728,7 +765,14 @@ ButtonTab:Button({
     end,
 })
 
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Blox fruit",
+		Icon = "solar:inbox-unread-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "Lear hub",
     Callback = function()
         WindUI:Notify({
@@ -765,15 +809,21 @@ ButtonTab:Button({
 })
 
 ButtonTab:Button({
-    Title = "UIA HUB",
+    Title = "UIA HUB - blox fruit",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
         })
     end,
 })
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Ftap",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "SRV9",
     Callback = function()
         WindUI:Notify({
@@ -790,8 +840,14 @@ ButtonTab:Button({
         })
     end,
 })
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Lệnh",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "Infinite yield",
     Callback = function()
         WindUI:Notify({
@@ -799,8 +855,14 @@ ButtonTab:Button({
         })
     end,
 })
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "4k",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "4k",
     Callback = function()
         WindUI:Notify({
@@ -808,26 +870,29 @@ ButtonTab:Button({
         })
     end,
 })
-
-ButtonTab:Button({
-    Title = "Bí ẩn gi3t người",
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Bí ẩn gi3t người",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "TravHub",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet('https://raw.githubusercontent.com/mm2scripthub/TravHub/refs/heads/main/MurderMystery2'))()
         })
     end,
 })
-
-ButtonTab:Button({
-    Title = "The Strongest Battlegrounds",
-    Callback = function()
-        WindUI:Notify({
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
-        })
-    end,
-})
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Forsaken",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "Forsaken",
     Callback = function()
         WindUI:Notify({
@@ -835,9 +900,29 @@ ButtonTab:Button({
         })
     end,
 })
-
-
-ButtonTab:Button({
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "The Strongest Battlegrounds",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "Speed Hub X",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+        })
+    end,
+})
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Hamster",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
     Title = "Dí nhau",
     Callback = function()
         WindUI:Notify({
@@ -845,22 +930,6 @@ ButtonTab:Button({
         })
     end,
 })
-
-	ButtonTab:Space()
-
-	ButtonTab:Button({
-		Title = "Test",
-		Locked = true,
-		LockedTitle = "This element is locked",
-	})
-
-	ButtonTab:Button({
-		Title = "Test",
-		Desc = "Button example",
-		Locked = true,
-		LockedTitle = "This element is locked",
-	})
-end
 
 -- */  Input Tab  /* --
 do
@@ -1418,13 +1487,13 @@ do
 		}).Body or "{}")
 
 	local DiscordTab = OtherSection:Tab({
-		Title = "Discord",
+		Title = "WinUI",
 		Border = true,
 	})
 
 	if Response and Response.guild then
 		DiscordTab:Section({
-			Title = "Join our Discord server!",
+			Title = "Join our Gihub server!",
 			TextSize = 20,
 		})
 		local DiscordServerParagraph = DiscordTab:Paragraph({
