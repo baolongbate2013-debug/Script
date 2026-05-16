@@ -71,7 +71,7 @@ end
 
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
-	Title = "UIA HUB v3 | Beta   ",
+	Title = "UIA HUB v3   ",
 	--Author = "by .ftgs • Footagesus",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
@@ -83,7 +83,7 @@ local Window = WindUI:CreateWindow({
 	HideSearchBar = false,
 
 	OpenButton = {
-		Title = "UIA HUB v3 | Beta", -- can be changed
+		Title = "UIA HUB v3 ", -- can be changed
 		CornerRadius = UDim.new(1, 0), -- fully rounded
 		StrokeThickness = 3, -- removing outline
 		Enabled = true, -- enable or disable openbutton
