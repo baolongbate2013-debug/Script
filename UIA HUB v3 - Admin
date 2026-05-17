@@ -803,16 +803,166 @@ ButtonTab:Button({
     Title = "PvP - Ngon nhất - có auto cày",
     Callback = function()
         WindUI:Notify({
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/uiahubUI/Script/refs/heads/main/PVP"))()
         })
     end,
 })
-
+ButtonTab:Button({
+    Title = "catt star blox fruit pvp script - xeno",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://xeno-v2.vercel.app/api/xenopvp2"))()
+        })
+    end,
+})
 ButtonTab:Button({
     Title = "UIA HUB - blox fruit",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/baolongbate2013-debug/Script/refs/heads/main/Blox%20fruit"))()
+        })
+    end,
+})
+ButtonTab:Button({
+    Title = "VScript - xeno",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/KevinGithubUsers/KevinGithubUsers/refs/heads/main/VScript(Blox%20Fruits).txt"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "blox fruit gravity script - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Solix Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/debunked69/Solixreworkkeysystem/refs/heads/main/solix%20new%20keyui.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Thunder Z - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThunderZ-HUB/HUB/main/Script"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "4479Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/4479cantcode/4479Hub/refs/heads/main/Script.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "HNC Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/strong%20guest.lua.txt'))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "auto money - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/RichKidz-PX/RichKidz/main/FarmMoney.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Nubla X - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Nubla-X-136305"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Nix Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/NYX8HUB/premium/refs/heads/main/script"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Flow Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://rawscripts.net/raw/Blox-Fruits-Flow-Bloxfruits-Added-Dungoen-Support-Updated-Latest-102183"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Blue X - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-BlueX/BlueX-Hub/refs/heads/main/Main.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Aimbot - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ParadozCode/CentuDox-Hub-Paradoz-Hub/refs/heads/main/CentudoxLoader.xyz", true))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Xeter Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TlDinhKhoi/Xeter/refs/heads/main/Main.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Redz Hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/huy384/redzHub/refs/heads/main/redzHub.lua"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Roni - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/kryphve/RONI/refs/heads/main/main/main"))()
+        })
+    end,
+})
+
+ButtonTab:Button({
+    Title = "Nexus - xeno",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tgferrmonitor/NexusFruitsHub/main/Main.lua"))()
         })
     end,
 })
