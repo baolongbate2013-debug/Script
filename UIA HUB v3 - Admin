@@ -865,15 +865,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/ThunderZ-HUB/HUB/main
 })
 
 ButtonTab:Button({
-    Title = "4479Hub - xeno - ngon nhất",
-    Callback = function()
-        WindUI:Notify({
-loadstring(game:HttpGet("https://raw.githubusercontent.com/4479cantcode/4479Hub/refs/heads/main/Script.lua"))()
-        })
-    end,
-})
-
-ButtonTab:Button({
     Title = "HNC Hub - xeno",
     Callback = function()
         WindUI:Notify({
