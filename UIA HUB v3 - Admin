@@ -808,7 +808,7 @@ ButtonTab:Button({
     end,
 })
 ButtonTab:Button({
-    Title = "catt star blox fruit pvp script - xeno",
+    Title = "Catt star blox fruit pvp script - xeno",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://xeno-v2.vercel.app/api/xenopvp2"))()
@@ -833,7 +833,7 @@ ButtonTab:Button({
 })
 
 ButtonTab:Button({
-    Title = "blox fruit gravity script - xeno",
+    Title = "Blox fruit gravity script - xeno",
     Callback = function()
         WindUI:Notify({
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Dev-GravityHub/BloxFruit/refs/heads/main/Main.lua"))()
@@ -878,7 +878,7 @@ loadstring(game:HttpGet('https://raw.githubusercontent.com/Mautiku/ehh/main/stro
 })
 
 ButtonTab:Button({
-    Title = "auto money - xeno",
+    Title = "Auto money - xeno",
     Callback = function()
         WindUI:Notify({
 loadstring(game:HttpGet("https://raw.githubusercontent.com/RichKidz-PX/RichKidz/main/FarmMoney.lua"))()
