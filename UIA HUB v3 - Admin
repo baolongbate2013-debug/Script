@@ -1,3 +1,30 @@
+-- [[ UIA HUB V3 - Security & Blacklist System ]] --
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- 🔴 ĐIỀN CÁC ID NGƯỜI CHƠI MUỐN CHẶN VÀO ĐÂY (CÁCH NHAU BẰNG DẤU PHẨY)
+local Blacklist = {
+    [4752012081] = true, -- Ví dụ ID người chơi 1
+}
+
+-- Kiểm tra xem người chơi có trong danh sách đen không
+if Blacklist[LocalPlayer.UserId] then
+    -- Hiển thị thông báo trên màn hình game Roblox bằng CoreGui
+    local StarterGui = game:GetService("StarterGui")
+    pcall(function()
+        StarterGui:SetCore("SendNotification", {
+            Title = "❌ UIA HUB V3",
+            Text = "Bạn đã bị chặn bởi chủ sở hữu!",
+            Duration = 15
+        })
+    end)
+    
+    -- Khiến nhân vật của họ bị văng khỏi game (Kick) để phạt nếu muốn
+    LocalPlayer:Kick("UIA HUB V3: Bạn đã bị chặn sử dụng script bởi chủ sở hữu, bởi vì cách gọi tên. Xin vui lòng liên hệ hoặc xin lỗi nhà phát triển để mở khóa")
+    return -- Dừng toàn bộ script ngay lập tức, không chạy tiếp code dưới
+end
+
 local RunService = game:GetService("RunService")
 --[[
 
