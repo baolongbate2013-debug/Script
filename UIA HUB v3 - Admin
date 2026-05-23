@@ -751,10 +751,10 @@ local ButtonTab = ConfigUsageSection:Tab({
 		Border = true,
 	})
 ButtonTab:Button({
-    Title = "SZA",
+    Title = "SharkCreepy - xeno",
     Callback = function()
         WindUI:Notify({
-loadstring(game:HttpGet("https://valencea.xyz/main.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SharkCreepy/Survive-Zombie-Arena/refs/heads/main/script.luao"))())
         })
     end,
 })
