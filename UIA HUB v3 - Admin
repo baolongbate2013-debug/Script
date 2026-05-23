@@ -754,7 +754,7 @@ ButtonTab:Button({
     Title = "SharkCreepy - xeno",
     Callback = function()
         WindUI:Notify({
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SharkCreepy/Survive-Zombie-Arena/refs/heads/main/script.luao"))())
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SharkCreepy/Survive-Zombie-Arena/refs/heads/main/script.luao"))()
         })
     end,
 })
