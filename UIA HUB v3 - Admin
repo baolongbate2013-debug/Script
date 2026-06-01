@@ -614,15 +614,6 @@ ToggleTab:Toggle({
         else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
     end
 })
-ToggleTab:Toggle({
-    Title = "Call of Silence",
-    Desc = "BPM 120",
-    Side = "Left",
-    Callback = function(Value)
-        if Value then task.spawn(function() PlayPiano("Call of Silence", 120, "loadstring(game:HttpGet("https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", true))()", "loadstring(game:HttpGet("https://gist.githack.com/talentless-custom-songs/31a25bd6033451e8f5e898bb5766e166/raw/custom_song.lua", true))()	") end)
-        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
-    end
-})
 
 	ToggleTab:Space()
 
