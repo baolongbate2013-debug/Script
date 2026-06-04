@@ -614,8 +614,38 @@ ToggleTab:Toggle({
         else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
     end
 })
+ToggleTab:Toggle({
+    Title = "Call of Silence",
+    Desc = "BPM 120",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Call of Silence", 120, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/31a25bd6033451e8f5e898bb5766e166/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
 
 	ToggleTab:Space()
+
+----
+ToggleTab:Toggle({
+    Title = "Trackintime",
+    Desc = "BPM 120",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Trackintime", 120, "https://hellohellohell0.com/talentless-raw/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/1a52942276012921771ca426658e99e7/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+ToggleTab:Toggle({
+    Title = "Haru Haru",
+    Desc = "BPM 126",
+    Side = "Left",
+    Callback = function(Value)
+        if Value then task.spawn(function() PlayPiano("Haru Haru", 126, "https://cdn.jsdelivr.net/gh/hellohellohell012321/TALENTLESS@main/loader_main.lua", "https://gist.githack.com/talentless-custom-songs/a755fc54567c0537d98590171cca7157/raw/custom_song.lua") end)
+        else _G.STOPIT = true if game:GetService("CoreGui"):FindFirstChild("lilgui") then game:GetService("CoreGui").lilgui:Destroy() end end
+    end
+})
+    ToggleTab:Space()
 
 	ToggleTab:Toggle({
 		Title = "Toggle",
@@ -725,6 +755,21 @@ end
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
+        })
+    end,
+})
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "The intruder",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+ButtonTab:Button({
+    Title = "Actual Hub",
+    Callback = function()
+        WindUI:Notify({
+           loadstring(game:HttpGet("https://rawscripts.net/raw/The-Intruder-Actual-Hub-70919"))()
         })
     end,
 })
