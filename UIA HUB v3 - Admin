@@ -99,7 +99,7 @@ end
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
 	Title = "UIA HUB v3   ",
-	--Author = "by .ftgs • Footagesus",
+	Author = "by oiia • 3.2.7",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
 	--Theme = "Mellowsi",
