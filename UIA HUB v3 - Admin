@@ -99,7 +99,7 @@ end
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
 	Title = "UIA HUB v3   ",
-	Author = "by oiia • 3.2.7",
+	Author = "by oiia • 3.3.5",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
 	--Theme = "Mellowsi",
@@ -743,6 +743,29 @@ ButtonTab:Button({
 		LockedTitle = "This element is locked",
 	})
 end
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Grow a garden 2",
+		Icon = "solar:inbox-unread-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "Sph - phù hợp cho ăn trộm 1",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
+        })
+    end,
+})
+    ButtonTab:Button({
+    Title = "Chiyo / phù hợp cho ăn trộm <ngon nhất>",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/kaisenlmao/loader/refs/heads/main/chiyo.lua"))()
+        })
+    end,
+})
 	local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Evade",
 		Icon = "solar:inbox-bold",
@@ -750,6 +773,14 @@ end
 		IconShape = "Square",
 		Border = true,
 	})
+	ButtonTab:Button({
+    Title = "Hakizashi",
+    Callback = function()
+        WindUI:Notify({
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/sccv8/WhakizashiX/refs/heads/main/old%20whakizashi.txt"))()
+        })
+    end,
+})
     ButtonTab:Button({
     Title = "Draconic Hub",
     Callback = function()
