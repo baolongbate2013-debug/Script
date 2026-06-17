@@ -751,7 +751,7 @@ end
 		Border = true,
 	})
     ButtonTab:Button({
-    Title = "Sph - phù hợp cho cày chay và ăn trộm 1",
+    Title = "Sph / phù hợp cho cày chay và ăn trộm 1",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
@@ -759,7 +759,7 @@ end
     end,
 })
     ButtonTab:Button({
-    Title = "Chiyo / phù hợp cho ăn trộm <ngon nhất khi ăn trộm>",
+    Title = "Chiyo / phù hợp cho ăn trộm 2",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/kaisenlmao/loader/refs/heads/main/chiyo.lua"))()
