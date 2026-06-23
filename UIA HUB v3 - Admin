@@ -102,10 +102,31 @@ local Window = WindUI:CreateWindow({
 	Author = "by oiia • 3.3.5",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
+	Transparent = true,
 	--Theme = "Mellowsi",
 	--IconSize = 22*2,
 	NewElements = true,
 	--Size = UDim2.fromOffset(700,700),
+    User = {
+		
+        Enabled = true,
+        Anonymous = true,
+        Callback = function()
+            print("clicked")
+        end,
+    },
+    
+    --       remove this all, 
+    -- !  ↓  if you DON'T need the key system
+    KeySystem = {                                                                 
+        API = {                                                     
+            { -- PlatoBoost
+                Type = "platoboost",                                
+                ServiceId = 23120, -- service id
+                Secret = "2874abee-ee3e-455a-ba28-79f3cb7366b9", -- platoboost secret
+            },                                                      
+        },                                                          
+    },     
 
 	HideSearchBar = false,
 
@@ -751,7 +772,7 @@ end
 		Border = true,
 	})
     ButtonTab:Button({
-    Title = "Sph / phù hợp cho cày chay và ăn trộm 1",
+    Title = "Sph / phù hợp cho cày chay và ăn trộm - xeno",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
@@ -759,10 +780,27 @@ end
     end,
 })
     ButtonTab:Button({
-    Title = "Chiyo / phù hợp cho ăn trộm 2",
+    Title = "Chiyo / phù hợp cho ăn trộm - xeno",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/kaisenlmao/loader/refs/heads/main/chiyo.lua"))()
+        })
+    end,
+})
+    ButtonTab:Button({
+    Title = "Ronix / UI / phù hợp cho dự báo thời tiết - xeno",
+    Callback = function()
+        WindUI:Notify({
+            script_key = "KEY"; -- A key might be required, if not, delete this line.
+            loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/fda9babd071d6b536a745774b6bc681c.lua"))()
+        })
+    end,
+})
+    ButtonTab:Button({
+    Title = "Luminon / phù hợp để mua pet xịn hiếm",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("http://luminon.top/loader.lua"))()
         })
     end,
 })
