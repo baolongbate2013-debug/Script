@@ -99,7 +99,7 @@ end
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
 	Title = "UIA HUB v3   ",
-	Author = "by oiia • 3.4.5",
+	--Author = "by oiia • 3.3.5",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
 	Transparent = true,
@@ -157,11 +157,11 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-		Title = "v" .. WindUI.Version,
-		Icon = "github",
-		Color = Color3.fromHex("#1c1c1c"),
-		Border = true,
-	})
+    Title = "v3.5.0",
+    Icon = "github",
+    Color = Color3.fromHex("#30ff6a"),
+    Radius = 8, -- from 0 to 13
+    })
 end
 
 -- */  Colors  /* --
@@ -434,7 +434,7 @@ do
 	})
 	OverviewGroup2:Space()
 	OverviewGroup2:Button({
-		Title = "Premium : mở khóa script ngon nhất",
+		Title = "Premium : được admin cho thử beta trước",
 		Justify = "Center",
 		Icon = "",
 		Callback = function()
@@ -455,18 +455,18 @@ do
 	local OverviewGroup3 = OverviewTab:Group({})
 
 	local OverviewSection1 = OverviewGroup3:Section({
-		Title = "Script chống sau này",
-		Desc = "Section exampleee",
+		Title = "Anti Afk",
+		Desc = "100% không bị ban 20 phút",
 		Box = true,
 		BoxBorder = true,
 		Opened = true,
 	})
 	OverviewSection1:Button({
-		Title = "Button 1",
+		Title = "Autu jump",
 		Justify = "Center",
 		Icon = "",
 		Callback = function()
-			print("clicked button 1")
+			loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-ANTI-AFK-112636"))()
 		end,
 	})
 	OverviewSection1:Space()
