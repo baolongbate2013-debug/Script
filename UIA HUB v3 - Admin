@@ -157,7 +157,7 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-    Title = "v3.5.7",
+    Title = "v3.6.2",
     Icon = "github",
     Color = Color3.fromHex("#30ff6a"),
     Radius = 8, -- from 0 to 13
@@ -367,9 +367,337 @@ do
 		end,
 	})
 end
+local MyTab = Window:Tab({
+    Title = "Nhân Vật",
+    Icon = "user"
+})
+
+-- Tạo Slider chỉnh Tốc độ chạy (WalkSpeed)
+local SpeedSlider = MyTab:Slider({
+    Title = "Tốc độ chạy (WalkSpeed)",
+    Desc = "Chỉnh tốc độ di chuyển của nhân vật (Mặc định game là 16)",
+    Step = 1,
+    Value = {
+        Min = 16,
+        Max = 250,
+        Default = 16,
+    },
+    Callback = function(value)
+        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+        end
+    end
+})
+
+-- Kẻ một đường phân cách (Divider)
+MyTab:Divider()
+
+-- Tạo Slider chỉnh Độ cao nhảy (JumpPower)
+local JumpSlider = MyTab:Slider({
+    Title = "Độ cao nhảy (JumpPower)",
+    Desc = "Chỉnh độ cao khi nhảy (Mặc định game là 50)",
+    Step = 1,
+    Value = {
+        Min = 50,
+        Max = 300,
+        Default = 50,
+    },
+    Callback = function(value)
+        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+            game.Players.LocalPlayer.Character.Humanoid.UseJumpPower = true
+            game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+        end
+    end
+})
+
+MyTab:Divider()
+
+-- ==========================================
+-- TÍNH NĂNG: NOCLIP & FLY (ĐÃ FIX LỆCH HƯỚNG BẰNG KEYBOARD)
+-- ==========================================
+
+local LocalPlayer = game.Players.LocalPlayer
+local UIS = game:GetService("UserInputService")
+
+-- 1. Nút gạt Bật/Tắt Noclip (Đi xuyên tường)
+local NoclipTarget = false
+local ToggleNoclip = MyTab:Toggle({
+    Title = "Noclip (Xuyên Tường)",
+    Desc = "Gạt bật để đi xuyên qua mọi vật cản",
+    Value = false,
+    Callback = function(state)
+        NoclipTarget = state
+        
+        if NoclipTarget then
+            task.spawn(function()
+                while NoclipTarget do
+                    if LocalPlayer.Character then
+                        for _, part in pairs(LocalPlayer.Character:GetDescendants()) do
+                            if part:IsA("BasePart") and part.CanCollide then
+                                part.CanCollide = false
+                            end
+                        end
+                    end
+                    task.wait(0.1)
+                end
+            end)
+        end
+    end
+})
+
+MyTab:Divider()
+
+-- 2. Nút gạt Bật/Tắt Fly (Bay tự do)
+local FlyTarget = false
+local ToggleFly = MyTab:Toggle({
+    Title = "Fly (Bay Lượn)",
+    Desc = "Bật để bay tự do (W/A/S/D di chuyển, Space lên, Shift xuống)",
+    Value = false,
+    Callback = function(state)
+        FlyTarget = state
+        local character = LocalPlayer.Character
+        if not character or not character:FindFirstChild("HumanoidRootPart") then return end
+        local hrp = character.HumanoidRootPart
+        
+        if FlyTarget then
+            task.spawn(function()
+                local bv = Instance.new("BodyVelocity")
+                bv.Name = "FlyVelocity"
+                bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
+                bv.Velocity = Vector3.new(0, 0, 0)
+                bv.Parent = hrp
+                
+                local bg = Instance.new("BodyGyro")
+                bg.Name = "FlyGyro"
+                bg.MaxTorque = Vector3.new(9e9, 9e9, 9e9)
+                bg.P = 9e4
+                bg.CFrame = hrp.CFrame
+                bg.Parent = hrp
+                
+                local humanoid = character:FindFirstChild("Humanoid")
+                if humanoid then humanoid.PlatformStand = true end
+                
+                while FlyTarget and character and hrp.Parent do
+                    bg.CFrame = workspace.CurrentCamera.CFrame
+                    local camCFrame = workspace.CurrentCamera.CFrame
+                    local velocity = Vector3.new(0, 0, 0)
+                    
+                    if UIS:IsKeyDown(Enum.KeyCode.W) then velocity = velocity + camCFrame.LookVector end
+                    if UIS:IsKeyDown(Enum.KeyCode.S) then velocity = velocity - camCFrame.LookVector end
+                    if UIS:IsKeyDown(Enum.KeyCode.A) then velocity = velocity - camCFrame.RightVector end
+                    if UIS:IsKeyDown(Enum.KeyCode.D) then velocity = velocity + camCFrame.RightVector end
+                    if UIS:IsKeyDown(Enum.KeyCode.Space) then velocity = velocity + Vector3.new(0, 1, 0) end
+                    if UIS:IsKeyDown(Enum.KeyCode.LeftShift) then velocity = velocity - Vector3.new(0, 1, 0) end
+                    
+                    if velocity.Unit.Magnitude > 0 then 
+                        -- Sử dụng biến flySpeed từ Slider
+                        bv.Velocity = velocity.Unit * flySpeed 
+                    else 
+                        bv.Velocity = Vector3.new(0, 0, 0) 
+                    end
+                    task.wait()
+                end
+                if bv then bv:Destroy() end
+                if bg then bg:Destroy() end
+                if humanoid then humanoid.PlatformStand = false end
+            end)
+        else
+            if hrp:FindFirstChild("FlyVelocity") then hrp.FlyVelocity:Destroy() end
+            if hrp:FindFirstChild("FlyGyro") then hrp.FlyGyro:Destroy() end
+            local humanoid = character:FindFirstChild("Humanoid")
+            if humanoid then humanoid.PlatformStand = false end
+        end
+    end
+})
+
+-- 3. Slider chỉnh Tốc độ Fly (Thêm mới theo ý bạn nè!)
+local FlySpeedSlider = MyTab:Slider({
+    Title = "Tốc độ Fly (Fly Speed)",
+    Desc = "Kéo để tăng/giảm tốc độ khi đang bay tự do",
+    Step = 1,
+    Value = {
+        Min = 10,
+        Max = 300,
+        Default = 70,
+    },
+    Callback = function(value)
+        flySpeed = value -- Cập nhật tốc độ bay ngay lập tức
+    end
+})
+MyTab:Divider()
+local ESPTarget = false
+
+-- Hàm tạo khung định vị màu xanh lá và tên cho từng người chơi
+local function CreateESP(v)
+    if v == LocalPlayer then return end
+
+    local function ApplyESP(character)
+        if not character then return end
+        local head = character:WaitForChild("Head", 5)
+        if not head then return end
+
+        -- 1. Tạo BillboardGui để hiện Tên trên đầu
+        if not head:FindFirstChild("ESPTag") then
+            local billboard = Instance.new("BillboardGui")
+            billboard.Name = "ESPTag"
+            billboard.Adornee = head
+            billboard.Size = UDim2.new(0, 200, 0, 50)
+            billboard.StudsOffset = Vector3.new(0, 2.5, 0)
+            billboard.AlwaysOnTop = true
+
+            local label = Instance.new("TextLabel")
+            label.Parent = billboard
+            label.Size = UDim2.new(1, 0, 1, 0)
+            label.BackgroundTransparency = 1
+            label.Text = v.Name
+            label.TextColor3 = Color3.fromRGB(255, 255, 255) -- Chữ màu trắng
+            label.TextStrokeTransparency = 0 -- Viền chữ đen
+            label.TextSize = 14
+            label.Font = Enum.Font.SourceSansBold
+            billboard.Parent = head
+        end
+
+        -- 2. Tạo Box (Hình vuông) định vị xuyên tường màu XANH LÁ CÂY
+        for _, part in pairs(character:GetChildren()) do
+            if part:IsA("BasePart") and part.Name ~= "HumanoidRootPart" then
+                if not part:FindFirstChild("ESPBox") then
+                    local box = Instance.new("BoxHandleAdornment")
+                    box.Name = "ESPBox"
+                    box.Size = part.Size + Vector3.new(0.1, 0.1, 0.1)
+                    box.Adornee = part
+                    box.AlwaysOnTop = true
+                    box.ZIndex = 10
+                    box.Transparency = 0.5 -- Độ đậm nhạt của khung
+                    box.Color3 = Color3.fromRGB(0, 255, 0) -- ĐÃ ĐỔI: Màu xanh lá cây (Neon Green) siêu sáng
+                    box.Parent = part
+                end
+            end
+        end
+    end
+
+    if v.Character then ApplyESP(v.Character) end
+    v.CharacterAdded:Connect(ApplyESP)
+end
+
+-- Hàm xóa sạch định vị khi tắt Toggle
+local function RemoveESP()
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v.Character then
+            for _, desc in pairs(v.Character:GetDescendants()) do
+                if desc.Name == "ESPTag" or desc.Name == "ESPBox" then
+                    desc:Destroy()
+                end
+            end
+        end
+    end
+end
+MyTab:Divider()
+-- Nút gạt Bật/Tắt ESP Định Vị
+local ToggleESP = MyTab:Toggle({
+    Title = "ESP Định Vị (Khung Xanh Lá + Hiện Tên)",
+    Desc = "Bật để nhìn thấy vị trí khung xanh và tên mọi người xuyên tường",
+    Value = false,
+    Callback = function(state)
+        ESPTarget = state
+        
+        if ESPTarget then
+            for _, v in pairs(game.Players:GetPlayers()) do
+                CreateESP(v)
+            end
+            
+            local playerAddedConn = game.Players.PlayerAdded:Connect(CreateESP)
+            
+            task.spawn(function()
+                while ESPTarget do
+                    for _, v in pairs(game.Players:GetPlayers()) do
+                        if v.Character and not v.Character:HierarchyContains("ESPTag") then
+                            CreateESP(v)
+                        end
+                    end
+                    task.wait(2)
+                end
+                playerAddedConn:Disconnect()
+            end)
+        else
+            RemoveESP()
+        end
+    end
+})
+MyTab:Divider()
+local LocalPlayer = game.Players.LocalPlayer
+local HitboxActive = false
+local HitboxSize = 15 -- Kích thước mặc định khi bật nút công tắc
+
+-- Hàm quét và phóng to Hitbox của người chơi khác
+local function ApplyHitbox(v)
+    if v == LocalPlayer then return end
+    if v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+        local hrp = v.Character.HumanoidRootPart
+        if HitboxActive then
+            hrp.Size = Vector3.new(HitboxSize, HitboxSize, HitboxSize)
+            hrp.Transparency = 0.7                  -- Làm trong suốt để dễ nhìn
+            hrp.Color = Color3.fromRGB(0, 191, 255)  -- Màu xanh dương Neon rực rỡ
+            hrp.Material = Enum.Material.Neon
+            hrp.CanCollide = false
+        else
+            -- Reset về trạng thái mặc định ban đầu của game khi tắt
+            hrp.Size = Vector3.new(2, 2, 1)
+            hrp.Transparency = 1
+        end
+    end
+end
+
+-- 1. Nút gạt Bật/Tắt Hitbox
+local ToggleHitbox = MyTab:Toggle({
+    Title = "Bật/Tắt Hitbox Xanh Dương",
+    Desc = "Gạt bật để phóng to tâm đánh của tất cả người chơi khác",
+    Value = false,
+    Callback = function(state)
+        HitboxActive = state
+        
+        -- Chạy vòng lặp liên tục để quét và giữ nguyên kích thước Hitbox (phòng trường hợp địch hồi sinh)
+        if HitboxActive then
+            task.spawn(function()
+                while HitboxActive do
+                    for _, v in pairs(game.Players:GetPlayers()) do
+                        ApplyHitbox(v)
+                    end
+                    task.wait(1) -- Quét lại mỗi giây cho nhẹ game
+                end
+            end)
+        else
+            -- Khi tắt gạt thì reset tất cả mọi người về bình thường
+            for _, v in pairs(game.Players:GetPlayers()) do
+                ApplyHitbox(v)
+            end
+        end
+    end
+})
+
+-- 2. Thanh Slider điều chỉnh độ to nhỏ của Hitbox (Thêm mới theo ý bạn nha!)
+local HitboxSlider = MyTab:Slider({
+    Title = "Kích thước Hitbox (Size)",
+    Desc = "Kéo để tăng/giảm độ bự của tâm Hitbox (Mặc định là 15, tối đa 50)",
+    Step = 1,
+    Value = {
+        Min = 2,
+        Max = 50,
+        Default = 15,
+    },
+    Callback = function(value)
+        HitboxSize = value -- Cập nhật kích thước mới vào biến chung
+        
+        -- Nếu đang bật nút gạt thì áp dụng độ to mới ngay lập tức luôn không cần chờ đợi
+        if HitboxActive then
+            for _, v in pairs(game.Players:GetPlayers()) do
+                ApplyHitbox(v)
+            end
+        end
+    end
+   }) 
 -- */  Elements Section  /* --
 local ElementsSection = Window:Section({
-	Title = "Trang chủ / piano",
+	Title = "Trang chủ/piano/nhạc",
 })
 local ConfigUsageSection = Window:Section({
 	Title = "Script",
@@ -959,7 +1287,7 @@ ToggleTab:Toggle({
     end
 })
 
-ToggleTab:Space()
+   ToggleTab:Divider()
 
 local ToggleSection3 = ToggleTab:Section({ 
 	Title = "Piano Nước ngoài",
@@ -1082,6 +1410,91 @@ ToggleTab:Toggle({
 		Locked = true,
 		LockedTitle = "This element is locked",
 	})
+end
+
+-------Boombox--------
+local LocalSound = Instance.new("Sound")
+LocalSound.Name = "MyPrivateBoombox"
+LocalSound.Volume = 3 
+LocalSound.Parent = game:GetService("SoundService")
+-- 3. Tạo Tab Boombox
+local BoomboxTab = ElementsSection:Tab({
+    Title = "Boombox",
+    Icon = "solar:boombox-bold-duotone",
+})
+
+_G.IdBoombox = "" 
+
+-- Hàm phát nhạc từ ID
+local function StartMusic(id, name)
+    if not id or id == "" then return end
+    LocalSound:Stop()
+    LocalSound.SoundId = "rbxassetid://" .. tostring(id)
+    LocalSound:Play()
+    
+    WindUI:Notify({
+        Title = "Thành Công",
+        Content = "Đang phát bài: " .. (name or id),
+        Duration = 4,
+        Icon = "music"
+    })
+end
+
+-- ==========================================
+-- PHẦN 1: PHÁT NHẠC NHANH
+-- ==========================================
+BoomboxTab:Section({ Title = "Phát Nhạc Nhanh" })
+
+BoomboxTab:Input({
+    Title = "Nhập ID Boombox",
+    Desc = "Dán ID bài nhạc từ Roblox vào đây",
+    Placeholder = "Ví dụ: 1843234532...",
+    Callback = function(text)
+        _G.IdBoombox = text:gsub("%D", "") 
+    end
+})
+
+BoomboxTab:Button({
+    Title = "▶️ Phát Nhạc Boombox",
+    Callback = function()
+        if _G.IdBoombox == "" then
+            WindUI:Notify({ Title = "Cảnh Báo!", Content = "Bạn chưa nhập ID nhạc kìa!", Duration = 3, Icon = "alert-triangle" })
+            return
+        end
+        StartMusic(_G.IdBoombox, "ID nhập nhanh")
+    end
+})
+
+BoomboxTab:Button({
+    Title = "❌ Dừng Nhạc (Stop)",
+    Callback = function()
+        LocalSound:Stop()
+        WindUI:Notify({ Title = "Hệ Thống", Content = "Đã tắt nhạc!", Duration = 2, Icon = "circle-stop" })
+    end
+})
+
+BoomboxTab:Divider()
+
+-- ==========================================
+-- PHẦN 2: PHẦN TỰ ĐIỀN VÀ LƯU NHẠC THỦ CÔNG
+-- ==========================================
+BoomboxTab:Section({ Title = "Danh Sách Nhạc <beta>" })
+
+local MyPlaylist = {
+    { Name = "Nhạc Chửi", Id = "2602546138" },
+    { Name = "Nhạc Remix Chiến", Id = "1843234532" },
+    { Name = "Nhạc Anime Tik Tok", Id = "9114243640" },
+}
+
+-- Vòng lặp tự động quét tạo nút nhạc lưu thủ công
+for _, song in ipairs(MyPlaylist) do
+    BoomboxTab:Button({
+        Title = "🎵 " .. song.Name,
+        Desc = "Bấm để phát nhanh bài hát này (ID: " .. song.Id .. ")",
+        Callback = function()
+            StartMusic(song.Id, song.Name)
+        end
+    })
 end
 
 -- */  Button Tab  /* --
