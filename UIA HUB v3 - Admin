@@ -2848,3 +2848,21 @@ dropdownA = Tabs.ExampleTab:Dropdown({
 	Value = { "All" },
 	Callback = function(option) end,
 })
+
+Window:OnClose(function()
+    WindUI:Notify({
+        Title = "UIA HUB Thông Báo",
+        Content = "Bạn đã thu nhỏ Menu. Nhấn phím [G] để hiện lại Window nhé!",
+        Image = "monitor", -- Icon màn hình cho chuyên nghiệp
+        Time = 10, -- Thông báo hiện trong 10 giây rồi biến mất
+        Color = Color3.fromHex("FF0F7B") -- Màu hồng neon cho rực rỡ
+    })
+end)
+
+-- ⌨️ ĐẢM BẢO PHÍM G HOẠT ĐỘNG
+local UIS = game:GetService("UserInputService")
+UIS.InputBegan:Connect(function(input, processed)
+    if not processed and input.KeyCode == Enum.KeyCode.G then
+        Window:Toggle() -- Bật hoặc tắt Menu khi bấm G
+    end
+end)
