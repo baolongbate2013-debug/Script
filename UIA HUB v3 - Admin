@@ -157,7 +157,7 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-    Title = "v3.6.2",
+    Title = "v3.6.5",
     Icon = "github",
     Color = Color3.fromHex("#30ff6a"),
     Radius = 8, -- from 0 to 13
@@ -448,7 +448,13 @@ local ToggleNoclip = MyTab:Toggle({
 MyTab:Divider()
 
 -- 2. Nút gạt Bật/Tắt Fly (Bay tự do)
+
+local UIS = game:GetService("UserInputService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local flySpeed = 70 -- Tốc độ mặc định ban đầu
+
 local FlyTarget = false
+
 local ToggleFly = MyTab:Toggle({
     Title = "Fly (Bay Lượn)",
     Desc = "Bật để bay tự do (W/A/S/D di chuyển, Space lên, Shift xuống)",
@@ -461,6 +467,9 @@ local ToggleFly = MyTab:Toggle({
         
         if FlyTarget then
             task.spawn(function()
+                if hrp:FindFirstChild("FlyVelocity") then hrp.FlyVelocity:Destroy() end
+                if hrp:FindFirstChild("FlyGyro") then hrp.FlyGyro:Destroy() end
+                
                 local bv = Instance.new("BodyVelocity")
                 bv.Name = "FlyVelocity"
                 bv.MaxForce = Vector3.new(9e9, 9e9, 9e9)
@@ -478,8 +487,8 @@ local ToggleFly = MyTab:Toggle({
                 if humanoid then humanoid.PlatformStand = true end
                 
                 while FlyTarget and character and hrp.Parent do
-                    bg.CFrame = workspace.CurrentCamera.CFrame
                     local camCFrame = workspace.CurrentCamera.CFrame
+                    bg.CFrame = camCFrame
                     local velocity = Vector3.new(0, 0, 0)
                     
                     if UIS:IsKeyDown(Enum.KeyCode.W) then velocity = velocity + camCFrame.LookVector end
@@ -489,17 +498,17 @@ local ToggleFly = MyTab:Toggle({
                     if UIS:IsKeyDown(Enum.KeyCode.Space) then velocity = velocity + Vector3.new(0, 1, 0) end
                     if UIS:IsKeyDown(Enum.KeyCode.LeftShift) then velocity = velocity - Vector3.new(0, 1, 0) end
                     
-                    if velocity.Unit.Magnitude > 0 then 
-                        -- Sử dụng biến flySpeed từ Slider
+                    if velocity.Magnitude > 0 then 
                         bv.Velocity = velocity.Unit * flySpeed 
                     else 
                         bv.Velocity = Vector3.new(0, 0, 0) 
                     end
                     task.wait()
                 end
-                if bv then bv:Destroy() end
-                if bg then bg:Destroy() end
-                if humanoid then humanoid.PlatformStand = false end
+                
+                if bv and bv.Parent then bv:Destroy() end
+                if bg and bg.Parent then bg:Destroy() end
+                if humanoid and humanoid.Parent then humanoid.PlatformStand = false end
             end)
         else
             if hrp:FindFirstChild("FlyVelocity") then hrp.FlyVelocity:Destroy() end
@@ -1413,23 +1422,30 @@ ToggleTab:Toggle({
 end
 
 -------Boombox--------
-local LocalSound = Instance.new("Sound")
-LocalSound.Name = "MyPrivateBoombox"
-LocalSound.Volume = 3 
-LocalSound.Parent = game:GetService("SoundService")
--- 3. Tạo Tab Boombox
-local BoomboxTab = ElementsSection:Tab({
-    Title = "Boombox",
-    Icon = "solar:boombox-bold-duotone",
-})
+-- SỬA LỖI 1: Gắn Loa vào CoreGui để sau này chỉnh âm lượng không bị lỗi đơ
+local LocalSound = game:GetService("CoreGui"):FindFirstChild("MyPrivateBoombox")
+if not LocalSound then
+    LocalSound = Instance.new("Sound")
+    LocalSound.Name = "MyPrivateBoombox"
+    LocalSound.Volume = 3 
+    LocalSound.Parent = game:GetService("CoreGui")
+end
 
+-- 💡 BỔ SUNG QUAN TRỌNG: Khai báo đầy đủ các biến hệ thống bị thiếu ở đầu code
 _G.IdBoombox = "" 
+local AutoReplay = false
+local CurrentTrackId = "" -- Biến ghi nhớ bài hát đang phát thực tế
+local ReplayToggle = nil  -- Biến điều khiển nút gạt từ xa
 
 -- Hàm phát nhạc từ ID
 local function StartMusic(id, name)
     if not id or id == "" then return end
+    
+    -- SỬA LỖI 2: Phải găm ID vào đây thì hệ thống Auto Replay bên dưới mới nhận diện được bài để lặp!
+    CurrentTrackId = tostring(id) 
+    
     LocalSound:Stop()
-    LocalSound.SoundId = "rbxassetid://" .. tostring(id)
+    LocalSound.SoundId = "rbxassetid://" .. CurrentTrackId
     LocalSound:Play()
     
     WindUI:Notify({
@@ -1439,6 +1455,12 @@ local function StartMusic(id, name)
         Icon = "music"
     })
 end
+
+-- 3. Tạo Tab Boombox (Giữ nguyên tên ElementsSection của bạn)
+local BoomboxTab = ElementsSection:Tab({
+    Title = "Boombox",
+    Icon = "solar:boombox-bold-duotone",
+})
 
 -- ==========================================
 -- PHẦN 1: PHÁT NHẠC NHANH
@@ -1451,8 +1473,11 @@ BoomboxTab:Input({
     Placeholder = "Ví dụ: 1843234532...",
     Callback = function(text)
         _G.IdBoombox = text:gsub("%D", "") 
+        WindUI:Notify({ Title = "Hệ Thống", Content = "Đã nhận ID: " .. _G.IdBoombox, Duration = 2, Icon = "check" })
     end
 })
+
+BoomboxTab:Divider()
 
 BoomboxTab:Button({
     Title = "▶️ Phát Nhạc Boombox",
@@ -1465,28 +1490,61 @@ BoomboxTab:Button({
     end
 })
 
+-- Nút Dừng Nhạc thông minh (Ép nút gạt tự tắt theo)
 BoomboxTab:Button({
     Title = "❌ Dừng Nhạc (Stop)",
     Callback = function()
+        AutoReplay = false 
         LocalSound:Stop()
-        WindUI:Notify({ Title = "Hệ Thống", Content = "Đã tắt nhạc!", Duration = 2, Icon = "circle-stop" })
+        LocalSound.SoundId = "" 
+        CurrentTrackId = ""
+        
+        -- Nếu nút gạt lặp lại đang bật thì bắt nó tắt đi luôn
+        if ReplayToggle then
+            ReplayToggle:SetValue(false)
+        end
+        
+        WindUI:Notify({ Title = "Hệ Thống", Content = "Đã tắt nhạc và dừng Auto hoàn toàn!", Duration = 2, Icon = "circle-stop" })
+    end
+})
+
+-- Nút gạt Tự động lặp lại nhạc
+ReplayToggle = BoomboxTab:Toggle({
+    Title = "🔄 Auto Lặp Lại Nhạc",
+    Desc = "Tự động phát lại bài hát khi nhạc kết thúc",
+    Value = false,
+    Callback = function(state)
+        AutoReplay = state
+        if AutoReplay then
+            task.spawn(function()
+                while AutoReplay do
+                    -- Đã có CurrentTrackId hợp lệ ở trên gài vào nên sẽ lặp chuẩn 100%
+                    if CurrentTrackId ~= "" and not LocalSound.IsPlaying and LocalSound.SoundId ~= "" then
+                        LocalSound:Play()
+                    end
+                    task.wait(1)
+                end
+            end)
+            WindUI:Notify({ Title = "Auto Replay", Content = "Đã BẬT Tự Động Lặp Nhạc!", Duration = 2, Icon = "refresh-cw" })
+        else
+            WindUI:Notify({ Title = "Auto Replay", Content = "Đã TẮT Tự Động Lặp Nhạc!", Duration = 2, Icon = "x" })
+        end
     end
 })
 
 BoomboxTab:Divider()
 
 -- ==========================================
--- PHẦN 2: PHẦN TỰ ĐIỀN VÀ LƯU NHẠC THỦ CÔNG
+-- PHẦN 2: DANH SÁCH LƯU THỦ CÔNG
 -- ==========================================
-BoomboxTab:Section({ Title = "Danh Sách Nhạc <beta>" })
+BoomboxTab:Section({ Title = "Danh Sách Nhạc Bạn Lưu" })
 
 local MyPlaylist = {
-    { Name = "Nhạc Chửi", Id = "2602546138" },
-    { Name = "Nhạc Remix Chiến", Id = "1843234532" },
-    { Name = "Nhạc Anime Tik Tok", Id = "9114243640" },
+    { Name = "Nhạc chửi", Id = "2602546138" },
+    { Name = "2 Phút Hơn Funk v2", Id = "75537083584377" },
+    { Name = "Frontiers", Id = "107819089007268" },
 }
 
--- Vòng lặp tự động quét tạo nút nhạc lưu thủ công
 for _, song in ipairs(MyPlaylist) do
     BoomboxTab:Button({
         Title = "🎵 " .. song.Name,
