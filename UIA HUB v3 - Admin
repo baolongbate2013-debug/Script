@@ -2848,20 +2848,25 @@ dropdownA = Tabs.ExampleTab:Dropdown({
 	Value = { "All" },
 	Callback = function(option) end,
 })
-Window:OnClose(function()
-    WindUI:Notify({
-        Title = "UIA Thông Báo",
-        Content = "Bạn đã thu nhỏ Menu. Nhấn phím [G] để hiện lại Window. ",
-        Image = "monitor", -- Icon màn hình cho chuyên nghiệp
-        Time = 10, -- Thông báo hiện trong 10 giây rồi biến mất
-        Color = Color3.fromHex("FF0F7B") -- Màu hồng neon cho rực rỡ
-    })
-end)
+local SettingsTab = Window:Tab({
+    Title = "Cài Đặt",
+    Icon = "settings" 
+})
 
--- ⌨️ ĐẢM BẢO PHÍM G HOẠT ĐỘNG
-local UIS = game:GetService("UserInputService")
-UIS.InputBegan:Connect(function(input, processed)
-    if not processed and input.KeyCode == Enum.KeyCode.G then
-        Window:Toggle() -- Bật hoặc tắt Menu khi bấm G
+SettingsTab:Section({ Title = "Phím Tắt Hệ Thống" })
+
+-- Nút đổi phím tắt động cho người chơi tự chỉnh
+SettingsTab:Keybind({
+    Title = "Đổi Phím Ẩn/Hiện Menu",
+    Desc = "Bấm vào ô bên cạnh rồi ấn phím mới để đổi phím tắt ẩn/hiện Hub nhé!",
+    Default = Enum.KeyCode.G, 
+    Callback = function(key)
+        ToggleKey = key -- Cập nhật phím mới ngay lập tức
+        WindUI:Notify({
+            Title = "Cài Đặt",
+            Content = "Đã đổi phím mở menu sang nút: " .. tostring(key.Name),
+            Duration = 3,
+            Icon = "check"
+        })
     end
-end)
+})
