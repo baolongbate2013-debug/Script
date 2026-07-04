@@ -9,8 +9,7 @@ pcall(function()
     end
 end)
 
-local WindUI = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/teoscrvn/T-ng-h-p-/main/Script%20test%20(1).txt"
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 ))()
 
 if not WindUI then
