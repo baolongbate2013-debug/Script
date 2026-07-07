@@ -2061,6 +2061,14 @@ ButtonTab:Button({
         })
     end,
 })
+    ButtonTab:Button({
+    Title = "VexonHub",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/DiosDi/VexonHub/refs/heads/main/VexonHub"))()
+        })
+    end,
+})
     local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Hamster",
 		Icon = "solar:inbox-bold",
