@@ -157,7 +157,7 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-    Title = "v3.6.7",
+    Title = "v3.6.9",
     Icon = "github",
     Color = Color3.fromHex("#30ff6a"),
     Radius = 8, -- from 0 to 13
@@ -1668,6 +1668,29 @@ end
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/Unknownproooolucky/Draconic-Hub-X/refs/heads/main/files/Evade/Overhaul.lua"))()
+        })
+    end,
+})
+local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Ink game",
+		Icon = "solar:inbox-unread-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+	ButtonTab:Button({
+    Title = "Rinns hub - xeno",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/SkibidiCen/MainMenu/main/Code"))()
+        })
+    end,
+})
+ButtonTab:Button({
+    Title = "UwU",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/platinww/UwU/refs/heads/main/INK-GAME"))()
         })
     end,
 })
