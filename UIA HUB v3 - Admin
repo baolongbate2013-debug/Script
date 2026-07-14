@@ -21,7 +21,7 @@ if Blacklist[LocalPlayer.UserId] then
     end)
     
     -- Khiến nhân vật của họ bị văng khỏi game (Kick) để phạt nếu muốn
-    LocalPlayer:Kick("UIA HUB V3: Bạn đã bị chặn sử dụng script bởi chủ sở hữu.Vi phạm giới hạn sử dụng. Xin vui lòng chờ đến 13:47-15/7 ")
+    LocalPlayer:Kick("UIA HUB V3: Bạn đã bị chặn sử dụng script bởi chủ sở hữu.Vi phạm giới hạn sử dụng. Xin vui lòng chờ đến 13:47-16/7 ")
     return -- Dừng toàn bộ script ngay lập tức, không chạy tiếp code dưới
 end
 
