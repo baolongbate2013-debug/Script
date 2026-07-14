@@ -1,7 +1,7 @@
-(function() {
+Thôi dùng cái này ik (function() {
   let scrollInterval, clickInterval, laymaInterval;
   let direction = 1;
-  const scrollSpeed = 200; 
+  const scrollSpeed = 65; 
 
   // TẠO VÙNG CHỨA CÁC NÚT ĐIỀU KHIỂN (MENU)
   const menuContainer = document.createElement('div');
