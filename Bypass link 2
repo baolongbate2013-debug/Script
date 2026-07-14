@@ -1,4 +1,4 @@
-Thôi dùng cái này ik (function() {
+(function() {
   let scrollInterval, clickInterval, laymaInterval;
   let direction = 1;
   const scrollSpeed = 65; 
