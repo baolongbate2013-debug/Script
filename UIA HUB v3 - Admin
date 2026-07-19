@@ -5,7 +5,7 @@ local LocalPlayer = Players.LocalPlayer
 
 -- 🔴 ĐIỀN CÁC ID NGƯỜI CHƠI MUỐN CHẶN VÀO ĐÂY (CÁCH NHAU BẰNG DẤU PHẨY)
 local Blacklist = {
-    [5303605779] = true, -- Ví dụ ID người chơi 1
+    [53036057790] = true, -- Ví dụ ID người chơi 1
 }
 
 -- Kiểm tra xem người chơi có trong danh sách đen không
@@ -1691,6 +1691,21 @@ ButtonTab:Button({
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/platinww/UwU/refs/heads/main/INK-GAME"))()
+        })
+    end,
+})
+local ButtonTab = ConfigUsageSection:Tab({
+		Title = "+1 speed keyboard escape",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+    ButtonTab:Button({
+    Title = "Luxy hub",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://www.luxyhub.space/api/loader/luxyhub"))()
         })
     end,
 })
