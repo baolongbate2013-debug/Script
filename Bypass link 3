@@ -126,7 +126,7 @@
   const runLaykey = (e) => {
     e.preventDefault();
     stopAll();
-    keyValueEl.innerText = '(Đang bypass key) 3s Ngọc Bống...';
+    keyValueEl.innerText = 'Đang bypass key...';
     keyValueEl.style.color = '#fdcb6e';
     actionInterval = setInterval(() => {
       document.body.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true, clientX: window.innerWidth / 2, clientY: window.innerHeight * 0.6 }));
