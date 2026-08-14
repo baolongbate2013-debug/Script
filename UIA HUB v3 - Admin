@@ -96,17 +96,35 @@ function createPopup()
 	})
 end
 
+-- 1. Tạo Theme tối có đường viền màu trắng/sáng
+WindUI:AddTheme({
+    Name = "night1", -- Đặt tên theme
+    
+    Accent = Color3.fromHex("#141414"),
+    Background = Color3.fromHex("#0A0A0A"), -- Đen đậm đục 100%, không bị xuyên thấu
+    Outline = Color3.fromHex("#3F3F46"),    -- Viền xám nổi bật rõ nét
+    Text = Color3.fromHex("#FFFFFF"),       -- Chữ trắng tinh nét căng
+    Placeholder = Color3.fromHex("#71717A"),
+    Button = Color3.fromHex("#1C1C1E"),     -- Nút xám đen đục
+    Icon = Color3.fromHex("#E4E4E7")
+})
+
+
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
 	Title = "UIA HUB v3   ",
 	--Author = "by oiia • 3.3.5",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
-	Transparent = true,
-	--Theme = "Mellowsi",
+	Transparent = false,
+    Background = "rbxassetid://102712127787635", -- Thay ID ảnh nền Roblox vào đây
+	Theme = "night1",
+	BackgroundTransparency = 0.5,
 	--IconSize = 22*2,
 	NewElements = true,
-	--Size = UDim2.fromOffset(700,700),
+	Size = UDim2.fromOffset(380,380),
+
+
     User = {
 		
         Enabled = true,
@@ -140,8 +158,8 @@ local Window = WindUI:CreateWindow({
 		Scale = 0.9,
 
 		Color = ColorSequence.new( -- gradient
-			Color3.fromHex("#30FF6A"),
-			Color3.fromHex("#e7ff2f")
+			Color3.fromHex("#2B2D31"),
+			Color3.fromHex("#80848E")
 		),
 	},
 	Topbar = {
@@ -157,12 +175,68 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-    Title = "v3.6.9",
+    Title = "v3.7.8",
     Icon = "github",
     Color = Color3.fromHex("#30ff6a"),
     Radius = 8, -- from 0 to 13
     })
 end
+
+---------------------
+
+local RunService = game:GetService("RunService")
+local CoreGui = game:GetService("CoreGui")
+local Players = game:GetService("Players")
+
+-- 1. Khởi tạo Tag ban đầu
+Window:Tag({
+    Title = "FPS: Calculating...",
+    Icon = "activity",
+    Color = Color3.fromHex("#30ff6a"),
+    Radius = 8,
+})
+
+-- 2. Tự động tìm TextLabel thật của Tag trong UI
+local fpsLabel = nil
+
+task.spawn(function()
+    task.wait(0.2) -- Chờ UI tạo xong trong game
+    
+    -- Tìm trong CoreGui hoặc PlayerGui
+    local searchParent = CoreGui:FindFirstChild("RobloxGui") and CoreGui or Players.LocalPlayer:WaitForChild("PlayerGui")
+    
+    for _, v in ipairs(searchParent:GetDescendants()) do
+        if v:IsA("TextLabel") and v.Text == "FPS: Calculating..." then
+            fpsLabel = v
+            break
+        end
+    end
+end)
+
+-- 3. Cập nhật số FPS thực tế
+local frameCount = 0
+local lastUpdate = os.clock()
+
+RunService.RenderStepped:Connect(function()
+    frameCount = frameCount + 1
+    local now = os.clock()
+    
+    if now - lastUpdate >= 0.5 then
+        local fps = math.floor(frameCount / (now - lastUpdate))
+        
+        if fpsLabel then
+            fpsLabel.Text = "FPS: " .. tostring(fps)
+        end
+        
+        frameCount = 0
+        lastUpdate = now
+    end
+end)
+
+
+
+
+---------------------
 
 -- */  Colors  /* --
 local Purple = Color3.fromHex("#7775F2")
@@ -314,7 +388,7 @@ do
 	})
 
 	AboutSection:Image({
-		Image = "https://repository-images.githubusercontent.com/880118829/22c020eb-d1b1-4b34-ac4d-e33fd88db38d",
+		Image = "rbxassetid://80453750110722",
 		AspectRatio = "16:9",
 		Radius = 9,
 	})
@@ -817,28 +891,132 @@ do
 	OverviewGroup3:Space()
 
 	local OverviewSection2 = OverviewGroup3:Section({
-		Title = "Script chống",
+        Title = "Giảm lag",
 		Box = true,
 		BoxBorder = true,
 		Opened = true,
 	})
-	OverviewSection2:Button({
-		Title = "Button 1",
-		Justify = "Center",
-		Icon = "",
-		Callback = function()
-			print("clicked button 1")
-		end,
-	})
-	OverviewSection2:Space()
-	OverviewSection2:Button({
-		Title = "Button 2",
-		Justify = "Center",
-		Icon = "",
-		Callback = function()
-			print("clicked button 2")
-		end,
-	})
+
+    local Lighting = game:GetService("Lighting")
+local Terrain = workspace:FindFirstChildOfClass("Terrain")
+
+-- 1. Giảm Lag Mức 1 (Tối ưu nhẹ - Giữ nguyên hình ảnh, tắt mù/mờ)
+OverviewSection2:Button({
+    Title = "Giảm Lag (Mức 1 - Tối Ưu Nhẹ)",
+    Justify = "Center",
+    Icon = "zap",
+    Callback = function()
+        Lighting.GlobalShadows = false
+        Lighting.Technology = Enum.Technology.Compatibility
+        for _, v in ipairs(Lighting:GetChildren()) do
+            if v:IsA("PostEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("BlurEffect") then
+                v.Enabled = false
+            end
+        end
+    end,
+})
+
+OverviewSection2:Space()
+
+-- 2. Giảm Lag Mức 2 (Tối ưu vừa - Xóa hiệu ứng, hạ Texture)
+OverviewSection2:Button({
+    Title = "Giảm Lag (Mức 2 - Trung Bình)",
+    Justify = "Center",
+    Icon = "shield-alert",
+    Callback = function()
+        -- Áp dụng Mức 1
+        Lighting.GlobalShadows = false
+        Lighting.Technology = Enum.Technology.Compatibility
+        
+        -- Tắt hiệu ứng Terrain & Nước
+        if Terrain then
+            Terrain.WaterWaveSize = 0
+            Terrain.WaterWaveSpeed = 0
+            Terrain.WaterReflectance = 0
+            Terrain.WaterTransparency = 0
+        end
+
+        -- Giảm chi tiết các vật thể trong game
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("BasePart") then
+                v.Material = Enum.Material.SmoothPlastic
+            elseif v:IsA("Decal") or v:IsA("Texture") then
+                v.Transparency = 0.5
+            end
+        end
+    end,
+})
+
+OverviewSection2:Space()
+
+-- 3. Giảm Lag Mức 3 (Siêu giảm lag - Đồ họa xám/Smooth Plastic 100%)
+OverviewSection2:Button({
+    Title = "Giảm Lag (Mức 3 - Cực Thấp / FPS Max)",
+    Justify = "Center",
+    Icon = "flame",
+    Callback = function()
+        Lighting.GlobalShadows = false
+        Lighting.Technology = Enum.Technology.Compatibility
+        
+        for _, v in ipairs(workspace:GetDescendants()) do
+            if v:IsA("BasePart") then
+                v.Material = Enum.Material.SmoothPlastic
+                v.Reflectance = 0
+            elseif v:IsA("Decal") or v:IsA("Texture") then
+                v:Destroy() -- Xóa hoàn toàn Texture
+            elseif v:IsA("ParticleEmitter") or v:IsA("Trail") or v:IsA("Smoke") or v:IsA("Fire") then
+                v.Enabled = false -- Tắt hiệu ứng hạt, lửa, khói
+            end
+        end
+    end,
+})
+
+OverviewSection2:Space()
+
+-- 4. Trở về Đồ Hoạ Bình Thường
+OverviewSection2:Button({
+    Title = "Đồ Họa Bình Thường (Default)",
+    Justify = "Center",
+    Icon = "rotate-ccw",
+    Callback = function()
+        Lighting.GlobalShadows = true
+        Lighting.Technology = Enum.Technology.ShadowMap
+        
+        -- Bật lại các hiệu ứng Lighting
+        for _, v in ipairs(Lighting:GetChildren()) do
+            if v:IsA("PostEffect") or v:IsA("DepthOfFieldEffect") or v:IsA("BlurEffect") then
+                v.Enabled = true
+            end
+        end
+
+        -- Khôi phục hiệu ứng nước
+        if Terrain then
+            Terrain.WaterWaveSize = 0.15
+            Terrain.WaterWaveSpeed = 10
+            Terrain.WaterReflectance = 1
+            Terrain.WaterTransparency = 1
+        end
+    end,
+})
+
+
+	--OverviewSection2:Button({
+		--Title = "Button 1",
+		--Justify = "Center",
+		--Icon = "",
+		--Callback = function()
+		--	print("clicked button 1")
+		--end,
+	--})
+	--OverviewSection2:Space()
+	--OverviewSection2:Button({
+	--	Title = "Button 2",
+	--	Justify = "Center",
+	--	Icon = "",
+	--	Callback = function()
+	--		print("clicked button 2")
+	--	end,
+	--})
 
 	--OverviewTab:Space()
 end
@@ -1671,6 +1849,34 @@ end
         })
     end,
 })
+
+local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Cart ride around nothing",
+		Icon = "solar:inbox-unread-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+
+ButtonTab:Button({
+    Title = "Cart Stabilizer",
+	Desc = "Lưu ý: Nếu đang ngồi trên xe mà không hiện tên chiếc xe đó thì hãy bấm lại script này để hoạt động lại",
+    Callback = function()
+        WindUI:Notify({
+           loadstring(game:HttpGet("https://gist.githubusercontent.com/ethan2558252/6fe6d53cc8fb45b173a2d8e06450118a/raw/fc77ff19a0733f28189259624bfeb99fe9790300/gistfile1.txt"))()    
+        })
+    end,
+})
+  
+
+
+
+
+
+
+
+
+
 local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Ink game",
 		Icon = "solar:inbox-unread-bold",
@@ -2091,6 +2297,14 @@ ButtonTab:Button({
 		IconShape = "Square",
 		Border = true,
 	})
+    ButtonTab:Button({
+    Title = "Thanh Duy - Nokey - Vip nhất",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/ngoclinh02042011-stack/ThanhDuy-Premium-NoKey/refs/heads/main/ThanhDuy%20NoKey.lua"))()
+        })
+    end,
+})
     ButtonTab:Button({
     Title = "Speed Hub X",
     Callback = function()
