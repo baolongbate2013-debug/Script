@@ -1857,7 +1857,15 @@ local ButtonTab = ConfigUsageSection:Tab({
 		IconShape = "Square",
 		Border = true,
 	})
-
+ButtonTab:Button({
+    Title = "Auto win",
+	Desc = "Lưu ý: Không được nhảy trong quá trình hút ẩm",
+    Callback = function()
+        WindUI:Notify({
+           loadstring(game:HttpGet("https://raw.githubusercontent.com/uiahubUI/Script/refs/heads/main/cart%20auto%20win"))()    
+        })
+    end,
+})
 ButtonTab:Button({
     Title = "Cart Stabilizer",
 	Desc = "Lưu ý: Nếu đang ngồi trên xe mà không hiện tên chiếc xe đó thì hãy bấm lại script này để hoạt động lại",
@@ -1867,16 +1875,6 @@ ButtonTab:Button({
         })
     end,
 })
-  
-
-
-
-
-
-
-
-
-
 local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Ink game",
 		Icon = "solar:inbox-unread-bold",
