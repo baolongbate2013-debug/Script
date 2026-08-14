@@ -113,7 +113,7 @@ WindUI:AddTheme({
 -- */  Window  /* --
 local Window = WindUI:CreateWindow({
 	Title = "UIA HUB v3   ",
-	--Author = "by oiia • 3.3.5",
+	Author = "uiavip.lovable.app",
 	Folder = "ftgshub",
 	Icon = "solar:folder-2-bold-duotone",
 	Transparent = false,
