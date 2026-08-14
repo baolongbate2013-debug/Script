@@ -2304,18 +2304,18 @@ ButtonTab:Button({
     end,
 })
     ButtonTab:Button({
-    Title = "Speed Hub X",
-    Callback = function()
-        WindUI:Notify({
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
-        })
-    end,
-})
-    ButtonTab:Button({
     Title = "VexonHub",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/DiosDi/VexonHub/refs/heads/main/VexonHub"))()
+        })
+    end,
+})
+    ButtonTab:Button({
+    Title = "Speed Hub X",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua", true))()
         })
     end,
 })
