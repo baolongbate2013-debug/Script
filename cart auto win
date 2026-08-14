@@ -1,0 +1,68 @@
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+-- Auto-generated Movement Script
+-- Generated with Movement Recorder
+-- Number of waypoints: 3
+-- Movement Speed: 50
+local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local player = Players.LocalPlayer
+
+local movementSpeed = 100 
+
+local waypoints = {
+    Vector3.new(-435.50, 170.78, 103.00),  -- Waypoint 1
+    Vector3.new(-430.13, 160.30, 131.22),  -- Waypoint 2
+    Vector3.new(-431.63, 160.00, 159.40),  -- Waypoint 3
+}
+
+-- Extra waypoint AFTER waypoint 1
+local extraPointAfter1 = Vector3.new(-432, 163, 109)
+
+local function executeMovement()
+    local character = player.Character or player.CharacterAdded:Wait()
+    local humanoid = character:FindFirstChildOfClass("Humanoid")
+    local rootPart = character:FindFirstChild("HumanoidRootPart")
+
+    if not humanoid or not rootPart then 
+        warn("Movement Script: No humanoid or root part found!")
+        return 
+    end
+
+    for i, waypoint in ipairs(waypoints) do
+        print("Moving to waypoint " .. i .. "...")
+
+        -- Move to waypoint i
+        local distance = (rootPart.Position - waypoint).Magnitude
+        local duration = distance / movementSpeed
+        local tweenInfo = TweenInfo.new(duration, Enum.EasingStyle.Linear)
+        local tween = TweenService:Create(rootPart, tweenInfo, {CFrame = CFrame.new(waypoint)})
+        tween:Play()
+        tween.Completed:Wait()
+
+        if i == 1 then
+            local distance2 = (rootPart.Position - extraPointAfter1).Magnitude
+            local duration2 = distance2 / movementSpeed
+            local tweenInfo2 = TweenInfo.new(duration2, Enum.EasingStyle.Linear)
+            local tween2 = TweenService:Create(rootPart, tweenInfo2, {CFrame = CFrame.new(extraPointAfter1)})
+            tween2:Play()
+            tween2.Completed:Wait()
+
+            task.wait(3)
+        end
+
+        if i == 2 then
+            humanoid.Sit = true
+            print("Sitting at waypoint 2...")
+            task.wait(40)  -- your original sit time
+            humanoid.Sit = false
+        end
+
+        task.wait(0.1)
+    end
+
+    print("you won")
+end
+
+executeMovement()
