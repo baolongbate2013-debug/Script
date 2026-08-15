@@ -1842,14 +1842,6 @@ end
         })
     end,
 })
-	ButtonTab:Button({
-    Title = "Hakizashi",
-    Callback = function()
-        WindUI:Notify({
-             loadstring(game:HttpGet("https://raw.githubusercontent.com/sccv8/WhakizashiX/refs/heads/main/old%20whakizashi.txt"))()
-        })
-    end,
-})
     ButtonTab:Button({
     Title = "Draconic Hub",
     Callback = function()
@@ -1858,7 +1850,14 @@ end
         })
     end,
 })
-
+    ButtonTab:Button({
+    Title = "Hakizashi",
+    Callback = function()
+        WindUI:Notify({
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/sccv8/WhakizashiX/refs/heads/main/old%20whakizashi.txt"))()
+        })
+    end,
+})
 local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Cart ride around nothing",
 		Icon = "solar:inbox-unread-bold",
