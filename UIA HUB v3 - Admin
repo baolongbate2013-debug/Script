@@ -1835,7 +1835,7 @@ end
 	})
     ButtonTab:Button({
     Title = "Auto e-dash",
-    Desc = "Bấm phím [V] để tự động e-dash, tự động ngồi và nhảy, có thể sẽ bị lẫn sang emote2")
+    Desc = "Bấm phím [V] để tự động e-dash, tự động ngồi và nhảy, có thể sẽ bị lẫn sang emote2",
     Callback = function()
         WindUI:Notify({
             loadstring(game:HttpGet("https://raw.githubusercontent.com/azzyy1/evade---azzy/refs/heads/main/evade%20-%20azzy"))()
