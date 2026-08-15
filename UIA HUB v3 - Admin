@@ -1842,7 +1842,6 @@ end
         })
     end,
 })
-
 	ButtonTab:Button({
     Title = "Hakizashi",
     Callback = function()
