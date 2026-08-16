@@ -1951,21 +1951,6 @@ ButtonTab:Button({
         })
     end,
 })
-local ButtonTab = ConfigUsageSection:Tab({
-		Title = "Survive zombie arena",
-		Icon = "solar:inbox-bold",
-		IconColor = Grey,
-		IconShape = "Square",
-		Border = true,
-	})
-ButtonTab:Button({
-    Title = "SharkCreepy - xeno",
-    Callback = function()
-        WindUI:Notify({
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SharkCreepy/Survive-Zombie-Arena/refs/heads/main/script.luao"))()
-        })
-    end,
-})
     local ButtonTab = ConfigUsageSection:Tab({
 		Title = "99 night",
 		Icon = "solar:inbox-bold",
