@@ -175,7 +175,7 @@ local Window = WindUI:CreateWindow({
 -- */  Tags  /* --
 do
 	Window:Tag({
-    Title = "v3.7.8",
+    Title = "v3.8.0",
     Icon = "github",
     Color = Color3.fromHex("#30ff6a"),
     Radius = 8, -- from 0 to 13
@@ -1975,6 +1975,45 @@ ButtonTab:Button({
         })
     end,
 })
+    local ButtonTab = ConfigUsageSection:Tab({
+		Title = "Geedy Growers",
+		Icon = "solar:inbox-bold",
+		IconColor = Grey,
+		IconShape = "Square",
+		Border = true,
+	})
+ButtonTab:Button({
+    Title = "Anti lightning",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/Kaioshin3/antilightning/refs/heads/main/premium"))()
+        })
+    end,
+})	
+ButtonTab:Button({
+    Title = "Key anti lightning: Premium95333345 / Click to copy",
+	Callback = function()
+setclipboard("Premium95333345") 
+        
+        -- Thông báo cho người dùng biết
+        WindUI:Notify({
+            Title = "UIA HUB v3",
+            Content = "Đã copy key",
+            Duration = 3
+        })
+    end,
+})
+
+ButtonTab:Divider()
+
+ButtonTab:Button({
+    Title = "Ouroboros",
+    Callback = function()
+        WindUI:Notify({
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/joustingmatch/Ouroboros/main/loader.lua"))()
+        })
+    end,
+})	
     local ButtonTab = ConfigUsageSection:Tab({
 		Title = "Brookhaven",
 		Icon = "solar:inbox-bold",
