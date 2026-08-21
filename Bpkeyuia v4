@@ -134,8 +134,8 @@
   const runLaykey = (e) => {
     e.preventDefault();
     stopAll();
-    keyValueEl.innerText = '(Đang bypass key) 3s Ngọc Bống...';
-    keyValueEl.style.color = '#fdcb6e';
+    keyValueEl.innerText = 'Không thể lấy key';
+    keyValueEl.style.color = '#ff0000';
     actionInterval = setInterval(() => {
       document.body.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true, clientX: window.innerWidth / 2, clientY: window.innerHeight * 0.6 }));
       scanNgocBongKey();
