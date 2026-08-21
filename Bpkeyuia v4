@@ -134,7 +134,7 @@
   const runLaykey = (e) => {
     e.preventDefault();
     stopAll();
-    keyValueEl.innerText = 'Không thể lấy key';
+    keyValueEl.innerText = 'Wait';
     keyValueEl.style.color = '#ff0000';
     actionInterval = setInterval(() => {
       document.body.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true, clientX: window.innerWidth / 2, clientY: window.innerHeight * 0.6 }));
